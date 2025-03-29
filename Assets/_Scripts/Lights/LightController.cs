@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class LightController : MonoBehaviour
+public class LightController : Singleton<LightController>
 {
-
-    [SerializeField] LightObject[] lightObjects;
+    [SerializeField] private List<LightObject> lightObjects = new List<LightObject>();
 
     //used to store a reference to the active light index
     int currentLight = 0;
@@ -29,8 +29,9 @@ public class LightController : MonoBehaviour
        
     void Start()
     {
+        OnEnable();
         ActivateNewLight();
-        Debug.Log(lightObjects.Length);
+        Debug.Log(lightObjects.Count);
     }
 
     void Update()
@@ -43,13 +44,13 @@ public class LightController : MonoBehaviour
     void ActivateNewLight()
     {        
         // Generate a random number 
-        int randomNum = Random.Range(0, lightObjects.Length);
+        int randomNum = Random.Range(0, lightObjects.Count);
 
         //Check random number is different to active light index
         //Not sure on this functionality, should it always be a different light with no repeats? 
         while (randomNum == currentLight)
         {
-            randomNum = Random.Range(0, lightObjects.Length);
+            randomNum = Random.Range(0, lightObjects.Count);
         }
 
         //Turn off current active light
@@ -69,5 +70,10 @@ public class LightController : MonoBehaviour
     void TurnOffLight(int activeLight)
     {
         lightObjects[activeLight].gameObject.SetActive(false);
+    }
+
+    public void AddToLightObjects(LightObject light)
+    {
+        lightObjects.Add(light);
     }
 }

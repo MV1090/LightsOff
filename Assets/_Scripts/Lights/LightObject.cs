@@ -6,6 +6,11 @@ public class LightObject : MonoBehaviour
     //Event action to be called each time a light is touched
     public event Action OnLightTouched;
 
+    private void Awake()
+    {
+        LightController.Instance.AddToLightObjects(this);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
