@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightController : Singleton<LightController>
+public class LightManager : Singleton<LightManager>
 {
     [SerializeField] private List<LightObject> lightObjects = new List<LightObject>();
 
@@ -61,9 +61,6 @@ public class LightController : Singleton<LightController>
 
         //Store a reference to the current light index
         currentLight = randomNum;
-
-
-
     }
   
     //Turn off current Light
