@@ -43,8 +43,12 @@ public class GameManager : Singleton<GameManager>
         {
             currentTime -= Time.deltaTime;
 
-            if (currentTime < 0.00001)
-                gameOver = true;         
+            if (currentTime < 0)
+            {
+                currentTime = 0;
+                gameOver = true;
+            }
+                       
                         
         }
     }
