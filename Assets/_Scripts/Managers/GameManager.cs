@@ -37,15 +37,18 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         if (gameOver == true)
+        {
+            currentTime = 0;
             return;
+        }
+            
 
         if (startGame == true)
         {
             currentTime -= Time.deltaTime;
 
             if (currentTime < 0)
-            {
-                currentTime = 0;
+            {                
                 gameOver = true;
             }
                        

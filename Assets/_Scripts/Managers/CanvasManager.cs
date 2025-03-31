@@ -26,13 +26,13 @@ public class CanvasManager : Singleton<CanvasManager>
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.gameOver == true)
-            return;
-        
         float seconds = Mathf.FloorToInt(GameManager.Instance.GetCurrentTime() % 60);
         float milSeconds = (GameManager.Instance.GetCurrentTime() % 1) * 100;
-        timerText.text = string.Format("{0:00}:{1:00}", seconds, milSeconds);
+
+
+        timerText.text = string.Format("{0:00}:{1:00}", seconds, milSeconds);        
     }
+
     void UpdateScoreText(int value)
     {
         scoreText.text = "Score: " + value.ToString();
