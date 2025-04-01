@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class EndGameMenu : BaseMenu
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void InitState(MenuManager ctx)
     {
-        
+        base.InitState(ctx);
+        state = MenuManager.MenuStates.EndGameMenu;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void EnterState()
+    {        
+        base.EnterState();
+        Time.timeScale = 0.0f;
+    }
+
+    public override void ExitState()
     {
-        
+        base.ExitState();
+        Time.timeScale = 1.0f;
+    }
+
+    public void JumpToMainMenu()
+    {
+        context.SetActiveMenu(MenuManager.MenuStates.MainMenu);
+        Debug.Log("Jump to main menu");
     }
 }

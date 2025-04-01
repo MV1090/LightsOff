@@ -32,13 +32,7 @@ public class LightManager : Singleton<LightManager>
         OnEnable();
         ActivateNewLight();
         Debug.Log(lightObjects.Count);
-    }
-
-    void Update()
-    {
-        
-    }
-
+    }   
 
     // Turn on a new Light
     void ActivateNewLight()

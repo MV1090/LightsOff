@@ -7,10 +7,10 @@ public class MenuManager : Singleton<MenuManager>
     public BaseMenu[] allMenus;
     public enum MenuStates
     {
-        MainMenu, GameOverMenu
+        MainMenu, EndGameMenu, GameMenu
     }
 
-    private BaseMenu currentMenu;
+    public BaseMenu currentMenu;
     public Dictionary<MenuStates, BaseMenu> menuDictionary = new Dictionary<MenuStates, BaseMenu>();
     private Stack<MenuStates> menuStack = new Stack<MenuStates>();
 
@@ -37,10 +37,12 @@ public class MenuManager : Singleton<MenuManager>
             menuDictionary[state].gameObject.SetActive(false);
         }
 
-        SetActiveState(MenuStates.MainMenu);
+        SetActiveMenu(MenuStates.MainMenu);
+
+        GameManager.Instance.OnGameOver += () => SetActiveMenu(MenuStates.EndGameMenu);
     }
 
-    public void SetActiveState(MenuStates newMenu, bool isJumpingBack = false)
+    public void SetActiveMenu(MenuStates newMenu, bool isJumpingBack = false)
     {
         if (!menuDictionary.ContainsKey(newMenu))
             return;
@@ -66,12 +68,12 @@ public class MenuManager : Singleton<MenuManager>
     {
         if (menuStack.Count >= 1)
         {
-            SetActiveState(MenuStates.MainMenu);
+            SetActiveMenu(MenuStates.MainMenu);
         }
         else
         {
             menuStack.Pop();
-            SetActiveState(menuStack.Peek(), true);
+            SetActiveMenu(menuStack.Peek(), true);
         }
     }
 

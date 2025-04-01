@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,9 +6,10 @@ public class GameManager : Singleton<GameManager>
 {
     public bool TestMode = true;
     public UnityEvent<int> OnScoreValueChange;
+    public event Action OnGameOver;
 
     [SerializeField] float StartTime; // Set the total time for the countdown    
-    private float currentTime;
+    public float currentTime;
 
     private bool startGame = false;
     public bool gameOver = false;
@@ -27,47 +29,42 @@ public class GameManager : Singleton<GameManager>
         }
 
     }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentTime = StartTime;
+        
     }
-
     // Update is called once per frame
     void Update()
-    {
-        if (gameOver == true)
-        {
-            currentTime = 0;
-            return;
-        }
-            
-
-        if (startGame == true)
-        {
-            currentTime -= Time.deltaTime;
-
-            if (currentTime < 0)
-            {                
-                gameOver = true;
-            }
-                       
-                        
-        }
+    {                
+       
     }
-
     public void SetStartGame(bool hasGameStarted)
     {
         startGame = hasGameStarted; 
     }
-
     public bool GetStartGame()
     {
         return startGame;
     }
-
     public float GetCurrentTime()
     {
         return currentTime;
+    }
+    public void InvokeGameOver()
+    {
+        gameOver = true;
+        OnGameOver?.Invoke();
+        startGame = false;
+        currentTime = 0;
+        Debug.Log("Game Over");
+    }
+    public void ResetGame()
+    {
+        gameOver = false;
+        currentTime = StartTime;
+        Score = 0;
     }
 }

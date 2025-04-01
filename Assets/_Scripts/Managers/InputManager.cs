@@ -1,10 +1,9 @@
+using Unity.Android.Gradle;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputManager: Singleton<InputManager>
-{
-    [SerializeField] GameObject player;
-
+{    
     private PlayerInput playerInput;
 
     private InputAction touchPosition;
@@ -36,7 +35,8 @@ public class InputManager: Singleton<InputManager>
 
     //Call each time player touches the screen
     private void TouchPressed(InputAction.CallbackContext context)
-    {
+    {         
+        
         //Gets the position on the screen where the player touched
         Vector3 position = Camera.main.ScreenToWorldPoint(touchPosition.ReadValue<Vector2>());   
         position.z = Camera.main.nearClipPlane;              
@@ -48,7 +48,10 @@ public class InputManager: Singleton<InputManager>
         //If object is not a light the game is over
         if(hit2D.collider == null)
         {
-            Debug.Log("Game Over");
+            if (GameManager.Instance.GetStartGame() != true)
+                return;
+
+            GameManager.Instance.InvokeGameOver();            
             return;
         }
 
@@ -59,9 +62,7 @@ public class InputManager: Singleton<InputManager>
         {
             lightObject.OnTouched();
             return;
-        }       
-
-
+        }   
     }   
 }
 
