@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LightManager : Singleton<LightManager>
 {
-    [SerializeField] private List<LightObject> lightObjects = new List<LightObject>();
+    [SerializeField] public List<LightObject> lightObjects = new List<LightObject>();
 
     //used to store a reference to the active light index
     int currentLight = 0;

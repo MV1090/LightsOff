@@ -5,6 +5,7 @@ public class LightObject : MonoBehaviour
 {
     //Event action to be called each time a light is touched
     public event Action OnLightTouched;
+    public event Action OnGameStart;
 
     private void Awake()
     {
@@ -19,7 +20,11 @@ public class LightObject : MonoBehaviour
 
         //Start game after first light is pressed
         if(GameManager.Instance.GetStartGame() == false)
+        {
             GameManager.Instance.SetStartGame(true);
+            OnGameStart?.Invoke();
+        }
+            
 
 
         //Call OnLightTouched event

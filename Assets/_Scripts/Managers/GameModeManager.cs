@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameModeManager: Singleton<GameModeManager>
 {
+    public event Action EndlessModeSet;
+    
+
     public BaseGameMode[] gameModesRef;
     public enum GameModes
     {
@@ -37,5 +41,11 @@ public class GameModeManager: Singleton<GameModeManager>
     public void SetBeatTheClock()
     {
         SetGameMode(GameModes.BeatTheClock);
+    }
+
+    public void SetEndlessMode()
+    {
+        SetGameMode(GameModes.Endless);
+        EndlessModeSet?.Invoke();
     }
 }
