@@ -15,7 +15,7 @@ public class BeatTheClock : BaseGameMode
     // Update is called once per frame
     public override void Update()
     {
-       // if (gameModeManager.currentMode == GameModeManager.GameModes.BeatTheClock)
+        if (gameModeManager.currentMode == GameModeManager.GameModes.BeatTheClock)
         {
             if (gameManager.GetStartGame() == true)
             {

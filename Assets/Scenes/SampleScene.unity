@@ -214,6 +214,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1457233925}
+        m_TargetAssemblyTypeName: GameModeManager, Assembly-CSharp
+        m_MethodName: SetBeatTheClock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &173704242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2555,7 +2567,7 @@ GameObject:
   - component: {fileID: 1854230658}
   - component: {fileID: 1854230657}
   m_Layer: 5
-  m_Name: MainMenuButtonText
+  m_Name: ReplayButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2600,7 +2612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Replay
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2845,7 +2857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8851eaf437c04024ea28dc6c06beaa0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestMode: 1
+  TestMode: 0
   OnScoreValueChange:
     m_PersistentCalls:
       m_Calls: []
@@ -3247,7 +3259,7 @@ GameObject:
   - component: {fileID: 2142589205}
   - component: {fileID: 2142589204}
   m_Layer: 5
-  m_Name: MainMenuButton
+  m_Name: ReplayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3318,8 +3330,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 892121722}
-        m_TargetAssemblyTypeName: EndGameMenu, Assembly-CSharp
-        m_MethodName: JumpToMainMenu
+        m_TargetAssemblyTypeName: BaseMenu, Assembly-CSharp
+        m_MethodName: JumpBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1457233925}
+        m_TargetAssemblyTypeName: GameModeManager, Assembly-CSharp
+        m_MethodName: SetBeatTheClock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

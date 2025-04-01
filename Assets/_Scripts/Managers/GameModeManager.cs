@@ -33,4 +33,9 @@ public class GameModeManager: Singleton<GameModeManager>
     {
         return currentMode;
     }
+
+    public void SetBeatTheClock()
+    {
+        SetGameMode(GameModes.BeatTheClock);
+    }
 }

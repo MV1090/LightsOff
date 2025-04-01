@@ -58,8 +58,7 @@ public class GameManager : Singleton<GameManager>
         gameOver = true;
         OnGameOver?.Invoke();
         startGame = false;
-        currentTime = 0;
-        Debug.Log("Game Over");
+        currentTime = 0;        
     }
     public void ResetGame()
     {

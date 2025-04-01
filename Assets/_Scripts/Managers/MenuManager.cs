@@ -61,12 +61,12 @@ public class MenuManager : Singleton<MenuManager>
         {
             menuStack.Push(newMenu);
         }
-
+        Debug.Log(menuStack.Count);
     }
 
     public void JumpBack()
     {
-        if (menuStack.Count >= 1)
+        if (menuStack.Count <= 1)
         {
             SetActiveMenu(MenuStates.MainMenu);
         }
@@ -75,6 +75,11 @@ public class MenuManager : Singleton<MenuManager>
             menuStack.Pop();
             SetActiveMenu(menuStack.Peek(), true);
         }
+    }
+
+    public void ResetStack()
+    {
+        menuStack.Clear();
     }
 
     // Update is called once per frame
