@@ -1,6 +1,6 @@
-using UnityEditor.VersionControl;
-using UnityEngine;
-
+/// <summary>
+/// This class is used as an empty contain for when no game mode is active
+/// </summary>
 public class None : BaseGameMode
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
