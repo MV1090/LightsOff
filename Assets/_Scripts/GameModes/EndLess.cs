@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class EndLess : BaseGameMode
 {
-    [SerializeField] float LightOnTime;
+    [SerializeField] float lightOnTime;
     [SerializeField] float startLength;
     [SerializeField] float endLength;
     [SerializeField] float duration;
-
     [SerializeField] float currentTime;
 
     private Coroutine currentCoroutine;
@@ -15,40 +14,54 @@ public class EndLess : BaseGameMode
     public override void InitState(GameModeManager ctx)
     {
         base.InitState(ctx);
-        gameModeManager.EndlessModeSet += ModeStartUp;
+        gameMode = GameModeManager.GameModes.Endless;
     }
 
-
-    void Start()
+    public override void EnterState()
     {
-                          
+        base.EnterState();
+
+        foreach (LightObject lightObject in LightManager.Instance.lightObjects)
+        {
+            lightObject.OnGameStart += TurnOffLight;
+            lightObject.OnLightTouched += StartLifeSpanTimer;
+            GameManager.Instance.OnGameOver += ResetMode;
+        }
     }
 
-    // Update is called once per frame
-    public override void Update()
+    public override void ExitState()
     {
-        
+        base.ExitState();
+        ResetMode();
+
+        foreach (LightObject lightObject in LightManager.Instance.lightObjects)
+        {
+            lightObject.OnGameStart -= TurnOffLight;
+            lightObject.OnLightTouched -= StartLifeSpanTimer;
+            GameManager.Instance.OnGameOver -= ResetMode;
+        }
     }
 
-    private void ResetTimer()
+    private void StartLifeSpanTimer()
     {
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);
         }
-
-        // Start a new coroutine and store its reference
-        currentCoroutine = StartCoroutine(LightLifeSpan(1, 0, LightOnTime));
+        
+        currentCoroutine = StartCoroutine(LightLifeSpan(1, 0, lightOnTime));
+        Debug.Log(lightOnTime + " " + currentTime);
     }
 
-    private void ModeStartUp()
+    private void TurnOffLight()
     {
-        foreach (LightObject lightObject in LightManager.Instance.lightObjects)
-        {
-            lightObject.OnGameStart += () => StartCoroutine(LightTurnOffRate(startLength, endLength, duration));
-            lightObject.OnLightTouched += ResetTimer;
-            Debug.Log("Subscribed to: " + lightObject.gameObject.name);
-        }
+        StartCoroutine(LightTurnOffRate(startLength, endLength, duration));
+    }
+
+    private void ResetMode()
+    {
+        StopAllCoroutines();
+        lightOnTime = startLength;        
     }
 
     // Coroutine to interpolate between two float values over a duration
@@ -59,18 +72,12 @@ public class EndLess : BaseGameMode
         while (elapsedTime < time)
         {
             // Lerp between the start and end values based on the elapsed time
-            LightOnTime = Mathf.Lerp(start, end, elapsedTime / time);
-
-            // You can use this value to update a variable, UI element, etc.
-            Debug.Log("Current Value: " + LightOnTime);
+            lightOnTime = Mathf.Lerp(start, end, elapsedTime / time);            
 
             elapsedTime += Time.deltaTime;  // Increment elapsed time
             yield return null;  // Wait until the next frame
-        }
-
-        // Ensure the final value is exactly the end value
-        LightOnTime = end;
-        Debug.Log("Final Value: " + LightOnTime);
+        }        
+        lightOnTime = end;        
     }
 
     private IEnumerator LightLifeSpan(float start, float end, float time)
@@ -80,18 +87,14 @@ public class EndLess : BaseGameMode
         while (elapsedTime < time)
         {
             // Lerp between the start and end values based on the elapsed time
-            currentTime = Mathf.Lerp(start, end, elapsedTime / time);
-
-            // You can use this value to update a variable, UI element, etc.
-            Debug.Log("Current Value: " + currentTime);
-
+            currentTime = Mathf.Lerp(start, end, elapsedTime / time);                  
+            
             elapsedTime += Time.deltaTime;  // Increment elapsed time
             yield return null;  // Wait until the next frame
         }
 
-        GameManager.Instance.InvokeGameOver();
-        // Ensure the final value is exactly the end value
-        //currentTime = end;
+        //If coroutine ends set GameOver. 
+        GameManager.Instance.InvokeGameOver();       
     }
 
 }

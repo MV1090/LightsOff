@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameModeManager: Singleton<GameModeManager>
 {
-    public event Action EndlessModeSet;
-    
+    //public event Action EndlessModeSet;    
 
     public BaseGameMode[] gameModesRef;
     public enum GameModes
@@ -13,39 +13,67 @@ public class GameModeManager: Singleton<GameModeManager>
         None, Endless, BeatTheClock
     }
 
-    public GameModes currentMode;
-    
+    public Dictionary<GameModes, BaseGameMode> modeDictionary = new Dictionary<GameModes, BaseGameMode>();
+    [SerializeField]private BaseGameMode currentMode;
+    private BaseGameMode prevMode;    
 
     private void Start()
     {
         foreach(BaseGameMode gameMode in gameModesRef)
         {
             gameMode.InitState(this);
+
+            if (modeDictionary.ContainsKey(gameMode.gameMode))
+                continue;
+
+            modeDictionary.Add(gameMode.gameMode, gameMode);
         }
 
-        SetGameMode(GameModes.None);
+        foreach(GameModes gameMode in modeDictionary.Keys)
+        {
+            modeDictionary[gameMode].gameObject.SetActive(false);
+        }
 
-        GameManager.Instance.OnGameOver += () => SetGameMode(GameModes.None);
+        ActivateGameMode(GameModes.None);
+
+        GameManager.Instance.OnGameOver += () => ActivateGameMode(GameModes.None);
     }
 
-    public void SetGameMode(GameModes gameMode)
+    public void ActivateGameMode(GameModes newGameMode)
     {
-        currentMode = gameMode; 
+        if (!modeDictionary.ContainsKey(newGameMode))
+            return;
+       
+        if(currentMode != null)
+        {
+            prevMode = currentMode;
+            currentMode.ExitState();
+            currentMode.gameObject.SetActive(false);
+        }
+
+        currentMode = modeDictionary[newGameMode];
+        currentMode.gameObject.SetActive(true);
+        currentMode.EnterState();        
     }
 
-    public GameModes GetGameMode()
+    public BaseGameMode GetGameMode()
     {
         return currentMode;
     }
 
     public void SetBeatTheClock()
     {
-        SetGameMode(GameModes.BeatTheClock);
+        ActivateGameMode(GameModes.BeatTheClock);
     }
 
     public void SetEndlessMode()
     {
-        SetGameMode(GameModes.Endless);
-        EndlessModeSet?.Invoke();
+        ActivateGameMode(GameModes.Endless);        
     }
+
+    public void ResetGame()
+    {
+        ActivateGameMode(prevMode.gameMode);
+    }
+
 }
