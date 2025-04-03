@@ -1,11 +1,12 @@
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameTypeManager : Singleton<GameTypeManager>
 {
-    // Define the size of the grid
-    public int gridWidth; // 3 columns
-    public int gridHeight; // 3 rows
+    
+    public int gridWidth; 
+    public int gridHeight;
 
     public float gridOffsetX;
     public float gridOffsetY;
@@ -13,24 +14,26 @@ public class GameTypeManager : Singleton<GameTypeManager>
     [SerializeField] Button threeXGrid;
     [SerializeField] Button fourXGrid;
     [SerializeField] Button fiveXGrid;
-
-    // Create a 2D array to store the X and Y coordinates
+    
     public Vector2[,] gridCoordinates;
     private int gridIndex = 0;
 
     void Start()
     {
         threeXGrid.onClick.AddListener(() => SetGrid(3, 3, 6, -6, 3));
-        threeXGrid.onClick.AddListener(() => AdjustListener(threeXGrid, fourXGrid, fiveXGrid));
-        threeXGrid.onClick.Invoke();
+        threeXGrid.onClick.AddListener(() => AdjustListener(threeXGrid, fourXGrid, fiveXGrid));        
 
         fourXGrid.onClick.AddListener(() => SetGrid(4, 4, 4, -4, 2.5f));
         fourXGrid.onClick.AddListener(() => AdjustListener(fourXGrid, threeXGrid, fiveXGrid));
 
         fiveXGrid.onClick.AddListener(() => SetGrid(5, 5, 3, -3, 2));
         fiveXGrid.onClick.AddListener(() => AdjustListener(fiveXGrid, fourXGrid, threeXGrid));
-    }
 
+        foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
+        {
+            lightObject.OnGameStart += GameStarted;            
+        }
+    }
 
     void AdjustListener(Button a, Button b, Button c)
     {
@@ -67,4 +70,24 @@ public class GameTypeManager : Singleton<GameTypeManager>
             }
         }
     }
+
+    public void SetGridActive()
+    {
+        threeXGrid.gameObject.SetActive(true);
+        fourXGrid.gameObject.SetActive(true);
+        fiveXGrid.gameObject.SetActive(true);
+
+        if (LightManager.Instance.playableLightObjects.Count <= 0)
+        {
+            threeXGrid.onClick.Invoke();
+        }        
+    }
+
+    private void GameStarted()
+    {
+        threeXGrid.gameObject.SetActive(false);
+        fourXGrid.gameObject.SetActive(false);
+        fiveXGrid.gameObject.SetActive(false);
+    }
+
 }

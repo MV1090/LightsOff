@@ -11,6 +11,7 @@ public class GameMenu : BaseMenu
     public override void EnterState()
     {        
         base.EnterState();
+        GameTypeManager.Instance.SetGridActive();
         GameManager.Instance.ResetGame();
         Time.timeScale = 1.0f;
     }
