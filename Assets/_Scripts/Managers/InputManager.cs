@@ -59,6 +59,11 @@ public class InputManager: Singleton<InputManager>
         lightObject = hit2D.collider.GetComponent<LightObject>();
         if (lightObject != null)
         {
+            if(!lightObject.IsLightActive())
+            {
+                GameManager.Instance.InvokeGameOver();
+                return;
+            }            
             lightObject.OnTouched();
             return;
         }   
