@@ -5,12 +5,14 @@ public class LightManager : Singleton<LightManager>
 {
     [SerializeField] public List<LightObject> lightObjects = new List<LightObject>();
 
+    GameTypeManager gameTypeManager = GameTypeManager.Instance;
+
     //used to store a reference to the active light index
     int currentLight = 0;
 
     private void OnEnable()
     {
-        //Bind event listener to listen out for each time OnLightTouched is called
+        //Bind event listener to listen for each time OnLightTouched is called
         //Each time OnLightTouched is called, call activate new light
         foreach (LightObject obj in lightObjects)
         {
@@ -30,8 +32,7 @@ public class LightManager : Singleton<LightManager>
     void Start()
     {
         OnEnable();
-        ActivateNewLight();
-        Debug.Log(lightObjects.Count);
+        ActivateNewLight();        
     }   
 
     // Turn on a new Light

@@ -23,9 +23,7 @@ public class LightObject : MonoBehaviour
         {
             GameManager.Instance.SetStartGame(true);
             OnGameStart?.Invoke();
-        }
-            
-
+        }         
 
         //Call OnLightTouched event
         GameManager.Instance.Score++;        
