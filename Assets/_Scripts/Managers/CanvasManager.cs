@@ -7,6 +7,7 @@ public class CanvasManager : Singleton<CanvasManager>
     [Header("Text")]
     public TMP_Text scoreText;
     public TMP_Text timerText;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,7 +15,7 @@ public class CanvasManager : Singleton<CanvasManager>
         {
             GameManager.Instance.OnScoreValueChange.AddListener(UpdateScoreText);
             scoreText.text = "Score: " + GameManager.Instance.Score.ToString();
-        }
+        }     
     }
 
     // Update is called once per frame

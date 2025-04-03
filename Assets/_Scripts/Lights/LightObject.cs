@@ -41,7 +41,7 @@ public class LightObject : MonoBehaviour
 
         if (_isActive)
         {
-            spriteRenderer.color = Color.green;            
+            spriteRenderer.color = Color.green;           
         }
             
         else if(!_isActive)

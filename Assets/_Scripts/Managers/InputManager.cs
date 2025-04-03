@@ -61,6 +61,9 @@ public class InputManager: Singleton<InputManager>
         {
             if(!lightObject.IsLightActive())
             {
+                if (GameManager.Instance.GetStartGame() == false)
+                    return;
+
                 GameManager.Instance.InvokeGameOver();
                 return;
             }            
