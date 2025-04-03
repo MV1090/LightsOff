@@ -13,7 +13,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
     {
         get
         {
-
             if (instance != null)
             return instance;
 

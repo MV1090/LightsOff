@@ -21,7 +21,7 @@ public class EndLess : BaseGameMode
     {
         base.EnterState();
 
-        foreach (LightObject lightObject in LightManager.Instance.lightObjects)
+        foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
         {
             lightObject.OnGameStart += TurnOffLight;
             lightObject.OnLightTouched += StartLifeSpanTimer;
@@ -34,7 +34,7 @@ public class EndLess : BaseGameMode
         base.ExitState();
         ResetMode();
 
-        foreach (LightObject lightObject in LightManager.Instance.lightObjects)
+        foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
         {
             lightObject.OnGameStart -= TurnOffLight;
             lightObject.OnLightTouched -= StartLifeSpanTimer;
