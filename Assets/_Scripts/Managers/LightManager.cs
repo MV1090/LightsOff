@@ -8,7 +8,7 @@ public class LightManager : Singleton<LightManager>
     [SerializeField] public List<LightObject> playableLightObjects = new List<LightObject>();
 
     //used to store a reference to the active light index
-    int currentLight = 0;
+    public int currentLight = 0;
 
     private void OnEnable()
     {
@@ -115,11 +115,11 @@ public class LightManager : Singleton<LightManager>
         //Turn off current active light
         TurnOffLight(currentLight);
 
-        //Turn on new light        
-        playableLightObjects[randomNum].SetLightActive(true);
-
         //Store a reference to the current light index
         currentLight = randomNum;
+
+        //Turn on new light        
+        playableLightObjects[currentLight].SetLightActive(true);        
     }
   
     /// <summary>

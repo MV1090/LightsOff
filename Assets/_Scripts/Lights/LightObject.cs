@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class LightObject : MonoBehaviour
@@ -34,6 +33,8 @@ public class LightObject : MonoBehaviour
         {
             GameManager.Instance.SetStartGame(true);
             OnGameStart?.Invoke();
+            OnLightTouched?.Invoke();
+            return;
         }         
 
         //Call OnLightTouched event
