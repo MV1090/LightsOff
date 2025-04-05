@@ -13,8 +13,7 @@ public class MenuManager : Singleton<MenuManager>
     public BaseMenu currentMenu;
     public Dictionary<MenuStates, BaseMenu> menuDictionary = new Dictionary<MenuStates, BaseMenu>();
     private Stack<MenuStates> menuStack = new Stack<MenuStates>();
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+        
     void Start()
     {
         if (allMenus == null)

@@ -6,7 +6,6 @@ public class BaseGameMode : MonoBehaviour
     protected GameModeManager gameModeManager;
     protected GameManager gameManager;
 
-
     public virtual void InitState(GameModeManager ctx)
     {
         gameModeManager = ctx;

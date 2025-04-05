@@ -32,7 +32,10 @@ public class InputManager: Singleton<InputManager>
         touchPress.performed -= TouchPressed;
     }
 
-    //Call each time player touches the screen
+    /// <summary>
+    /// Called each tiem the player touches the screen
+    /// </summary>
+    /// <param name="context"></param>
     private void TouchPressed(InputAction.CallbackContext context)
     {         
         
@@ -59,7 +62,7 @@ public class InputManager: Singleton<InputManager>
         lightObject = hit2D.collider.GetComponent<LightObject>();
         if (lightObject != null)
         {
-            if(!lightObject.IsLightActive())
+            if(!lightObject.GetIsLightActive())
             {
                 if (GameManager.Instance.GetStartGame() == false)
                     return;

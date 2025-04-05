@@ -35,6 +35,12 @@ public class GameTypeManager : Singleton<GameTypeManager>
         }
     }
 
+    /// <summary>
+    /// When button is pressed sets it to be inactive, more for looks and feel than functionality.
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <param name="c"></param>
     void AdjustListener(Button a, Button b, Button c)
     {
         a.interactable = false;
@@ -42,6 +48,17 @@ public class GameTypeManager : Singleton<GameTypeManager>
         c.interactable = true;
     }
 
+    /// <summary>
+    /// Create grid sized based on width and height. 
+    /// Offset is used to set position of lights.
+    /// Size is sets how big the objects are. The bigger the grid the smaller the objects. 
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <param name="offSetX"></param>
+    /// <param name="offSetY"></param>
+    /// <param name="objSize"></param>
+    //Width and height need to be adjusted to wrok on screen wise instead of set numbers. 
     public void SetGrid(int width, int height, int offSetX, int offSetY, float objSize)
     {      
         gridWidth = width;
@@ -71,6 +88,9 @@ public class GameTypeManager : Singleton<GameTypeManager>
         }
     }
 
+    /// <summary>
+    /// Sets Buttons active on screen.
+    /// </summary>
     public void SetGridActive()
     {
         threeXGrid.gameObject.SetActive(true);
@@ -83,6 +103,9 @@ public class GameTypeManager : Singleton<GameTypeManager>
         }        
     }
 
+    /// <summary>
+    /// Removes buttons when game starts
+    /// </summary>
     private void GameStarted()
     {
         threeXGrid.gameObject.SetActive(false);
