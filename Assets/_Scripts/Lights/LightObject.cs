@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class LightObject : MonoBehaviour
@@ -8,7 +7,7 @@ public class LightObject : MonoBehaviour
     public event Action OnLightTouched;
     public event Action OnGameStart;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private CircleCollider2D circleCollider;
 
     private bool isActive;
@@ -34,6 +33,8 @@ public class LightObject : MonoBehaviour
         {
             GameManager.Instance.SetStartGame(true);
             OnGameStart?.Invoke();
+            OnLightTouched?.Invoke();
+            return;
         }         
 
         //Call OnLightTouched event

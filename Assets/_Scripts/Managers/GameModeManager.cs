@@ -8,7 +8,7 @@ public class GameModeManager: Singleton<GameModeManager>
     public BaseGameMode[] gameModesRef;
     public enum GameModes
     {
-        None, Endless, BeatTheClock
+        None, Endless, BeatTheClock, Delay
     }
 
     public Dictionary<GameModes, BaseGameMode> modeDictionary = new Dictionary<GameModes, BaseGameMode>();
@@ -78,6 +78,14 @@ public class GameModeManager: Singleton<GameModeManager>
     public void SetEndlessMode()
     {
         ActivateGameMode(GameModes.Endless);        
+    }
+
+    /// <summary>
+    /// Set Delay mode active
+    /// </summary>
+    public void SetDelayMode()
+    {
+        ActivateGameMode(GameModes.Delay);
     }
 
     /// <summary>

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
+using static MenuManager;
 
 public class LightManager : Singleton<LightManager>
 {
@@ -8,7 +9,7 @@ public class LightManager : Singleton<LightManager>
     [SerializeField] public List<LightObject> playableLightObjects = new List<LightObject>();
 
     //used to store a reference to the active light index
-    int currentLight = 0;
+    public int currentLight = 0;
 
     private void OnEnable()
     {
@@ -34,6 +35,7 @@ public class LightManager : Singleton<LightManager>
     {
         OnEnable();                     
         Debug.Log(allLightObjects.Count);
+        GameManager.Instance.OnGameOver += gameOver;
     }   
 
     /// <summary>
@@ -115,11 +117,11 @@ public class LightManager : Singleton<LightManager>
         //Turn off current active light
         TurnOffLight(currentLight);
 
-        //Turn on new light        
-        playableLightObjects[randomNum].SetLightActive(true);
-
         //Store a reference to the current light index
         currentLight = randomNum;
+
+        //Turn on new light        
+        playableLightObjects[currentLight].SetLightActive(true);        
     }
   
     /// <summary>
@@ -141,6 +143,28 @@ public class LightManager : Singleton<LightManager>
         allLightObjects.Add(light);
     }
 
-    
-    
+    private void gameOver()
+    {
+        StartCoroutine(FlashLight());
+    }
+
+    private IEnumerator FlashLight()
+    {
+        playableLightObjects[currentLight].SetLightActive(false);
+
+        for (int i = 0; i < 6; i++)
+        {
+            foreach(LightObject obj in playableLightObjects)
+            {
+                if (obj.spriteRenderer.color.a == 1)
+                    obj.spriteRenderer.color = new Color(0, 0, 0, 0);
+                else
+                    obj.spriteRenderer.color = Color.red;
+            }
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        playableLightObjects[currentLight].SetLightActive(true);
+        MenuManager.Instance.SetActiveMenu(MenuStates.EndGameMenu);        
+    }    
 }
