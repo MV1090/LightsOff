@@ -165,7 +165,6 @@ public class LightManager : Singleton<LightManager>
         }
 
         playableLightObjects[currentLight].SetLightActive(true);
-        MenuManager.Instance.SetActiveMenu(MenuStates.EndGameMenu);
-        
+        MenuManager.Instance.SetActiveMenu(MenuStates.EndGameMenu);        
     }    
 }
