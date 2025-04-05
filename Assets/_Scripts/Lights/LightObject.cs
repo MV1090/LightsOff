@@ -7,7 +7,7 @@ public class LightObject : MonoBehaviour
     public event Action OnLightTouched;
     public event Action OnGameStart;
 
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private CircleCollider2D circleCollider;
 
     private bool isActive;

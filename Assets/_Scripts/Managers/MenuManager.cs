@@ -38,7 +38,7 @@ public class MenuManager : Singleton<MenuManager>
 
         SetActiveMenu(MenuStates.MainMenu);
 
-        GameManager.Instance.OnGameOver += () => SetActiveMenu(MenuStates.EndGameMenu);
+        //GameManager.Instance.OnGameOver += () => SetActiveMenu(MenuStates.EndGameMenu);
     }
 
     public void SetActiveMenu(MenuStates newMenu, bool isJumpingBack = false)

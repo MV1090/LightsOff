@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
+using static MenuManager;
 
 public class LightManager : Singleton<LightManager>
 {
@@ -34,6 +35,7 @@ public class LightManager : Singleton<LightManager>
     {
         OnEnable();                     
         Debug.Log(allLightObjects.Count);
+        GameManager.Instance.OnGameOver += gameOver;
     }   
 
     /// <summary>
@@ -141,6 +143,29 @@ public class LightManager : Singleton<LightManager>
         allLightObjects.Add(light);
     }
 
-    
-    
+    private void gameOver()
+    {
+        StartCoroutine(FlashLight());
+    }
+
+    private IEnumerator FlashLight()
+    {
+        playableLightObjects[currentLight].SetLightActive(false);
+
+        for (int i = 0; i < 6; i++)
+        {
+            foreach(LightObject obj in playableLightObjects)
+            {
+                if (obj.spriteRenderer.color.a == 1)
+                    obj.spriteRenderer.color = new Color(0, 0, 0, 0);
+                else
+                    obj.spriteRenderer.color = Color.red;
+            }
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        playableLightObjects[currentLight].SetLightActive(true);
+        MenuManager.Instance.SetActiveMenu(MenuStates.EndGameMenu);
+        
+    }    
 }
