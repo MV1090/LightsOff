@@ -33,6 +33,10 @@ public class LightObject : MonoBehaviour
         {
             GameManager.Instance.SetStartGame(true);
             OnGameStart?.Invoke();
+
+            if(GameModeManager.Instance.IsModeSet(GameModeManager.GameModes.Memory))
+                return;
+
             OnLightTouched?.Invoke();
             return;
         }         

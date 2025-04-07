@@ -20,7 +20,6 @@ public class InputManager: Singleton<InputManager>
         Debug.Log("InputManager Loaded");
     }
 
-
     private void OnEnable()
     {
         //Binds function to be called each time the player presses the screen 

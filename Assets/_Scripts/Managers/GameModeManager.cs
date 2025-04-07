@@ -8,7 +8,7 @@ public class GameModeManager: Singleton<GameModeManager>
     public BaseGameMode[] gameModesRef;
     public enum GameModes
     {
-        None, Endless, BeatTheClock, Delay
+        None, Endless, BeatTheClock, Delay, Memory
     }
 
     public Dictionary<GameModes, BaseGameMode> modeDictionary = new Dictionary<GameModes, BaseGameMode>();
@@ -88,6 +88,11 @@ public class GameModeManager: Singleton<GameModeManager>
         ActivateGameMode(GameModes.Delay);
     }
 
+    public void SetMemoryMode()
+    {
+        ActivateGameMode(GameModes.Memory);
+    }
+
     /// <summary>
     /// Sets the previous game mode active, used when game is restarted instead of returning to main menu
     /// </summary>
@@ -96,4 +101,11 @@ public class GameModeManager: Singleton<GameModeManager>
         ActivateGameMode(prevMode.gameMode);
     }
 
+    public bool IsModeSet(GameModes mode)
+    {
+        if(currentMode == modeDictionary[mode])
+            return true;
+        else
+            return false;
+    }
 }

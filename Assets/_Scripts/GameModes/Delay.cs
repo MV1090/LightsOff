@@ -131,7 +131,7 @@ public class Delay : BaseGameMode
         GameManager.Instance.InvokeGameOver();
     }
 
-    private IEnumerator  StartLightDelay(float time)
+    private IEnumerator StartLightDelay(float time)
     {
         if (lifeSpanCoroutine != null)
         {

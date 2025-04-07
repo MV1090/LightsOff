@@ -98,7 +98,7 @@ public class LightManager : Singleton<LightManager>
     /// <summary>
     /// Sets a new light to be active and turns off the current light
     /// </summary>
-    void ActivateNewLight()
+    public void ActivateNewLight()
     {
         //When changing grid size checks to make sure current light isn't bigger than the new grid size, needed to set new grid properly.
         if (currentLight > playableLightObjects.Count -1)
