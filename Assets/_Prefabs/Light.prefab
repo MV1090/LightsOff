@@ -138,3 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
+  greenLight: {fileID: -3954418174936579287, guid: bd3dcedb246d8344c9e18668d2bccea1, type: 3}
+  redLight: {fileID: -724046581436626220, guid: 09f222b181f190f45889ca5c6beb49ee, type: 3}
+  blankLight: {fileID: -8494782591554081677, guid: 75b80f8a748673b4da867b51f3581373, type: 3}

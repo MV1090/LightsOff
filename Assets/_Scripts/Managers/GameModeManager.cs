@@ -96,4 +96,12 @@ public class GameModeManager: Singleton<GameModeManager>
         ActivateGameMode(prevMode.gameMode);
     }
 
+    public bool IsModeSet(GameModes mode)
+    {
+        if (currentMode == modeDictionary[mode])
+            return true;
+        else
+            return false;
+    }
+
 }
