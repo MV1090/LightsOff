@@ -129,12 +129,12 @@ TextureImporter:
       name: light-green_0
       rect:
         serializedVersion: 2
-        x: 90
-        y: 131
-        width: 880
-        height: 880
+        x: 52
+        y: 40
+        width: 1000
+        height: 1000
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cec2cccb7105fb24b86b4b95c46bf31b
     internalID: 0
     vertices: []
     indices: 

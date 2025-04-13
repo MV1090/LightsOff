@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shutters0044_0: 1226444796524142563
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

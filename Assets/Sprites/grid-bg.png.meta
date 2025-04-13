@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3d1c2094939fe52488ef3ed4651fedb7
+guid: 0ac4be23aa2ba1e449a2df8e400c5b26
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7323691623166736631
-    second: shutters0042_0
+      213: 537316584527599062
+    second: grid-bg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shutters0042_0
+      name: grid-bg_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1045
-        width: 1080
-        height: 645
+        x: 127
+        y: 51
+        width: 824
+        height: 1869
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 90784a475450d5a90800000000000000
-      internalID: -7323691623166736631
+      spriteID: 6d591b8369ee47700800000000000000
+      internalID: 537316584527599062
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      shutters0042_0: -7323691623166736631
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
