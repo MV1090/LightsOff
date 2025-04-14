@@ -26,13 +26,13 @@ public class GameTypeManager : Singleton<GameTypeManager>
     void Start()
     {
         threeXGrid.onClick.AddListener(() => SetGrid(3, 3, 5.0f, -5.0f, -5, 4.75f, 4.5f));
-        //threeXGrid.onClick.AddListener(() => AdjustListener(threeXGrid, fourXGrid, fiveXGrid));
+        threeXGrid.onClick.AddListener(() => AdjustListener(threeXGrid, fourXGrid, fiveXGrid));
 
         fourXGrid.onClick.AddListener(() => SetGrid(4, 4, 3.5f, -3.5f, -5.25f, 5, 3f));
-        //fourXGrid.onClick.AddListener(() => AdjustListener(fourXGrid, threeXGrid, fiveXGrid));
+        fourXGrid.onClick.AddListener(() => AdjustListener(fourXGrid, threeXGrid, fiveXGrid));
 
         fiveXGrid.onClick.AddListener(() => SetGrid(5, 5, 3, -3, -6, 5.75f, 2.5f));
-        //fiveXGrid.onClick.AddListener(() => AdjustListener(fiveXGrid, fourXGrid, threeXGrid));
+        fiveXGrid.onClick.AddListener(() => AdjustListener(fiveXGrid, fourXGrid, threeXGrid));
 
         foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
         {
