@@ -5,7 +5,7 @@ public class MenuManager : Singleton<MenuManager>
     public BaseMenu[] allMenus;
     public enum MenuStates
     {
-        MainMenu, EndGameMenu, GameMenu
+        RootMainMenu, GameModeSelect, EndGameMenu, GameMenu
     }
 
     public BaseMenu currentMenu;
@@ -34,7 +34,7 @@ public class MenuManager : Singleton<MenuManager>
             menuDictionary[state].gameObject.SetActive(false);
         }
 
-        SetActiveMenu(MenuStates.MainMenu);
+        SetActiveMenu(MenuStates.RootMainMenu);
 
         //GameManager.Instance.OnGameOver += () => SetActiveMenu(MenuStates.EndGameMenu);
     }
@@ -65,7 +65,7 @@ public class MenuManager : Singleton<MenuManager>
     {
         if (menuStack.Count <= 1)
         {
-            SetActiveMenu(MenuStates.MainMenu);
+            SetActiveMenu(MenuStates.RootMainMenu);
         }
         else
         {
