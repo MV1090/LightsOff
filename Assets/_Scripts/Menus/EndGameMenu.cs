@@ -22,7 +22,7 @@ public class EndGameMenu : BaseMenu
 
     public void JumpToMainMenu()
     {
-        context.SetActiveMenu(MenuManager.MenuStates.MainMenu);
+        context.SetActiveMenu(MenuManager.MenuStates.RootMainMenu);
         Debug.Log("Jump to main menu");
     }
 }

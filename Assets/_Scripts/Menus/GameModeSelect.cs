@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class MainMenu : BaseMenu
+public class GameModeSelect : BaseMenu
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void InitState(MenuManager ctx)
     {
         base.InitState(ctx);
-        state = MenuManager.MenuStates.MainMenu;
+        state = MenuManager.MenuStates.GameModeSelect;
     }
 
     public override void EnterState()
