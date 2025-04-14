@@ -11,6 +11,11 @@ public class LightObject : MonoBehaviour
     private CircleCollider2D circleCollider;
 
     private bool isActive;
+
+    public Sprite greenLight;
+    public Sprite redLight;
+    public Sprite blankLight;
+
     private void Awake()
     {
         LightManager.Instance.AddToLightObjects(this);
@@ -52,12 +57,12 @@ public class LightObject : MonoBehaviour
 
         if (_isActive)
         {
-            spriteRenderer.color = Color.green;           
+            spriteRenderer.sprite = greenLight;           
         }
             
         else if(!_isActive)
         {
-            spriteRenderer.color = Color.red;           
+            spriteRenderer.sprite = blankLight;           
         }           
     }
 

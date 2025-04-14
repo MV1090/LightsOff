@@ -10,6 +10,12 @@ public class GameTypeManager : Singleton<GameTypeManager>
     public float gridOffsetX;
     public float gridOffsetY;
 
+    private float startingPosX;
+    private float startingPosY;
+
+    [SerializeField] float startingX;
+    [SerializeField] float startingY;
+
     [SerializeField] Button threeXGrid;
     [SerializeField] Button fourXGrid;
     [SerializeField] Button fiveXGrid;
@@ -19,13 +25,13 @@ public class GameTypeManager : Singleton<GameTypeManager>
 
     void Start()
     {
-        threeXGrid.onClick.AddListener(() => SetGrid(3, 3, 6, -6, 3));
-        threeXGrid.onClick.AddListener(() => AdjustListener(threeXGrid, fourXGrid, fiveXGrid));        
+        threeXGrid.onClick.AddListener(() => SetGrid(3, 3, 5.0f, -5.0f, -5, 4.75f, 4.5f));
+        threeXGrid.onClick.AddListener(() => AdjustListener(threeXGrid, fourXGrid, fiveXGrid));
 
-        fourXGrid.onClick.AddListener(() => SetGrid(4, 4, 4, -4, 2.5f));
+        fourXGrid.onClick.AddListener(() => SetGrid(4, 4, 3.5f, -3.5f, -5.25f, 5, 3f));
         fourXGrid.onClick.AddListener(() => AdjustListener(fourXGrid, threeXGrid, fiveXGrid));
 
-        fiveXGrid.onClick.AddListener(() => SetGrid(5, 5, 3, -3, 2));
+        fiveXGrid.onClick.AddListener(() => SetGrid(5, 5, 3, -3, -6, 5.75f, 2.5f));
         fiveXGrid.onClick.AddListener(() => AdjustListener(fiveXGrid, fourXGrid, threeXGrid));
 
         foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
@@ -58,12 +64,14 @@ public class GameTypeManager : Singleton<GameTypeManager>
     /// <param name="offSetY"></param>
     /// <param name="objSize"></param>
     //Width and height need to be adjusted to wrok on screen wise instead of set numbers. 
-    public void SetGrid(int width, int height, int offSetX, int offSetY, float objSize)
+    public void SetGrid(int width, int height, float offSetX, float offSetY, float startingX, float startingY, float objSize)
     {      
         gridWidth = width;
         gridHeight = height;
         gridOffsetX = offSetX;
         gridOffsetY = offSetY;
+        startingPosX = (Screen.width / 1080) / width + startingX;
+        startingPosY = (Screen.height/ 1920) / height + startingY;
 
         gridIndex = 0;
 
@@ -75,8 +83,8 @@ public class GameTypeManager : Singleton<GameTypeManager>
         {
             for (int y = 0; y < gridHeight; y++)
             {
-                float xPos = x * gridOffsetX;
-                float yPos = y * gridOffsetY;                
+                float xPos = startingPosX + (x * gridOffsetX);
+                float yPos = startingPosY + (y * gridOffsetY);                
                 
                 gridCoordinates[x, y] = new Vector2(xPos, yPos);
 
