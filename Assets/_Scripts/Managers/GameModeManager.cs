@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +11,8 @@ public class GameModeManager: Singleton<GameModeManager>
     }
 
     public Dictionary<GameModes, BaseGameMode> modeDictionary = new Dictionary<GameModes, BaseGameMode>();
-    [SerializeField]private BaseGameMode currentMode;
+    [SerializeField]private BaseGameMode currentBaseMode;
+    [SerializeField]private GameModes currentGameMode;
     private BaseGameMode prevMode;    
 
     private void Start()
@@ -47,21 +47,23 @@ public class GameModeManager: Singleton<GameModeManager>
         if (!modeDictionary.ContainsKey(newGameMode))
             return;
        
-        if(currentMode != null)
+        if(currentBaseMode != null)
         {
-            prevMode = currentMode;
-            currentMode.ExitState();
-            currentMode.gameObject.SetActive(false);
+            prevMode = currentBaseMode;
+            currentBaseMode.ExitState();
+            currentBaseMode.gameObject.SetActive(false);
         }
 
-        currentMode = modeDictionary[newGameMode];
-        currentMode.gameObject.SetActive(true);
-        currentMode.EnterState();        
+        currentBaseMode = modeDictionary[newGameMode];
+        currentBaseMode.gameObject.SetActive(true);
+        currentBaseMode.EnterState();
+
+        currentGameMode = newGameMode;
     }
 
-    public BaseGameMode GetGameMode()
+    public BaseGameMode GetBaseGameMode()
     {
-        return currentMode;
+        return currentBaseMode;
     }
 
     /// <summary>
@@ -96,9 +98,14 @@ public class GameModeManager: Singleton<GameModeManager>
         ActivateGameMode(prevMode.gameMode);
     }
 
+    public GameModes GetCurrentGameMode()
+    {
+        return currentGameMode;
+    }        
+        
     public bool IsModeSet(GameModes mode)
     {
-        if (currentMode == modeDictionary[mode])
+        if (currentBaseMode == modeDictionary[mode])
             return true;
         else
             return false;

@@ -23,16 +23,27 @@ public class GameTypeManager : Singleton<GameTypeManager>
     public Vector2[,] gridCoordinates;
     private int gridIndex = 0;
 
+    private GameType currentGameType;
+
+    public enum GameType
+    {
+        ThreeXThree, FourXFour, FiveXFive
+    }
+
+
     void Start()
     {
         threeXGrid.onClick.AddListener(() => SetGrid(3, 3, 5.0f, -5.0f, -5, 4.75f, 4.5f));
         threeXGrid.onClick.AddListener(() => AdjustListener(threeXGrid, fourXGrid, fiveXGrid));
+        threeXGrid.onClick.AddListener(() => SetGameType(GameType.ThreeXThree));
 
         fourXGrid.onClick.AddListener(() => SetGrid(4, 4, 3.5f, -3.5f, -5.25f, 5, 3f));
         fourXGrid.onClick.AddListener(() => AdjustListener(fourXGrid, threeXGrid, fiveXGrid));
+        fourXGrid.onClick.AddListener(() => SetGameType(GameType.FourXFour));
 
         fiveXGrid.onClick.AddListener(() => SetGrid(5, 5, 3, -3, -6, 5.75f, 2.5f));
         fiveXGrid.onClick.AddListener(() => AdjustListener(fiveXGrid, fourXGrid, threeXGrid));
+        fiveXGrid.onClick.AddListener(() => SetGameType(GameType.FiveXFive));
 
         foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
         {
@@ -51,6 +62,16 @@ public class GameTypeManager : Singleton<GameTypeManager>
         a.interactable = false;
         b.interactable = true;
         c.interactable = true;
+    }
+
+    void SetGameType(GameType gameType)
+    {
+        currentGameType = gameType;
+    }
+
+    public GameType GetGameType()
+    {
+        return currentGameType;
     }
 
     /// <summary>
