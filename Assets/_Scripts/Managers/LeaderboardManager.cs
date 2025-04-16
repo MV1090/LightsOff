@@ -12,12 +12,12 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
         GameManager.Instance.OnGameOver += UpdateLeaderboard;
     }
 
-    public async void AddScore()
+    public async void AddScore(string leaderboardID)
     {
-        var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync("B_T_C_3X3", GameManager.Instance.Score);
+        var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardID, GameManager.Instance.Score);
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
     }
-
+    
     void UpdateLeaderboard()
     {
         switch (GameModeManager.Instance.GetCurrentGameMode())
@@ -33,14 +33,17 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
                 {
                     case GameTypeManager.GameType.ThreeXThree:
                         Debug.Log(GameTypeManager.GameType.ThreeXThree);
+                        AddScore("D_3X3");
                         break;
 
                     case GameTypeManager.GameType.FourXFour:
                         Debug.Log(GameTypeManager.GameType.FourXFour);
+                        AddScore("D_4X4");
                         break;
 
                     case GameTypeManager.GameType.FiveXFive:
                         Debug.Log(GameTypeManager.GameType.FiveXFive);
+                        AddScore("D_5X5");
                         break;
                 }
                 break;
@@ -52,14 +55,17 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
                 {
                     case GameTypeManager.GameType.ThreeXThree:
                         Debug.Log(GameTypeManager.GameType.ThreeXThree);
+                        AddScore("B_T_C_3X3");
                         break;
 
                     case GameTypeManager.GameType.FourXFour:
                         Debug.Log(GameTypeManager.GameType.FourXFour);
+                        AddScore("B_T_C_4X4");
                         break;
 
                     case GameTypeManager.GameType.FiveXFive:
                         Debug.Log(GameTypeManager.GameType.FiveXFive);
+                        AddScore("B_T_C_5X5");
                         break;
                 }
                 break;
@@ -71,14 +77,17 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
                 {
                     case GameTypeManager.GameType.ThreeXThree:
                         Debug.Log(GameTypeManager.GameType.ThreeXThree);
+                        AddScore("E_3X3");
                         break;
 
                     case GameTypeManager.GameType.FourXFour:
                         Debug.Log(GameTypeManager.GameType.FourXFour);
+                        AddScore("E_4X4");
                         break;
 
                     case GameTypeManager.GameType.FiveXFive:
                         Debug.Log(GameTypeManager.GameType.FiveXFive);
+                        AddScore("E_5X5");
                         break;
                 }
                 break;
