@@ -1,12 +1,17 @@
 using Newtonsoft.Json;
 using Unity.Services.Leaderboards;
+using Unity.Services.Leaderboards.Models;
+using System;
 using UnityEngine;
 
 
 public class LeaderboardManager : Singleton<LeaderboardManager>
-{
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+{  
+    public LeaderboardScoresPage topThreeScores;
+    public LeaderboardEntry playerScore;
+
+    public event Action ScoreToDisplay;
+
     void Start()
     {
         GameManager.Instance.OnGameOver += UpdateLeaderboard;
@@ -17,7 +22,20 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardID, GameManager.Instance.Score);
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
     }
-    
+
+    public async void GetPlayerScore(string leaderboardId)
+    {
+        playerScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(leaderboardId);        
+        ScoreToDisplay?.Invoke();
+        Debug.Log(JsonConvert.SerializeObject(playerScore));        
+    }
+
+    public async void GetScores(string leaderboardId)
+    {
+        topThreeScores = await LeaderboardsService.Instance.GetScoresAsync(leaderboardId); 
+        Debug.Log(JsonConvert.SerializeObject(topThreeScores));
+    }
+
     void UpdateLeaderboard()
     {
         switch (GameModeManager.Instance.GetCurrentGameMode())
