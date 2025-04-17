@@ -31,6 +31,11 @@ public class RootMainMenu : BaseMenu
     //    context.SetActiveMenu(MenuManager.MenuStates.OptionsMenu);
     //}
 
+    public void JumpToLeaderboardMenu()
+    {
+        context.SetActiveMenu(MenuManager.MenuStates.LeaderboardMenu);
+    }
+
     public void QuitGame()
     {
 #if UNITY_EDITOR
