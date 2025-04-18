@@ -165,7 +165,12 @@ public class LeaderboardMenu : BaseMenu
     void AdjustListener(Button a, Button b, Button c)
     {
         a.interactable = false;
+        a.GetComponentInChildren<TMP_Text>().color = Color.green;
+
         b.interactable = true;
+        b.GetComponentInChildren<TMP_Text>().color = Color.black;
+
         c.interactable = true;
+        c.GetComponentInChildren<TMP_Text>().color = Color.black;
     }
 }
