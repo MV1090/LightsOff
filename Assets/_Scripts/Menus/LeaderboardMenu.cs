@@ -12,8 +12,8 @@ public class LeaderboardMenu : BaseMenu
     public Button fourXFour;
     public Button fiveXFive;
 
-    [Header("Text")]
-    public TMP_Text scoreText;
+    //[Header("Text")]
+    //public TMP_Text scoreText;
     private enum Modes
     {
         Endless, BeatTheClock, Delay
@@ -148,7 +148,7 @@ public class LeaderboardMenu : BaseMenu
         rank = LeaderboardManager.Instance.playerScore.Rank;
         playerID = LeaderboardManager.Instance.playerScore.PlayerName;
 
-        scoreText.text = "Rank: " + rank.ToString() + " Score: " + score.ToString() + " " + playerID;
+        //scoreText.text = "Rank: " + rank.ToString() + " Score: " + score.ToString() + " " + playerID;
     }
 
 
@@ -168,9 +168,9 @@ public class LeaderboardMenu : BaseMenu
         a.GetComponentInChildren<TMP_Text>().color = Color.green;
 
         b.interactable = true;
-        b.GetComponentInChildren<TMP_Text>().color = Color.black;
+        b.GetComponentInChildren<TMP_Text>().color = Color.white;
 
         c.interactable = true;
-        c.GetComponentInChildren<TMP_Text>().color = Color.black;
+        c.GetComponentInChildren<TMP_Text>().color = Color.white;
     }
 }
