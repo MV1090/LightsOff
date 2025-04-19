@@ -1,7 +1,10 @@
 using UnityEngine;
-
+using TMPro;
+using Unity.Services.Authentication;
 public class RootMainMenu : BaseMenu
 {
+    [SerializeField] TMP_Text playerID;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void InitState(MenuManager ctx)
     {
@@ -13,6 +16,7 @@ public class RootMainMenu : BaseMenu
     {
         base.EnterState();
         Time.timeScale = 0.0f;
+        playerID.text = "Player: " + AuthenticationService.Instance.PlayerName;                
     }
 
     public override void ExitState()
@@ -43,6 +47,4 @@ public class RootMainMenu : BaseMenu
 #endif
         Application.Quit();
     }
-
-
 }
