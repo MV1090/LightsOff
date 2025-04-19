@@ -26,10 +26,10 @@ public class RootMainMenu : BaseMenu
         context.SetActiveMenu(MenuManager.MenuStates.GameModeSelect);
     }
 
-    //public void JumpToOptionsMenu()
-    //{
-    //    context.SetActiveMenu(MenuManager.MenuStates.OptionsMenu);
-    //}
+    public void JumpToOptionsMenu()
+    {
+        context.SetActiveMenu(MenuManager.MenuStates.OptionsMenu);
+    }
 
     public void JumpToLeaderboardMenu()
     {

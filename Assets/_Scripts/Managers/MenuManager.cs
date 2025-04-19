@@ -5,7 +5,7 @@ public class MenuManager : Singleton<MenuManager>
     public BaseMenu[] allMenus;
     public enum MenuStates
     {
-        RootMainMenu, GameModeSelect, EndGameMenu, GameMenu, LeaderboardMenu
+        RootMainMenu, GameModeSelect, EndGameMenu, GameMenu, LeaderboardMenu, OptionsMenu
     }
 
     public BaseMenu currentMenu;
