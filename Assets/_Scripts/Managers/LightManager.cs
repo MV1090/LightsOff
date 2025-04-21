@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using static MenuManager;
+
 
 public class LightManager : Singleton<LightManager>
 {
@@ -10,6 +12,8 @@ public class LightManager : Singleton<LightManager>
 
     //used to store a reference to the active light index
     public int currentLight = 0;
+
+    public event Action gameEnded;
 
     private void OnEnable()
     {
@@ -105,13 +109,13 @@ public class LightManager : Singleton<LightManager>
             currentLight = 0;
 
         // Generate a random number 
-        int randomNum = Random.Range(0, playableLightObjects.Count);
+        int randomNum = UnityEngine.Random.Range(0, playableLightObjects.Count);
 
         //Check random number is different to active light index
         //Not sure on this functionality, should it always be a different light with no repeats? 
         while (randomNum == currentLight)
         {
-            randomNum = Random.Range(0, playableLightObjects.Count);
+            randomNum = UnityEngine.Random.Range(0, playableLightObjects.Count);
         }
 
         //Turn off current active light
@@ -166,9 +170,15 @@ public class LightManager : Singleton<LightManager>
                     obj.spriteRenderer.sprite = obj.blankLight;
             }
             yield return new WaitForSeconds(0.2f);
-        }
+
+            if(i == 4)
+            {
+                gameEnded?.Invoke();
+            }
+        }               
 
         playableLightObjects[currentLight].SetLightActive(true);
-        MenuManager.Instance.SetActiveMenu(MenuStates.EndGameMenu);        
+        //MenuManager.Instance.SetActiveMenu(MenuStates.EndGameMenu);
+         
     }    
 }
