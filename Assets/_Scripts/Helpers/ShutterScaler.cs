@@ -1,10 +1,8 @@
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PanelScaler : MonoBehaviour
+public class ShutterScaler : MonoBehaviour
 {
-    [SerializeField] RectTransform rectTransform;    
+    [SerializeField] RectTransform rectTransform;
 
     void Start()
     {
