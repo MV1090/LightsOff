@@ -11,6 +11,8 @@ public class InputManager: Singleton<InputManager>
     
     private LightObject lightObject;
 
+    [SerializeField] TouchTargetUI touchTargetUI;
+
     //Overrides singleton Awake function
     protected override void Awake()
     {
@@ -44,46 +46,48 @@ public class InputManager: Singleton<InputManager>
     /// <param name="context"></param>
     private void TouchPressed(InputAction.CallbackContext context)
     {
-        Debug.Log("ScreenTouched");
-        //Gets the position on the screen where the player touched
-        Vector3 position = Camera.main.ScreenToWorldPoint(touchPosition.ReadValue<Vector2>());   
-        position.z = Camera.main.nearClipPlane;              
+        
+        touchTargetUI.TouchTarget();
+        //Debug.Log("ScreenTouched");
+        ////Gets the position on the screen where the player touched
+        //Vector3 touchPos = Camera.main.ScreenToWorldPoint(touchPosition.ReadValue<Vector2>());
+        //touchPos.z = Camera.main.nearClipPlane;
 
-        //Raycast to the area of the screen touched by the player, might need to be adjusted based on the save of the area registered as 'touched' by the player... 
-        //Need to test on phone
-        RaycastHit2D hit2D = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPosition.ReadValue<Vector2>()), Vector2.zero);
+        ////Raycast to the area of the screen touched by the player, might need to be adjusted based on the save of the area registered as 'touched' by the player... 
+        ////Need to test on phone
+        //RaycastHit2D hit2D = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPosition.ReadValue<Vector2>()), Vector2.zero);
 
 
-        //If object is not a light the game is over
-        if (hit2D.collider == null)
-        {
-            if (GameManager.Instance.GetStartGame() != true)
-                return;
+        ////If object is not a light the game is over
+        //if (hit2D.collider == null)
+        //{
+        //    if (GameManager.Instance.GetStartGame() != true)
+        //        return;
 
-            GameManager.Instance.InvokeGameOver();            
-            return;
-        }
+        //    GameManager.Instance.InvokeGameOver();            
+        //    return;
+        //}
 
-        if (hit2D.collider != null)
-            Debug.Log("Collider Hit)");
+        //if (hit2D.collider != null)
+        //    Debug.Log("Collider Hit)");
 
-            // Check to see if object tapped is a light
-            // If object is a light, call OnTouched function. 
-            lightObject = hit2D.collider.GetComponent<LightObject>();
-        if (lightObject != null)
-        {
-            Debug.Log("Object touched");
-            if(!lightObject.GetIsLightActive())
-            {
-                if (GameManager.Instance.GetStartGame() == false)
-                    return;
+        //    // Check to see if object tapped is a light
+        //    // If object is a light, call OnTouched function. 
+        //    lightObject = hit2D.collider.GetComponent<LightObject>();
+        //if (lightObject != null)
+        //{
+        //    Debug.Log("Object touched");
+        //    if(!lightObject.GetIsLightActive())
+        //    {
+        //        if (GameManager.Instance.GetStartGame() == false)
+        //            return;
 
-                GameManager.Instance.InvokeGameOver();
-                return;
-            }            
-            lightObject.OnTouched();
-            return;
-        }   
+        //        GameManager.Instance.InvokeGameOver();
+        //        return;
+        //    }            
+        //    lightObject.OnTouched();
+        //    return;
+        //}   
     }   
 }
 
