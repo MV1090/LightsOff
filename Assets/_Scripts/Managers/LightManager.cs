@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using static MenuManager;
 
 
 public class LightManager : Singleton<LightManager>
@@ -48,11 +47,11 @@ public class LightManager : Singleton<LightManager>
     /// <param name="numberOfPlayableLights"></param>
     /// <param name="lightSize"></param>
     //Called from GridTypeManager
-    public void SetLightGrid(int numberOfPlayableLights, float lightSize)
+    public void SetLightGrid(int numberOfPlayableLights)
     {
         ResetPlayableLights();
         SetPlayableLightObjects(numberOfPlayableLights);
-        SetLightSize(lightSize);
+        //SetLightSize(lightSize);
     }
 
     /// <summary>
@@ -91,13 +90,13 @@ public class LightManager : Singleton<LightManager>
     /// Sets all lights in playable object list to be the same size.
     /// </summary>
     /// <param name="size"></param>
-    private void SetLightSize(float size)
-    {
-        foreach (LightObject obj in playableLightObjects)
-        {
-            obj.SetLightSize(size);
-        }
-    }
+    //private void SetLightSize(float size)
+    //{
+    //    foreach (LightObject obj in playableLightObjects)
+    //    {
+    //        obj.SetLightSize(size);
+    //    }
+    //}
 
     /// <summary>
     /// Sets a new light to be active and turns off the current light
@@ -164,10 +163,10 @@ public class LightManager : Singleton<LightManager>
         {           
             foreach(LightObject obj in playableLightObjects)
             {
-                if (obj.spriteRenderer.sprite == obj.blankLight)
-                    obj.spriteRenderer.sprite = lightColour;
+                if (obj.Image.sprite == obj.blankLight)
+                    obj.Image.sprite = lightColour;
                 else
-                    obj.spriteRenderer.sprite = obj.blankLight;
+                    obj.Image.sprite = obj.blankLight;
             }
             yield return new WaitForSeconds(0.2f);
 
