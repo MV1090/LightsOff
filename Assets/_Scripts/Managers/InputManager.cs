@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
 public class InputManager: Singleton<InputManager>
@@ -9,8 +12,9 @@ public class InputManager: Singleton<InputManager>
     private InputAction touchPress;   
     
     private LightObject lightObject;
-
-    //Overrides singleton Awake function
+    public GraphicRaycaster raycaster;
+    public EventSystem eventSystem;  
+    
     protected override void Awake()
     {
         base.Awake();
@@ -19,7 +23,6 @@ public class InputManager: Singleton<InputManager>
         touchPress = playerInput.actions.FindAction("TouchPress");
         Debug.Log("InputManager Loaded");
     }
-
 
     private void OnEnable()
     {
@@ -37,42 +40,60 @@ public class InputManager: Singleton<InputManager>
     /// </summary>
     /// <param name="context"></param>
     private void TouchPressed(InputAction.CallbackContext context)
-    {         
-        
+    {        
         //Gets the position on the screen where the player touched
-        Vector3 position = Camera.main.ScreenToWorldPoint(touchPosition.ReadValue<Vector2>());   
-        position.z = Camera.main.nearClipPlane;              
+        Vector2 touchPos = touchPosition.ReadValue<Vector2>();              
 
-        //Raycast to the area of the screen touched by the player, might need to be adjusted based on the save of the area registered as 'touched' by the player... 
-        //Need to test on phone
-        RaycastHit2D hit2D = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPosition.ReadValue<Vector2>()), Vector2.zero);
-
-        //If object is not a light the game is over
-        if(hit2D.collider == null)
+        PointerEventData pointerData = new PointerEventData(eventSystem)
         {
-            if (GameManager.Instance.GetStartGame() != true)
-                return;
+            position = touchPos            
+        };                
 
-            GameManager.Instance.InvokeGameOver();            
-            return;
+        List<RaycastResult> results = new List<RaycastResult>();
+        raycaster.Raycast(pointerData, results);
+        Debug.Log(results.Count);
+
+        bool hitTarget = false;
+
+        foreach (RaycastResult result in results)
+        {
+            if (LightManager.Instance.playableLightObjects.Contains(result.gameObject.GetComponent<LightObject>()))
+            {
+                lightObject = result.gameObject.GetComponent<LightObject>();
+
+                if (lightObject != null)
+                {
+                    hitTarget = true;   
+
+                    Debug.Log("Object touched");
+                    if (!lightObject.GetIsLightActive())
+                    {
+                        if (GameManager.Instance.GetStartGame() == false)
+                            return;
+
+                        GameManager.Instance.InvokeGameOver();
+                        return;
+                    }
+                    lightObject.OnTouched();
+                    return;
+                }
+            }
         }
 
-        // Check to see if object tapped is a light
-        // If object is a light, call OnTouched function. 
-        lightObject = hit2D.collider.GetComponent<LightObject>();
-        if (lightObject != null)
+        if (!hitTarget)
         {
-            if(!lightObject.GetIsLightActive())
+            if (GameManager.Instance.GetStartGame() != true)
             {
-                if (GameManager.Instance.GetStartGame() == false)
-                    return;
-
-                GameManager.Instance.InvokeGameOver();
+                
                 return;
-            }            
-            lightObject.OnTouched();
-            return;
-        }   
+            }
+
+            GameManager.Instance.InvokeGameOver();
+            {               
+                return;
+            }
+        }
+
     }   
 }
 

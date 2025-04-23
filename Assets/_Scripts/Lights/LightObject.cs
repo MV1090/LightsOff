@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LightObject : MonoBehaviour
 {
@@ -7,10 +8,10 @@ public class LightObject : MonoBehaviour
     public event Action OnLightTouched;
     public event Action OnGameStart;
 
-    public SpriteRenderer spriteRenderer;
+    public Image Image;
     private CircleCollider2D circleCollider;
 
-    private bool isActive;
+    [SerializeField]private bool isActive;
 
     public Sprite greenLight;
     public Sprite redLight;
@@ -19,10 +20,12 @@ public class LightObject : MonoBehaviour
     private void Awake()
     {
         LightManager.Instance.AddToLightObjects(this);
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+        Image = GetComponent<Image>();
         circleCollider = GetComponent<CircleCollider2D>();
     }
 
+ 
     /// <summary>
     /// Updates game manager score and broadcast to all listeners that the light has been touched. 
     /// </summary>
@@ -57,13 +60,15 @@ public class LightObject : MonoBehaviour
 
         if (_isActive)
         {
-            spriteRenderer.sprite = greenLight;           
+            //spriteRenderer.sprite = greenLight;
+            Image.sprite = greenLight;
         }
-            
-        else if(!_isActive)
+
+        else if (!_isActive)
         {
-            spriteRenderer.sprite = blankLight;           
-        }           
+            //spriteRenderer.sprite = blankLight;
+            Image.sprite= blankLight;
+        }
     }
 
     /// <summary>
@@ -80,9 +85,9 @@ public class LightObject : MonoBehaviour
     /// </summary>
     /// <param name="size"></param>
     //called when grid size changes. 
-    public void SetLightSize(float size)
-    {
-        spriteRenderer.size = new Vector2 (size, size);
-        circleCollider.radius = (size/ 2) + 0.25f;
-    }
+    //public void SetLightSize(float size)
+    //{
+    //    spriteRenderer.size = new Vector2 (size, size);
+    //    circleCollider.radius = (size/ 2) + 0.25f;
+    //}
 }

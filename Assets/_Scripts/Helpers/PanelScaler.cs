@@ -14,7 +14,7 @@ public class PanelScaler : MonoBehaviour
 
     private void Update()
     {
-        ApplySafeArea();
+        //ApplySafeArea();
     }
 
     void ApplySafeArea()

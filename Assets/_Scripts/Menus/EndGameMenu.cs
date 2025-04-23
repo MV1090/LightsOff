@@ -25,4 +25,9 @@ public class EndGameMenu : BaseMenu
         context.SetActiveMenu(MenuManager.MenuStates.RootMainMenu);
         Debug.Log("Jump to main menu");
     }
+
+    public void JumpToGameMenu()
+    {
+        context.menuToActivate = MenuManager.MenuStates.GameMenu;
+    }
 }

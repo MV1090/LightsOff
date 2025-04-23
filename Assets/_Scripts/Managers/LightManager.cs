@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using static MenuManager;
+
 
 public class LightManager : Singleton<LightManager>
 {
@@ -10,6 +11,8 @@ public class LightManager : Singleton<LightManager>
 
     //used to store a reference to the active light index
     public int currentLight = 0;
+
+    public event Action gameEnded;
 
     private void OnEnable()
     {
@@ -44,11 +47,11 @@ public class LightManager : Singleton<LightManager>
     /// <param name="numberOfPlayableLights"></param>
     /// <param name="lightSize"></param>
     //Called from GridTypeManager
-    public void SetLightGrid(int numberOfPlayableLights, float lightSize)
+    public void SetLightGrid(int numberOfPlayableLights)
     {
         ResetPlayableLights();
         SetPlayableLightObjects(numberOfPlayableLights);
-        SetLightSize(lightSize);
+        //SetLightSize(lightSize);
     }
 
     /// <summary>
@@ -87,13 +90,13 @@ public class LightManager : Singleton<LightManager>
     /// Sets all lights in playable object list to be the same size.
     /// </summary>
     /// <param name="size"></param>
-    private void SetLightSize(float size)
-    {
-        foreach (LightObject obj in playableLightObjects)
-        {
-            obj.SetLightSize(size);
-        }
-    }
+    //private void SetLightSize(float size)
+    //{
+    //    foreach (LightObject obj in playableLightObjects)
+    //    {
+    //        obj.SetLightSize(size);
+    //    }
+    //}
 
     /// <summary>
     /// Sets a new light to be active and turns off the current light
@@ -105,13 +108,13 @@ public class LightManager : Singleton<LightManager>
             currentLight = 0;
 
         // Generate a random number 
-        int randomNum = Random.Range(0, playableLightObjects.Count);
+        int randomNum = UnityEngine.Random.Range(0, playableLightObjects.Count);
 
         //Check random number is different to active light index
         //Not sure on this functionality, should it always be a different light with no repeats? 
         while (randomNum == currentLight)
         {
-            randomNum = Random.Range(0, playableLightObjects.Count);
+            randomNum = UnityEngine.Random.Range(0, playableLightObjects.Count);
         }
 
         //Turn off current active light
@@ -160,15 +163,21 @@ public class LightManager : Singleton<LightManager>
         {           
             foreach(LightObject obj in playableLightObjects)
             {
-                if (obj.spriteRenderer.sprite == obj.blankLight)
-                    obj.spriteRenderer.sprite = lightColour;
+                if (obj.Image.sprite == obj.blankLight)
+                    obj.Image.sprite = lightColour;
                 else
-                    obj.spriteRenderer.sprite = obj.blankLight;
+                    obj.Image.sprite = obj.blankLight;
             }
             yield return new WaitForSeconds(0.2f);
-        }
 
-        playableLightObjects[currentLight].SetLightActive(true);
-        MenuManager.Instance.SetActiveMenu(MenuStates.EndGameMenu);        
+            if(i == 4)
+            {
+                gameEnded?.Invoke();
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+
+        playableLightObjects[currentLight].SetLightActive(true);       
+         
     }    
 }

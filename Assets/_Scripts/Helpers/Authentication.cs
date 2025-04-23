@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
@@ -21,17 +22,22 @@ public class Authentication : MonoBehaviour
 
         await SignUpAnonymouslyAsync();
     }
+     
 
+    /// <summary>
+    /// To be used if we want to run events on sign in and sign out.
+    /// </summary>
+    /// <returns></returns>
     void SetupEvents()
     {
         AuthenticationService.Instance.SignedIn += () =>
         {
+           
             // Shows how to get a playerID
             Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
 
             // Shows how to get an access token
             Debug.Log($"Access Token: {AuthenticationService.Instance.AccessToken}");
-
         };
 
         AuthenticationService.Instance.SignInFailed += (err) =>
@@ -41,6 +47,7 @@ public class Authentication : MonoBehaviour
 
         AuthenticationService.Instance.SignedOut += () =>
         {
+            
             Debug.Log("Player signed out.");
         };
 
@@ -52,26 +59,48 @@ public class Authentication : MonoBehaviour
 
     async Task SignUpAnonymouslyAsync()
     {
-        try
+        if (!AuthenticationService.Instance.IsSignedIn)
         {
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            Debug.Log("Sign in anonymously succeeded!");
+            try
+            {
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                Debug.Log("Sign in anonymously succeeded!");
 
-            // Shows how to get the playerID
-            Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
+                string currentName = AuthenticationService.Instance.PlayerName;
 
+                while(currentName.Length>15)
+                {
+                    string newName = NameGenerator.Instance.RandomName();
+                    try
+                    {
+                        await AuthenticationService.Instance.UpdatePlayerNameAsync(newName);
+                        Debug.Log($"Assigned new player name: {newName}");
+                    }
+                    catch (RequestFailedException ex)
+                    {
+                        Debug.LogError("Failed to update player name.");
+                        Debug.LogException(ex);
+                    }
+                    currentName = newName;
+                }
+
+                Debug.Log($"Player name: {AuthenticationService.Instance.PlayerName}");
+                Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
+            }
+
+            catch (AuthenticationException ex)
+            {
+                // Compare error code to AuthenticationErrorCodes
+                // Notify the player with the proper error message
+                Debug.LogException(ex);
+            }
+            catch (RequestFailedException ex)
+            {
+                // Compare error code to CommonErrorCodes
+                // Notify the player with the proper error message
+                Debug.LogException(ex);
+            }
         }
-        catch (AuthenticationException ex)
-        {
-            // Compare error code to AuthenticationErrorCodes
-            // Notify the player with the proper error message
-            Debug.LogException(ex);
-        }
-        catch (RequestFailedException ex)
-        {
-            // Compare error code to CommonErrorCodes
-            // Notify the player with the proper error message
-            Debug.LogException(ex);
-        }
+        
     }
 }
