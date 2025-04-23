@@ -1,5 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
 public class InputManager: Singleton<InputManager>
@@ -10,10 +12,9 @@ public class InputManager: Singleton<InputManager>
     private InputAction touchPress;   
     
     private LightObject lightObject;
-
-    [SerializeField] TouchTargetUI touchTargetUI;
-
-    //Overrides singleton Awake function
+    public GraphicRaycaster raycaster;
+    public EventSystem eventSystem;  
+    
     protected override void Awake()
     {
         base.Awake();
@@ -22,7 +23,6 @@ public class InputManager: Singleton<InputManager>
         touchPress = playerInput.actions.FindAction("TouchPress");
         Debug.Log("InputManager Loaded");
     }
-
 
     private void OnEnable()
     {
@@ -35,59 +35,65 @@ public class InputManager: Singleton<InputManager>
         touchPress.performed -= TouchPressed;
     }
 
-    private void Update()
-    {
-        
-    }
-
     /// <summary>
     /// Called each tiem the player touches the screen
     /// </summary>
     /// <param name="context"></param>
     private void TouchPressed(InputAction.CallbackContext context)
-    {
-        
-        touchTargetUI.TouchTarget();
-        //Debug.Log("ScreenTouched");
-        ////Gets the position on the screen where the player touched
-        //Vector3 touchPos = Camera.main.ScreenToWorldPoint(touchPosition.ReadValue<Vector2>());
-        //touchPos.z = Camera.main.nearClipPlane;
+    {        
+        //Gets the position on the screen where the player touched
+        Vector2 touchPos = touchPosition.ReadValue<Vector2>();              
 
-        ////Raycast to the area of the screen touched by the player, might need to be adjusted based on the save of the area registered as 'touched' by the player... 
-        ////Need to test on phone
-        //RaycastHit2D hit2D = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touchPosition.ReadValue<Vector2>()), Vector2.zero);
+        PointerEventData pointerData = new PointerEventData(eventSystem)
+        {
+            position = touchPos            
+        };                
 
+        List<RaycastResult> results = new List<RaycastResult>();
+        raycaster.Raycast(pointerData, results);
+        Debug.Log(results.Count);
 
-        ////If object is not a light the game is over
-        //if (hit2D.collider == null)
-        //{
-        //    if (GameManager.Instance.GetStartGame() != true)
-        //        return;
+        bool hitTarget = false;
 
-        //    GameManager.Instance.InvokeGameOver();            
-        //    return;
-        //}
+        foreach (RaycastResult result in results)
+        {
+            if (LightManager.Instance.playableLightObjects.Contains(result.gameObject.GetComponent<LightObject>()))
+            {
+                lightObject = result.gameObject.GetComponent<LightObject>();
 
-        //if (hit2D.collider != null)
-        //    Debug.Log("Collider Hit)");
+                if (lightObject != null)
+                {
+                    hitTarget = true;   
 
-        //    // Check to see if object tapped is a light
-        //    // If object is a light, call OnTouched function. 
-        //    lightObject = hit2D.collider.GetComponent<LightObject>();
-        //if (lightObject != null)
-        //{
-        //    Debug.Log("Object touched");
-        //    if(!lightObject.GetIsLightActive())
-        //    {
-        //        if (GameManager.Instance.GetStartGame() == false)
-        //            return;
+                    Debug.Log("Object touched");
+                    if (!lightObject.GetIsLightActive())
+                    {
+                        if (GameManager.Instance.GetStartGame() == false)
+                            return;
 
-        //        GameManager.Instance.InvokeGameOver();
-        //        return;
-        //    }            
-        //    lightObject.OnTouched();
-        //    return;
-        //}   
+                        GameManager.Instance.InvokeGameOver();
+                        return;
+                    }
+                    lightObject.OnTouched();
+                    return;
+                }
+            }
+        }
+
+        if (!hitTarget)
+        {
+            if (GameManager.Instance.GetStartGame() != true)
+            {
+                
+                return;
+            }
+
+            GameManager.Instance.InvokeGameOver();
+            {               
+                return;
+            }
+        }
+
     }   
 }
 
