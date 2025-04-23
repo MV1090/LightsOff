@@ -174,10 +174,10 @@ public class LightManager : Singleton<LightManager>
             {
                 gameEnded?.Invoke();
             }
-        }               
+        }
+        yield return new WaitForSeconds(0.5f);
 
-        playableLightObjects[currentLight].SetLightActive(true);
-        //MenuManager.Instance.SetActiveMenu(MenuStates.EndGameMenu);
+        playableLightObjects[currentLight].SetLightActive(true);       
          
     }    
 }

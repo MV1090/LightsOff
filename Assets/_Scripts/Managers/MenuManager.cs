@@ -72,7 +72,7 @@ public class MenuManager : Singleton<MenuManager>
         else
         {
             menuStack.Pop();
-            SetActiveMenu(menuStack.Peek(), true);
+            SetActiveMenu(menuStack.Peek(), true);            
         }
     }
 
