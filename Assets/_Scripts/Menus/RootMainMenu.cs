@@ -8,6 +8,7 @@ public class RootMainMenu : BaseMenu
 
     [SerializeField] Button newGame;
     [SerializeField] Button leaderBoard;
+    [SerializeField] Button options;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void InitState(MenuManager ctx)
