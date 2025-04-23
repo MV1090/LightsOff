@@ -7,24 +7,14 @@ public class GameTypeManager : Singleton<GameTypeManager>
     private int gridWidth;
     private int gridHeight;
 
-    private float gridOffsetX;
-    private float gridOffsetY;
-
-    private float startingPosX;
-    private float startingPosY;
-
-    [SerializeField] float startingX;
-    [SerializeField] float startingY;
-    [SerializeField] float size;
-    [SerializeField] float offsetX;
-    [SerializeField] float offsetY;
+    [SerializeField] GridScaler gs;
 
     [SerializeField] Button threeXGrid;
     [SerializeField] Button fourXGrid;
     [SerializeField] Button fiveXGrid;
     
-    public Vector2[,] gridCoordinates;
-    private int gridIndex = 0;
+    
+    //private int gridIndex = 0;
 
     private GameType currentGameType;
 
@@ -36,15 +26,15 @@ public class GameTypeManager : Singleton<GameTypeManager>
 
     void Start()
     {
-        threeXGrid.onClick.AddListener(() => SetGrid(3, 3, 5.15f, -5.15f, -5.1f, 5.175f, 5.75f));
+        threeXGrid.onClick.AddListener(() => SetGrid(3, 3));
         threeXGrid.onClick.AddListener(() => AdjustListener(threeXGrid, fourXGrid, fiveXGrid));
         threeXGrid.onClick.AddListener(() => SetGameType(GameType.ThreeXThree));
 
-        fourXGrid.onClick.AddListener(() => SetGrid(4, 4, 3.82f, -3.82f, -5.7f, 5.75f, 4.25f));
+        fourXGrid.onClick.AddListener(() => SetGrid(4, 4));
         fourXGrid.onClick.AddListener(() => AdjustListener(fourXGrid, threeXGrid, fiveXGrid));
         fourXGrid.onClick.AddListener(() => SetGameType(GameType.FourXFour));
 
-        fiveXGrid.onClick.AddListener(() => SetGrid(5, 5, 3.05f, -3.05f, -6.05f, 6.105f, 3.4f));
+        fiveXGrid.onClick.AddListener(() => SetGrid(5, 5));
         fiveXGrid.onClick.AddListener(() => AdjustListener(fiveXGrid, fourXGrid, threeXGrid));
         fiveXGrid.onClick.AddListener(() => SetGameType(GameType.FiveXFive));
 
@@ -88,35 +78,10 @@ public class GameTypeManager : Singleton<GameTypeManager>
     /// <param name="offSetY"></param>
     /// <param name="objSize"></param>
     //Width and height need to be adjusted to wrok on screen wise instead of set numbers. 
-    public void SetGrid(int width, int height, float offSetX, float offSetY, float startingX, float startingY, float objSize)
-    {      
-        gridWidth = width;
-        gridHeight = height;
-        gridOffsetX = offSetX;
-        gridOffsetY = offSetY;
-        startingPosX = (Screen.width / 1920) / width + startingX;
-        startingPosY = (Screen.height/ 1080) / height + startingY;
-
-        gridIndex = 0;
-
-        LightManager.Instance.SetLightGrid(gridWidth * gridHeight, objSize);     
-        
-        gridCoordinates = new Vector2[gridWidth, gridHeight];
-        
-        for (int x = 0; x < gridWidth; x++)
-        {
-            for (int y = 0; y < gridHeight; y++)
-            {
-                float xPos = startingPosX + (x * gridOffsetX);
-                float yPos = startingPosY + (y * gridOffsetY);                
-                
-                gridCoordinates[x, y] = new Vector2(xPos, yPos);
-
-                LightManager.Instance.playableLightObjects[gridIndex].transform.position = gridCoordinates[x, y];
-
-                gridIndex++;
-            }
-        }
+    public void SetGrid(int columns, int rows)
+    {         
+        LightManager.Instance.SetLightGrid(columns * rows);        
+        gs.SetGrid(columns, rows);
     }
 
     /// <summary>
