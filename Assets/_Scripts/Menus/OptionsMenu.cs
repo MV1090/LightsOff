@@ -1,7 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionsMenu : BaseMenu
+
 {
+
+    [SerializeField] Button music;
+    [SerializeField] Button soundfx;
+    [SerializeField] Button accessibility;
+    [SerializeField] Button back;
+
+    Button activeButton;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void InitState(MenuManager ctx)
     {
