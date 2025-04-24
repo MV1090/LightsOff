@@ -10,6 +10,9 @@ public class OptionsMenu : BaseMenu
     [SerializeField] Button accessibility;
     [SerializeField] Slider activeLight;
     [SerializeField] Slider warningLight;
+    [SerializeField] Image light1;
+    [SerializeField] Image light2;
+
 
     public Gradient colorGradient;
 
@@ -43,20 +46,26 @@ public class OptionsMenu : BaseMenu
     {     
         Color newColor = colorGradient.Evaluate(value);
 
-        foreach(LightObject light in LightManager.Instance.allLightObjects)
+        light1.color = newColor;
+
+        foreach (LightObject light in LightManager.Instance.allLightObjects)
         {
             light.activeColour = newColor;
-        }        
+        }       
+        
+        light1.color = newColor;
     }
 
     void UpdateWarningColor(float value)
     {
         Color newColor = colorGradient.Evaluate(value);
 
+        light2.color = newColor;
+
         foreach (LightObject light in LightManager.Instance.allLightObjects)
         {
             light.warningColour = newColor;
-        }
+        }       
     }
 
     public void MusicToggle()
