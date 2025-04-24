@@ -12,10 +12,10 @@ public class LightObject : MonoBehaviour
     private CircleCollider2D circleCollider;
 
     [SerializeField]private bool isActive;
-
-    public Sprite greenLight;
-    public Sprite redLight;
-    public Sprite blankLight;
+        
+    public Color active = new Color32(57,248,48,255);
+    public Color warning = new Color32(219,26,14,255);
+    public readonly Color blank = new Color32(87, 87, 87, 255);
 
     private void Awake()
     {
@@ -23,8 +23,14 @@ public class LightObject : MonoBehaviour
         //spriteRenderer = GetComponent<SpriteRenderer>();
         Image = GetComponent<Image>();
         circleCollider = GetComponent<CircleCollider2D>();
+
+        ImageColour(blank);
     }
 
+    public void ImageColour(Color color)
+    {        
+         Image.color = color;       
+    }
  
     /// <summary>
     /// Updates game manager score and broadcast to all listeners that the light has been touched. 
@@ -60,14 +66,12 @@ public class LightObject : MonoBehaviour
 
         if (_isActive)
         {
-            //spriteRenderer.sprite = greenLight;
-            Image.sprite = greenLight;
+            ImageColour(active);
         }
 
         else if (!_isActive)
-        {
-            //spriteRenderer.sprite = blankLight;
-            Image.sprite= blankLight;
+        {        
+            ImageColour(blank);
         }
     }
 
@@ -78,16 +82,6 @@ public class LightObject : MonoBehaviour
     public bool GetIsLightActive()
     {
         return isActive;
-    }
-
-    /// <summary>
-    /// Used to adjust the size of light.
-    /// </summary>
-    /// <param name="size"></param>
-    //called when grid size changes. 
-    //public void SetLightSize(float size)
-    //{
-    //    spriteRenderer.size = new Vector2 (size, size);
-    //    circleCollider.radius = (size/ 2) + 0.25f;
-    //}
+    }  
+    
 }
