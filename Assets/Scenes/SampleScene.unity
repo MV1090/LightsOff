@@ -211,8 +211,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &12200228
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -354,8 +354,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &25597307
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -683,6 +683,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38372220}
   m_CullTransparentMesh: 1
+--- !u!114 &45890472 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6498836489881816460, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+  m_PrefabInstance: {fileID: 120079206}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &48066098
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +911,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1493,6 +1504,54 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2597169422038747467, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597169422038747467, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1391384860, guid: 2a8837d31254f124f9cf681d3f92e8e2, type: 3}
+    - target: {fileID: 2597169422038747467, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597169422038747467, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_RaycastPadding.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597169422038747467, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_RaycastPadding.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597169422038747467, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_RaycastPadding.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032984812652224775, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032984812652224775, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1391384860, guid: 2a8837d31254f124f9cf681d3f92e8e2, type: 3}
+    - target: {fileID: 3032984812652224775, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032984812652224775, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032984812652224775, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032984812652224775, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3361535377894054226, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1505,6 +1564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionsMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3727045394701183827, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6919148466068817625, guid: 31d7ba372244ea1449c4e34d7ae2b864, type: 3}
     - target: {fileID: 4681579225919811630, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1545,6 +1608,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6554886761826561048, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6919148466068817625, guid: 31d7ba372244ea1449c4e34d7ae2b864, type: 3}
     - target: {fileID: 6945056797410488021, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1577,6 +1644,118 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 71.64
       objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: activeLight
+      value: 
+      objectReference: {fileID: 2060288261}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: warningLight
+      value: 
+      objectReference: {fileID: 45890472}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.atime2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.ctime1
+      value: 16384
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.ctime2
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.ctime3
+      value: 49151
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.ctime4
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key2.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key2.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key2.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key2.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key3.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key3.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key3.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key4.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key4.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.key4.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.m_NumAlphaKeys
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479439670122994688, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: colorGradient.m_NumColorKeys
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066315395506644325, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8469825944584318240, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1599,6 +1778,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8469825944584318240, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732555996555197895, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8971081442155814184, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
@@ -1895,8 +2078,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &130928419
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2600,8 +2783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &181628745
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2743,8 +2926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &193694614
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4458,7 +4641,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.05
+  m_fontSize: 72
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4602,8 +4785,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &352872966
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5701,8 +5884,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &476443903
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6113,8 +6296,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &501896630
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6742,8 +6925,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &519845602
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7015,7 +7198,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7524,7 +7707,38 @@ MonoBehaviour:
   music: {fileID: 0}
   soundfx: {fileID: 0}
   accessibility: {fileID: 0}
-  back: {fileID: 0}
+  activeLight: {fileID: 0}
+  warningLight: {fileID: 0}
+  colorGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!114 &586013374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7660,7 +7874,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7804,8 +8018,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &608551602
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7939,7 +8153,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8167,8 +8381,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &631910201
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8617,8 +8831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &683380249
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9078,7 +9292,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43
+  m_fontSize: 45
   m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9222,8 +9436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &812525099
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10071,7 +10285,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10341,8 +10555,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &954521495
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10620,8 +10834,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &984927100
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12201,8 +12415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &1273313561
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12336,7 +12550,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.05
+  m_fontSize: 72
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14060,7 +14274,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14204,8 +14418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &1542479317
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14339,7 +14553,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14566,7 +14780,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15110,7 +15324,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15493,8 +15707,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &1665737168
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15727,8 +15941,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &1668482073
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16041,8 +16255,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &1715642817
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16302,7 +16516,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.95
+  m_fontSize: 40
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16472,8 +16686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &1759117905
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -17412,7 +17626,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.05
+  m_fontSize: 72
   m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17548,7 +17762,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.95
+  m_fontSize: 65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17849,8 +18063,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &1925966923
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -17992,8 +18206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &1949764214
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -18135,8 +18349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &1956473660
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -18476,7 +18690,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.95
+  m_fontSize: 40
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -18689,7 +18903,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
+  m_fontSize: 35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -19457,8 +19671,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
-  active: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
-  warning: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
+  activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
+  warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!58 &2059286568
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -19508,6 +19722,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
+--- !u!114 &2060288261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4032306620800273970, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
+  m_PrefabInstance: {fileID: 120079206}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2063615276
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class GameMenu : BaseMenu
     {        
         base.EnterState();
         GameTypeManager.Instance.SetGridActive();
+        
         GameManager.Instance.ResetGame();
         Time.timeScale = 1.0f;
     }
@@ -19,6 +20,7 @@ public class GameMenu : BaseMenu
     public override void ExitState()
     {
         base.ExitState();
+        LightManager.Instance.ResetPlayableLights();
         Time.timeScale = 0.0f;
     }   
 }
