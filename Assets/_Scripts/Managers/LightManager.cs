@@ -149,13 +149,13 @@ public class LightManager : Singleton<LightManager>
     private void gameOver()
     {
         if (GameModeManager.Instance.IsModeSet(GameModeManager.GameModes.BeatTheClock) && GameManager.Instance.currentTime <= 0)
-            StartCoroutine(FlashLight(playableLightObjects[currentLight].greenLight));
+            StartCoroutine(FlashLight(playableLightObjects[currentLight].active));
         
         else
-            StartCoroutine(FlashLight(playableLightObjects[currentLight].redLight));
+            StartCoroutine(FlashLight(playableLightObjects[currentLight].warning));
     }
 
-    private IEnumerator FlashLight(Sprite lightColour)
+    private IEnumerator FlashLight(Color lightColour)
     {
         playableLightObjects[currentLight].SetLightActive(false);
 
@@ -163,10 +163,10 @@ public class LightManager : Singleton<LightManager>
         {           
             foreach(LightObject obj in playableLightObjects)
             {
-                if (obj.Image.sprite == obj.blankLight)
-                    obj.Image.sprite = lightColour;
+                if (obj.Image.color == obj.blank)
+                    obj.Image.color = lightColour;
                 else
-                    obj.Image.sprite = obj.blankLight;
+                    obj.Image.color = obj.blank;
             }
             yield return new WaitForSeconds(0.2f);
 
