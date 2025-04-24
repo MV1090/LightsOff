@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 31d7ba372244ea1449c4e34d7ae2b864
+guid: faff427d46e1a894eb74b20ef4906f3b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6919148466068817625
-    second: light-white_0
+      213: 8946784664533589794
+    second: small-blue-screens_0
+  - first:
+      213: 7786636247728550931
+    second: small-blue-screens_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: light-white_0
+      name: small-blue-screens_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 37
-        width: 978
-        height: 1004
+        x: 226
+        y: 1690
+        width: 627
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72977cb112f3aff90800000000000000
-      internalID: -6919148466068817625
+      spriteID: 22fdf63104d592c70800000000000000
+      internalID: 8946784664533589794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small-blue-screens_1
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 32
+        width: 871
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3147a057960bf0c60800000000000000
+      internalID: 7786636247728550931
       vertices: []
       indices: 
       edges: []
@@ -160,8 +185,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      light-white_0: -6919148466068817625
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

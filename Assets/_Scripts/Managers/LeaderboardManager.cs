@@ -30,6 +30,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
             leaderboardId,
             new GetPlayerRangeOptions { RangeLimit = rangeLimit }
         );
+        ScoreToDisplay?.Invoke();
         Debug.Log(JsonConvert.SerializeObject(playerScore));
     }
 
