@@ -13,8 +13,8 @@ public class LightObject : MonoBehaviour
 
     [SerializeField]private bool isActive;
         
-    public Color active = new Color32(57,248,48,255);
-    public Color warning = new Color32(219,26,14,255);
+    public Color activeColour = new Color32(57,248,48,255);
+    public Color warningColour = new Color32(219,26,14,255);
     public readonly Color blank = new Color32(87, 87, 87, 255);
 
     private void Awake()
@@ -66,7 +66,7 @@ public class LightObject : MonoBehaviour
 
         if (_isActive)
         {
-            ImageColour(active);
+            ImageColour(activeColour);
         }
 
         else if (!_isActive)
