@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,15 +6,31 @@ using UnityEngine.UI;
 public class LeaderboardMenu : BaseMenu
 {
     [Header("Buttons")]
-    public Button endless;
-    public Button beatTheClock;
-    public Button delay;
-    public Button threeXThree;
-    public Button fourXFour;
-    public Button fiveXFive;
+    [SerializeField] Button endless;
+    [SerializeField] Button beatTheClock;
+    [SerializeField] Button delay;
+    [SerializeField] Button threeXThree;
+    [SerializeField] Button fourXFour;
+    [SerializeField] Button fiveXFive;
+        
+    [Header("TopRank")]
+    [SerializeField] List <TMP_Text> topRank = new List<TMP_Text>();  
 
-    //[Header("Text")]
-    //public TMP_Text scoreText;
+    [Header("TopName")]
+    [SerializeField] List<TMP_Text> topName = new List<TMP_Text>();
+
+    [Header("TopScore")]
+    [SerializeField] List<TMP_Text> topScore = new List<TMP_Text>();
+
+    [Header("PlayerRank")]
+    [SerializeField] List<TMP_Text> playerRank = new List<TMP_Text>();
+
+    [Header("PlayerName")]
+    [SerializeField] List<TMP_Text> playerName = new List<TMP_Text>();
+
+    [Header("PlayerScore")]
+    [SerializeField] List<TMP_Text> playerScore = new List<TMP_Text>();
+
     private enum Modes
     {
         Endless, BeatTheClock, Delay
@@ -88,15 +105,18 @@ public class LeaderboardMenu : BaseMenu
                 {
                     case Types.ThreeXThree:
                         Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerScore("E_3X3");                        
+                        LeaderboardManager.Instance.GetPlayerRange("E_3X3");
+                        LeaderboardManager.Instance.GetScores("E_3X3");                        
                         break;
                     case Types.FourXFour:
                         Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerScore("E_4X4");                        
+                        LeaderboardManager.Instance.GetPlayerRange("E_4X4");
+                        LeaderboardManager.Instance.GetScores("E_4X4");                        
                         break;
                     case Types.FiveXFive:
                         Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerScore("E_5X5");                        
+                        LeaderboardManager.Instance.GetPlayerRange("E_5X5");
+                        LeaderboardManager.Instance.GetScores("E_5X5");                        
                         break;
                 }                    
              break;
@@ -107,15 +127,18 @@ public class LeaderboardMenu : BaseMenu
                 {
                     case Types.ThreeXThree:
                         Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerScore("B_T_C_3X3");                        
+                        LeaderboardManager.Instance.GetPlayerRange("B_T_C_3X3");
+                        LeaderboardManager.Instance.GetScores("B_T_C_3X3");                        
                         break;
                     case Types.FourXFour:
                         Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerScore("B_T_C_4X4");                        
+                        LeaderboardManager.Instance.GetPlayerRange("B_T_C_4X4");
+                        LeaderboardManager.Instance.GetScores("B_T_C_4X4");                        
                         break;
                     case Types.FiveXFive:
                         Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerScore("B_T_C_5X5");                        
+                        LeaderboardManager.Instance.GetPlayerRange("B_T_C_5X5");
+                        LeaderboardManager.Instance.GetScores("B_T_C_5X5");                        
                         break;
                 }
                 break;
@@ -126,31 +149,110 @@ public class LeaderboardMenu : BaseMenu
                 {
                     case Types.ThreeXThree:
                         Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerScore("D_3X3");                        
+                        LeaderboardManager.Instance.GetPlayerRange("D_3X3");
+                        LeaderboardManager.Instance.GetScores("D_3X3");                        
                         break;
                     case Types.FourXFour:
                         Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerScore("D_4X4");                        
+                        LeaderboardManager.Instance.GetPlayerRange("D_4X4");
+                        LeaderboardManager.Instance.GetScores("D_4X4");                        
                         break;
                     case Types.FiveXFive:
                         Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerScore("D_5X5");                        
+                        LeaderboardManager.Instance.GetPlayerRange("D_5X5");
+                        LeaderboardManager.Instance.GetScores("D_5X5");                        
                         break;
                 }
                 break;
-        }
-            
+        }            
     }
 
     private void UpdateText()
     {
-        score = LeaderboardManager.Instance.playerScore.Score;
-        rank = LeaderboardManager.Instance.playerScore.Rank;
-        playerID = LeaderboardManager.Instance.playerScore.PlayerName;
-
-        //scoreText.text = "Rank: " + rank.ToString() + " Score: " + score.ToString() + " " + playerID;
+        TopScores();
+        PlayerScores();
     }
 
+    private void TopScores()
+    {
+        if (LeaderboardManager.Instance.topFiveScores == null)
+            return;
+
+        for (int i = 0; i < topRank.Count; i++)
+        {
+            if (i > LeaderboardManager.Instance.topFiveScores.Results.Count - 1)
+            {
+                topRank[i].text = " ";
+                continue;
+            }
+            int rank = LeaderboardManager.Instance.topFiveScores.Results[i].Rank + 1;
+
+            topRank[i].text = rank.ToString();
+        }
+
+        for (int i = 0; i < topName.Count; i++)
+        {
+            if (i > LeaderboardManager.Instance.topFiveScores.Results.Count - 1)
+            {
+                topName[i].text = " ";
+                continue;
+            }
+
+
+            topName[i].text = LeaderboardManager.Instance.topFiveScores.Results[i].PlayerName.ToString();
+        }
+
+        for (int i = 0; i < topScore.Count; i++)
+        {
+            if (i > LeaderboardManager.Instance.topFiveScores.Results.Count - 1)
+            {
+                topScore[i].text = " ";
+                continue;
+            }
+
+            topScore[i].text = LeaderboardManager.Instance.topFiveScores.Results[i].Score.ToString();
+        }
+    }
+    private void PlayerScores()
+    {
+        if (LeaderboardManager.Instance.playerScore == null)
+            return;
+
+        for (int i = 0; i < playerRank.Count; i++)
+        {
+            if (i > LeaderboardManager.Instance.playerScore.Results.Count - 1)
+            {
+                playerRank[i].text = " ";
+                continue;
+            }
+            int rank = LeaderboardManager.Instance.playerScore.Results[i].Rank + 1;
+
+            playerRank[i].text = rank.ToString();
+        }
+
+        for (int i = 0; i < playerName.Count; i++)
+        {
+            if (i > LeaderboardManager.Instance.playerScore.Results.Count - 1)
+            {
+                playerName[i].text = " ";
+                continue;
+            }
+
+
+            playerName[i].text = LeaderboardManager.Instance.playerScore.Results[i].PlayerName.ToString();
+        }
+
+        for (int i = 0; i < playerScore.Count; i++)
+        {
+            if (i > LeaderboardManager.Instance.playerScore.Results.Count - 1)
+            {
+                playerScore[i].text = " ";
+                continue;
+            }
+
+            playerScore[i].text = LeaderboardManager.Instance.playerScore.Results[i].Score.ToString();
+        }
+    }
 
     private void SetMode(Modes mode)
     {
