@@ -73,6 +73,9 @@ public class InputManager: Singleton<InputManager>
                         GameManager.Instance.InvokeGameOver();
                         return;
                     }
+
+                    SFXManager.Instance.PlayClickedSound();
+
                     lightObject.OnTouched();
                     return;
                 }

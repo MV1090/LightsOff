@@ -27,19 +27,18 @@ public class GameMenu : BaseMenu
     {        
         base.EnterState();
 
+        GameTypeManager.Instance.SetGridActive();        
+        GameManager.Instance.ResetGame();
+        Time.timeScale = 1.0f;
+
         if (GameModeManager.Instance.GetCurrentGameMode() != GameModeManager.GameModes.BeatTheClock)
             timerSlider.gameObject.SetActive(false);
         else
         {
             startTime = GameManager.Instance.GetCurrentTime();
-            timerSlider.maxValue = startTime;   
+            timerSlider.maxValue = startTime;
             timerSlider.gameObject.SetActive(true);
         }
-        
-
-        GameTypeManager.Instance.SetGridActive();        
-        GameManager.Instance.ResetGame();
-        Time.timeScale = 1.0f;
     }
 
     public override void ExitState()
