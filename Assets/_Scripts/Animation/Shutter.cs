@@ -17,6 +17,11 @@ public class Shutter : MonoBehaviour
         
     }
 
+    public void PlayShutterSound()
+    {
+        SFXManager.Instance.PlayShutterSound();
+    }
+
     public void PlayAnimation()
     {
         anim.SetTrigger("play");
