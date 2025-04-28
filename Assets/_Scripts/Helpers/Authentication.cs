@@ -18,7 +18,7 @@ public class Authentication : MonoBehaviour
             Debug.LogException(ex);
         }
 
-        SetupEvents();
+        //SetupEvents();
 
         await SignUpAnonymouslyAsync();
     }
@@ -28,34 +28,34 @@ public class Authentication : MonoBehaviour
     /// To be used if we want to run events on sign in and sign out.
     /// </summary>
     /// <returns></returns>
-    void SetupEvents()
-    {
-        AuthenticationService.Instance.SignedIn += () =>
-        {
+    //void SetupEvents()
+    //{
+    //    AuthenticationService.Instance.SignedIn += () =>
+    //    {
            
-            // Shows how to get a playerID
-            Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
+    //        // Shows how to get a playerID
+    //        Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
 
-            // Shows how to get an access token
-            Debug.Log($"Access Token: {AuthenticationService.Instance.AccessToken}");
-        };
+    //        // Shows how to get an access token
+    //        Debug.Log($"Access Token: {AuthenticationService.Instance.AccessToken}");
+    //    };
 
-        AuthenticationService.Instance.SignInFailed += (err) =>
-        {
-            Debug.LogError(err);
-        };
+    //    AuthenticationService.Instance.SignInFailed += (err) =>
+    //    {
+    //        Debug.LogError(err);
+    //    };
 
-        AuthenticationService.Instance.SignedOut += () =>
-        {
+    //    AuthenticationService.Instance.SignedOut += () =>
+    //    {
             
-            Debug.Log("Player signed out.");
-        };
+    //        Debug.Log("Player signed out.");
+    //    };
 
-        AuthenticationService.Instance.Expired += () =>
-        {
-            Debug.Log("Player session could not be refreshed and expired.");
-        };
-    }
+    //    AuthenticationService.Instance.Expired += () =>
+    //    {
+    //        Debug.Log("Player session could not be refreshed and expired.");
+    //    };
+    //}
 
     async Task SignUpAnonymouslyAsync()
     {
@@ -71,16 +71,10 @@ public class Authentication : MonoBehaviour
                 while(currentName.Length>15)
                 {
                     string newName = NameGenerator.Instance.RandomName();
-                    try
-                    {
-                        await AuthenticationService.Instance.UpdatePlayerNameAsync(newName);
-                        Debug.Log($"Assigned new player name: {newName}");
-                    }
-                    catch (RequestFailedException ex)
-                    {
-                        Debug.LogError("Failed to update player name.");
-                        Debug.LogException(ex);
-                    }
+                    
+                    await AuthenticationService.Instance.UpdatePlayerNameAsync(newName);
+                    Debug.Log($"Assigned new player name: {newName}");
+                   
                     currentName = newName;
                 }
 
