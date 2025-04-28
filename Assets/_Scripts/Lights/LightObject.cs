@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class LightObject : MonoBehaviour
 
     public Image Image;
     private CircleCollider2D circleCollider;
+    private TMP_Text startText;
 
     [SerializeField]private bool isActive;
         
@@ -19,12 +21,12 @@ public class LightObject : MonoBehaviour
 
     private void Awake()
     {
-        LightManager.Instance.AddToLightObjects(this);
-        //spriteRenderer = GetComponent<SpriteRenderer>();
+        LightManager.Instance.AddToLightObjects(this);        
         Image = GetComponent<Image>();
         circleCollider = GetComponent<CircleCollider2D>();
-
+        startText = GetComponentInChildren<TMP_Text>();
         ImageColour(blank);
+        GameStarted(false);
     }
 
     public void ImageColour(Color color)
@@ -46,6 +48,7 @@ public class LightObject : MonoBehaviour
         if(GameManager.Instance.GetStartGame() == false)
         {
             GameManager.Instance.SetStartGame(true);
+            GameStarted(false);
             OnGameStart?.Invoke();
             OnLightTouched?.Invoke();
             return;
@@ -54,6 +57,11 @@ public class LightObject : MonoBehaviour
         //Call OnLightTouched event
         GameManager.Instance.Score++;        
         OnLightTouched?.Invoke();                
+    }
+
+    private void GameStarted(bool isActive)
+    {
+        startText.gameObject.SetActive(isActive);
     }
 
     /// <summary>
@@ -66,11 +74,21 @@ public class LightObject : MonoBehaviour
 
         if (_isActive)
         {
-            ImageColour(activeColour);
+            if (GameManager.Instance.GetStartGame() == false)
+            {
+                GameStarted(true);
+                Debug.Log("Object Active");
+            }
+                
+
+           ImageColour(activeColour);
         }
 
         else if (!_isActive)
-        {        
+        {
+            if (GameManager.Instance.GetStartGame() == false)
+                GameStarted(false);
+
             ImageColour(blank);
         }
     }

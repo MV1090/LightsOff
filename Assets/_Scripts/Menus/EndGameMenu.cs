@@ -48,7 +48,7 @@ public class EndGameMenu : BaseMenu
     {
         if (LeaderboardManager.Instance.playerScore == null || GameManager.Instance.Score > LeaderboardManager.Instance.playerScore.Score)
         {
-            bestScore.text = "NEW BEST SCORE";
+            bestScore.text = "NEW BEST SCORE!";
             return;
         }
 
