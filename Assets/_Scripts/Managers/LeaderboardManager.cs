@@ -3,8 +3,6 @@ using Unity.Services.Leaderboards;
 using Unity.Services.Leaderboards.Models;
 using System;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-
 
 public class LeaderboardManager : Singleton<LeaderboardManager>
 {  

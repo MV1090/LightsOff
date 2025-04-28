@@ -144,20 +144,32 @@ public class LightManager : Singleton<LightManager>
 
     private IEnumerator FlashLight(Color lightColour)
     {
-        playableLightObjects[currentLight].SetLightActive(false);
+        //playableLightObjects[currentLight].SetLightActive(true);
 
-        for (int i = 0; i < 6; i++)
+        foreach (LightObject obj in playableLightObjects)
+        {
+            obj.Image.color = obj.warningColour;
+            obj.SetLightActive(true);            
+        }
+
+        for (int i = 0; i < 7; i++)
         {           
             foreach(LightObject obj in playableLightObjects)
             {
-                if (obj.Image.color == obj.blank)
-                    obj.Image.color = lightColour;
+
+                if (obj.Image.color == obj.activeColour)
+                {
+                    obj.Image.color = obj.warningColour;
+                }
                 else
-                    obj.Image.color = obj.blank;
+                {
+                    obj.Image.color = obj.activeColour;
+                }
+
             }
             yield return new WaitForSeconds(0.2f);
 
-            if(i == 4)
+            if(i == 5)
             {
                 gameEnded?.Invoke();
             }

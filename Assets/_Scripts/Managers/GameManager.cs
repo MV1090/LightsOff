@@ -56,7 +56,7 @@ public class GameManager : Singleton<GameManager>
     {
         gameOver = true;
         OnGameOver?.Invoke();
-        startGame = false;
+        
         currentTime = 0;
         
 
@@ -64,6 +64,7 @@ public class GameManager : Singleton<GameManager>
     public void ResetGame()
     {
         gameOver = false;
+        startGame = false;
         currentTime = StartTime;
         Score = 0;
     }

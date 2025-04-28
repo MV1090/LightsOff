@@ -27,9 +27,11 @@ public class GameMenu : BaseMenu
     {        
         base.EnterState();
 
-        GameTypeManager.Instance.SetGridActive();        
         GameManager.Instance.ResetGame();
-        Time.timeScale = 1.0f;
+        GameTypeManager.Instance.SetGridActive();
+
+        Time.timeScale = 1.0f;    
+
 
         if (GameModeManager.Instance.GetCurrentGameMode() != GameModeManager.GameModes.BeatTheClock)
             timerSlider.gameObject.SetActive(false);

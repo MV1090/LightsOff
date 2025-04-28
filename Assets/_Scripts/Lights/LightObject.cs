@@ -14,10 +14,14 @@ public class LightObject : MonoBehaviour
     private TMP_Text startText;
 
     [SerializeField]private bool isActive;
+    [SerializeField]public Sprite offLight;
+    [SerializeField]public Sprite onLight;
         
     public Color activeColour = new Color32(57,248,48,255);
     public Color warningColour = new Color32(219,26,14,255);
-    public readonly Color blank = new Color32(87, 87, 87, 255);
+    public readonly Color offColour = new Color32(255, 255, 255, 255);
+
+
 
     private void Awake()
     {
@@ -25,7 +29,9 @@ public class LightObject : MonoBehaviour
         Image = GetComponent<Image>();
         circleCollider = GetComponent<CircleCollider2D>();
         startText = GetComponentInChildren<TMP_Text>();
-        ImageColour(blank);
+
+        Image.sprite = offLight;  
+        ImageColour(offColour);
         GameStarted(false);
     }
 
@@ -78,9 +84,8 @@ public class LightObject : MonoBehaviour
             {
                 GameStarted(true);
                 Debug.Log("Object Active");
-            }
-                
-
+            }               
+           Image.sprite = onLight;
            ImageColour(activeColour);
         }
 
@@ -89,7 +94,8 @@ public class LightObject : MonoBehaviour
             if (GameManager.Instance.GetStartGame() == false)
                 GameStarted(false);
 
-            ImageColour(blank);
+            Image.sprite = offLight;
+            ImageColour(offColour);
         }
     }
 

@@ -265,6 +265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
   isActive: 0
+  offLight: {fileID: -8494782591554081677, guid: 75b80f8a748673b4da867b51f3581373, type: 3}
+  onLight: {fileID: -6919148466068817625, guid: 31d7ba372244ea1449c4e34d7ae2b864, type: 3}
   activeColour: {r: 0.22352941, g: 0.972549, b: 0.1882353, a: 1}
   warningColour: {r: 0.85882354, g: 0.101960786, b: 0.05490196, a: 1}
 --- !u!114 &373483574572762216
