@@ -64,8 +64,7 @@ public class InputManager: Singleton<InputManager>
                 if (lightObject != null)
                 {
                     hitTarget = true;   
-
-                    Debug.Log("Object touched");
+                                        
                     if (!lightObject.GetIsLightActive())
                     {
                         if (GameManager.Instance.GetStartGame() == false)
@@ -74,6 +73,9 @@ public class InputManager: Singleton<InputManager>
                         GameManager.Instance.InvokeGameOver();
                         return;
                     }
+
+                    SFXManager.Instance.PlayClickedSound();
+
                     lightObject.OnTouched();
                     return;
                 }

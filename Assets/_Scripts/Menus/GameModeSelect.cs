@@ -19,9 +19,10 @@ public class GameModeSelect : BaseMenu
         base.InitState(ctx);
         state = MenuManager.MenuStates.GameModeSelect;
 
-        endless.onClick.AddListener(() => ChangeColour(endless));
-        delay.onClick.AddListener(() => ChangeColour(delay));
-        beatTheClock.onClick.AddListener(() => ChangeColour(beatTheClock));
+        //endless.onClick.AddListener(() => ChangeColour(endless));
+        //delay.onClick.AddListener(() => ChangeColour(delay));
+        //beatTheClock.onClick.AddListener(() => ChangeColour(beatTheClock));
+        
     }
 
     public override void EnterState()
@@ -47,6 +48,7 @@ public class GameModeSelect : BaseMenu
 
     void ResetColour(Button button)
     {
+        if(activeButton != null) 
         button.GetComponentInChildren<TMP_Text>().color = new Color32(50, 50, 50, 255);
     }
 

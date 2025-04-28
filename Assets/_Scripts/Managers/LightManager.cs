@@ -50,8 +50,7 @@ public class LightManager : Singleton<LightManager>
     public void SetLightGrid(int numberOfPlayableLights)
     {
         ResetPlayableLights();
-        SetPlayableLightObjects(numberOfPlayableLights);
-        //SetLightSize(lightSize);
+        SetPlayableLightObjects(numberOfPlayableLights);        
     }
 
     /// <summary>
@@ -76,7 +75,7 @@ public class LightManager : Singleton<LightManager>
     /// <summary>
     /// When grid size changes this makes sure to clear the playable object list before the new one is set, making sure the correct amount of objects are in the list.
     /// </summary>
-    private void ResetPlayableLights()
+    public void ResetPlayableLights()
     {       
         foreach (LightObject obj in playableLightObjects)
         {
@@ -85,19 +84,7 @@ public class LightManager : Singleton<LightManager>
 
         playableLightObjects.Clear();
     }
-
-    /// <summary>
-    /// Sets all lights in playable object list to be the same size.
-    /// </summary>
-    /// <param name="size"></param>
-    //private void SetLightSize(float size)
-    //{
-    //    foreach (LightObject obj in playableLightObjects)
-    //    {
-    //        obj.SetLightSize(size);
-    //    }
-    //}
-
+    
     /// <summary>
     /// Sets a new light to be active and turns off the current light
     /// </summary>
@@ -149,13 +136,13 @@ public class LightManager : Singleton<LightManager>
     private void gameOver()
     {
         if (GameModeManager.Instance.IsModeSet(GameModeManager.GameModes.BeatTheClock) && GameManager.Instance.currentTime <= 0)
-            StartCoroutine(FlashLight(playableLightObjects[currentLight].greenLight));
+            StartCoroutine(FlashLight(playableLightObjects[currentLight].activeColour));
         
         else
-            StartCoroutine(FlashLight(playableLightObjects[currentLight].redLight));
+            StartCoroutine(FlashLight(playableLightObjects[currentLight].warningColour));
     }
 
-    private IEnumerator FlashLight(Sprite lightColour)
+    private IEnumerator FlashLight(Color lightColour)
     {
         playableLightObjects[currentLight].SetLightActive(false);
 
@@ -163,10 +150,10 @@ public class LightManager : Singleton<LightManager>
         {           
             foreach(LightObject obj in playableLightObjects)
             {
-                if (obj.Image.sprite == obj.blankLight)
-                    obj.Image.sprite = lightColour;
+                if (obj.Image.color == obj.blank)
+                    obj.Image.color = lightColour;
                 else
-                    obj.Image.sprite = obj.blankLight;
+                    obj.Image.color = obj.blank;
             }
             yield return new WaitForSeconds(0.2f);
 

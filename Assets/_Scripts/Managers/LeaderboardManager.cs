@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class LeaderboardManager : Singleton<LeaderboardManager>
 {  
-    public LeaderboardScoresPage topThreeScores;
-    public LeaderboardEntry playerScore;
+    public LeaderboardScoresPage topFiveScores;
+    public LeaderboardScores playerScore;
 
     public event Action ScoreToDisplay;
 
@@ -23,17 +23,23 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
     }
 
-    public async void GetPlayerScore(string leaderboardId)
-    {
-        playerScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(leaderboardId);        
+    public async void GetPlayerRange(string leaderboardId)
+    {        
+        var rangeLimit = 2;
+        playerScore = await LeaderboardsService.Instance.GetPlayerRangeAsync(
+            leaderboardId,
+            new GetPlayerRangeOptions { RangeLimit = rangeLimit }
+        );
         ScoreToDisplay?.Invoke();
-        Debug.Log(JsonConvert.SerializeObject(playerScore));        
+        Debug.Log(JsonConvert.SerializeObject(playerScore));
     }
+
 
     public async void GetScores(string leaderboardId)
     {
-        topThreeScores = await LeaderboardsService.Instance.GetScoresAsync(leaderboardId); 
-        Debug.Log(JsonConvert.SerializeObject(topThreeScores));
+        topFiveScores = await LeaderboardsService.Instance.GetScoresAsync(leaderboardId , new GetScoresOptions { Offset = 0, Limit = 5});
+        ScoreToDisplay?.Invoke();
+        Debug.Log(JsonConvert.SerializeObject(topFiveScores));
     }
 
     void UpdateLeaderboard()

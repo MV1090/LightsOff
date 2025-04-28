@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,8 +54,11 @@ public class GameTypeManager : Singleton<GameTypeManager>
     void AdjustListener(Button a, Button b, Button c)
     {
         a.interactable = false;
+        a.GetComponentInChildren<TMP_Text>().color = new Color32(0, 231, 0, 255);
         b.interactable = true;
+        b.GetComponentInChildren<TMP_Text>().color = new Color32(255, 255, 255, 255);
         c.interactable = true;
+        c.GetComponentInChildren<TMP_Text>().color = new Color32(255, 255, 255, 255);
     }
 
     void SetGameType(GameType gameType)
