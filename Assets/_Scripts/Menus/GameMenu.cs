@@ -26,12 +26,9 @@ public class GameMenu : BaseMenu
     public override void EnterState()
     {        
         base.EnterState();
-
-        GameManager.Instance.ResetGame();
         GameTypeManager.Instance.SetGridActive();
 
         Time.timeScale = 1.0f;    
-
 
         if (GameModeManager.Instance.GetCurrentGameMode() != GameModeManager.GameModes.BeatTheClock)
             timerSlider.gameObject.SetActive(false);
@@ -45,8 +42,7 @@ public class GameMenu : BaseMenu
 
     public override void ExitState()
     {
-        base.ExitState();      
-
+        base.ExitState();        
         LightManager.Instance.ResetPlayableLights();
         Time.timeScale = 0.0f;
     }

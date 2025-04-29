@@ -19,25 +19,41 @@ public class GameModeSelect : BaseMenu
         base.InitState(ctx);
         state = MenuManager.MenuStates.GameModeSelect;
 
-        //endless.onClick.AddListener(() => ChangeColour(endless));
-        //delay.onClick.AddListener(() => ChangeColour(delay));
-        //beatTheClock.onClick.AddListener(() => ChangeColour(beatTheClock));
-        
+        endless.onClick.AddListener(() => DisableButtons());
+        delay.onClick.AddListener(() => DisableButtons());
+        beatTheClock.onClick.AddListener(() => DisableButtons());
+
     }
 
     public override void EnterState()
     {
         base.EnterState();
+        EnableButtons();
         Time.timeScale = 0.0f;
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1.0f;        
+        //ResetColour(activeButton);    
+    }
 
-        ResetColour(activeButton);        
 
+    void DisableButtons()
+    {
+        endless.interactable = false;
+        delay.interactable = false;
+        beatTheClock.interactable = false;
+        back.interactable = false;
+    }
+
+    void EnableButtons()
+    {     
+        endless.interactable = true;
+        delay.interactable = true;
+        beatTheClock.interactable = true;
+        back.interactable = true;
     }
 
     void ChangeColour(Button button)
@@ -55,6 +71,5 @@ public class GameModeSelect : BaseMenu
     public void JumpToGameMenu()
     {
         MenuManager.Instance.menuToActivate = MenuManager.MenuStates.GameMenu;
-        //context.SetActiveMenu(MenuManager.MenuStates.GameMenu);
     }
 }

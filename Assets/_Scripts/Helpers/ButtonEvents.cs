@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
+//using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 
 public class ButtonEvents : MonoBehaviour
@@ -10,12 +12,14 @@ public class ButtonEvents : MonoBehaviour
     {
         // Cast the BaseEventData to PointerEventData to get more info
         PointerEventData pointerData = data as PointerEventData;
-        GameObject buttonPressed = pointerData.pointerEnter;
+        GameObject buttonPressed = pointerData.pointerEnter;     
 
         if (buttonPressed != null)
         {
-            // Get the TMP_Text from children
-            TMP_Text buttonText = buttonPressed.GetComponentInChildren<TMP_Text>();
+            if (buttonPressed.GetComponentInParent<UnityEngine.UI.Button>().interactable == false)
+                return;
+                       
+           TMP_Text buttonText = buttonPressed.GetComponentInChildren<TMP_Text>();
 
             if (buttonText != null)
             {
@@ -38,6 +42,9 @@ public class ButtonEvents : MonoBehaviour
 
         if (buttonPressed != null)
         {
+            if (buttonPressed.GetComponentInParent<UnityEngine.UI.Button>().interactable == false)
+                return;
+
             TMP_Text buttonText = buttonPressed.GetComponentInChildren<TMP_Text>();
 
             if (buttonText != null)

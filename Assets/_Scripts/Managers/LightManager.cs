@@ -135,6 +135,9 @@ public class LightManager : Singleton<LightManager>
 
     private void gameOver()
     {
+        if (playableLightObjects == null)
+            return;
+
         if (GameModeManager.Instance.IsModeSet(GameModeManager.GameModes.BeatTheClock) && GameManager.Instance.currentTime <= 0)
             StartCoroutine(FlashLight(playableLightObjects[currentLight].activeColour));
         
