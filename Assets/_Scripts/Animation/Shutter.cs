@@ -32,4 +32,15 @@ public class Shutter : MonoBehaviour
         MenuManager.Instance.SetActiveMenu(MenuManager.Instance.menuToActivate);
         Debug.Log("Menu Loaded");
     }
+
+    public void ShowAD()
+    {
+        if(MenuManager.Instance.menuToActivate == MenuManager.MenuStates.EndGameMenu)
+        {
+            AdManager.Instance.LoadNonRewardedAd();
+            AdManager.Instance.ShowNonRewardedAd();
+            Debug.Log("ShowAds");
+        }
+       
+    }
 }

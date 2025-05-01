@@ -84,16 +84,11 @@ public class InputManager: Singleton<InputManager>
 
         if (!hitTarget)
         {
-            if (GameManager.Instance.GetStartGame() != true)
+            if (GameManager.Instance.GetStartGame() != false)
             {
-                
+                GameManager.Instance.InvokeGameOver();
                 return;
-            }
-
-            GameManager.Instance.InvokeGameOver();
-            {               
-                return;
-            }
+            }                      
         }
 
     }   

@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,21 +11,28 @@ public class LightObject : MonoBehaviour
 
     public Image Image;
     private CircleCollider2D circleCollider;
+    private TMP_Text startText;
 
     [SerializeField]private bool isActive;
+    [SerializeField]public Sprite offLight;
+    [SerializeField]public Sprite onLight;
         
     public Color activeColour = new Color32(57,248,48,255);
     public Color warningColour = new Color32(219,26,14,255);
-    public readonly Color blank = new Color32(87, 87, 87, 255);
+    public readonly Color offColour = new Color32(255, 255, 255, 255);
+
+
 
     private void Awake()
     {
-        LightManager.Instance.AddToLightObjects(this);
-        //spriteRenderer = GetComponent<SpriteRenderer>();
+        LightManager.Instance.AddToLightObjects(this);        
         Image = GetComponent<Image>();
         circleCollider = GetComponent<CircleCollider2D>();
+        startText = GetComponentInChildren<TMP_Text>();
 
-        ImageColour(blank);
+        Image.sprite = offLight;  
+        ImageColour(offColour);
+        GameStarted(false);
     }
 
     public void ImageColour(Color color)
@@ -46,6 +54,7 @@ public class LightObject : MonoBehaviour
         if(GameManager.Instance.GetStartGame() == false)
         {
             GameManager.Instance.SetStartGame(true);
+            GameStarted(false);
             OnGameStart?.Invoke();
             OnLightTouched?.Invoke();
             return;
@@ -54,6 +63,11 @@ public class LightObject : MonoBehaviour
         //Call OnLightTouched event
         GameManager.Instance.Score++;        
         OnLightTouched?.Invoke();                
+    }
+
+    private void GameStarted(bool isActive)
+    {
+        startText.gameObject.SetActive(isActive);
     }
 
     /// <summary>
@@ -66,12 +80,22 @@ public class LightObject : MonoBehaviour
 
         if (_isActive)
         {
-            ImageColour(activeColour);
+            if (GameManager.Instance.GetStartGame() == false)
+            {
+                GameStarted(true);
+                Debug.Log("Object Active");
+            }               
+           Image.sprite = onLight;
+           ImageColour(activeColour);
         }
 
         else if (!_isActive)
-        {        
-            ImageColour(blank);
+        {
+            if (GameManager.Instance.GetStartGame() == false)
+                GameStarted(false);
+
+            Image.sprite = offLight;
+            ImageColour(offColour);
         }
     }
 

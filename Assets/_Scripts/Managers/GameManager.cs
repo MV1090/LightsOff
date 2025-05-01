@@ -55,15 +55,13 @@ public class GameManager : Singleton<GameManager>
     public void InvokeGameOver()
     {
         gameOver = true;
-        OnGameOver?.Invoke();
-        startGame = false;
-        currentTime = 0;
-        
-
+        OnGameOver?.Invoke();        
+        currentTime = 0;      
     }
     public void ResetGame()
     {
         gameOver = false;
+        startGame = false;
         currentTime = StartTime;
         Score = 0;
     }

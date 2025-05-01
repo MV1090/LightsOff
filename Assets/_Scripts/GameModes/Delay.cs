@@ -7,7 +7,7 @@ public class Delay : BaseGameMode
     [SerializeField] float startLength;
     [SerializeField] float endLength;
     [SerializeField] float duration;
-    [SerializeField] float currentTime;
+    [SerializeField]public  float currentTime;
     [SerializeField] float shortDelay;
     [SerializeField] float longDelay;
 
@@ -28,9 +28,9 @@ public class Delay : BaseGameMode
         foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
         {
             lightObject.OnGameStart += GameSpeed;
-            lightObject.OnLightTouched += SetLightDelay;
-            GameManager.Instance.OnGameOver += ResetMode;
+            lightObject.OnLightTouched += SetLightDelay;           
         }
+        GameManager.Instance.OnGameOver += ResetMode;
     }
 
     // runs when game mode has ended
@@ -43,9 +43,9 @@ public class Delay : BaseGameMode
         foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
         {
             lightObject.OnGameStart -= GameSpeed;
-            lightObject.OnLightTouched -= SetLightDelay;
-            GameManager.Instance.OnGameOver -= ResetMode;
+            lightObject.OnLightTouched -= SetLightDelay;            
         }
+        GameManager.Instance.OnGameOver -= ResetMode;
     }
 
     /// <summary>

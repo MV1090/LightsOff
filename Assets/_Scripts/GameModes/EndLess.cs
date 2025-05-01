@@ -7,7 +7,7 @@ public class EndLess : BaseGameMode
     [SerializeField] float startLength;
     [SerializeField] float endLength;
     [SerializeField] float duration;
-    [SerializeField] float currentTime;
+    [SerializeField]public float currentTime;
 
     private Coroutine currentCoroutine;
 
@@ -26,9 +26,9 @@ public class EndLess : BaseGameMode
         foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
         {
             lightObject.OnGameStart += TurnOffLight;
-            lightObject.OnLightTouched += StartLifeSpanTimer;
-            GameManager.Instance.OnGameOver += ResetMode;
+            lightObject.OnLightTouched += StartLifeSpanTimer;            
         }
+        //GameManager.Instance.OnGameOver += ResetMode;
     }
 
     // runs when game mode has ended
@@ -41,9 +41,9 @@ public class EndLess : BaseGameMode
         foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
         {
             lightObject.OnGameStart -= TurnOffLight;
-            lightObject.OnLightTouched -= StartLifeSpanTimer;
-            GameManager.Instance.OnGameOver -= ResetMode;
+            lightObject.OnLightTouched -= StartLifeSpanTimer;            
         }
+        GameManager.Instance.OnGameOver -= ResetMode;
     }
 
     /// <summary>
@@ -74,7 +74,9 @@ public class EndLess : BaseGameMode
     private void ResetMode()
     {
         StopAllCoroutines();
-        lightOnTime = startLength;        
+        lightOnTime = startLength;
+
+        Debug.Log("Game mode reset");
     }
 
     /// <summary>

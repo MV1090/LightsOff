@@ -215,42 +215,42 @@ public class LeaderboardMenu : BaseMenu
     }
     private void PlayerScores()
     {
-        if (LeaderboardManager.Instance.playerScore == null)
+        if (LeaderboardManager.Instance.scoresAroundPlayer == null)
             return;
 
         for (int i = 0; i < playerRank.Count; i++)
         {
-            if (i > LeaderboardManager.Instance.playerScore.Results.Count - 1)
+            if (i > LeaderboardManager.Instance.scoresAroundPlayer.Results.Count - 1)
             {
                 playerRank[i].text = " ";
                 continue;
             }
-            int rank = LeaderboardManager.Instance.playerScore.Results[i].Rank + 1;
+            int rank = LeaderboardManager.Instance.scoresAroundPlayer.Results[i].Rank + 1;
 
             playerRank[i].text = rank.ToString();
         }
 
         for (int i = 0; i < playerName.Count; i++)
         {
-            if (i > LeaderboardManager.Instance.playerScore.Results.Count - 1)
+            if (i > LeaderboardManager.Instance.scoresAroundPlayer.Results.Count - 1)
             {
                 playerName[i].text = " ";
                 continue;
             }
 
 
-            playerName[i].text = LeaderboardManager.Instance.playerScore.Results[i].PlayerName.ToString();
+            playerName[i].text = LeaderboardManager.Instance.scoresAroundPlayer.Results[i].PlayerName.ToString();
         }
 
         for (int i = 0; i < playerScore.Count; i++)
         {
-            if (i > LeaderboardManager.Instance.playerScore.Results.Count - 1)
+            if (i > LeaderboardManager.Instance.scoresAroundPlayer.Results.Count - 1)
             {
                 playerScore[i].text = " ";
                 continue;
             }
 
-            playerScore[i].text = LeaderboardManager.Instance.playerScore.Results[i].Score.ToString();
+            playerScore[i].text = LeaderboardManager.Instance.scoresAroundPlayer.Results[i].Score.ToString();
         }
     }
 
