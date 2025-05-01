@@ -24,7 +24,8 @@ public class RootMainMenu : BaseMenu
     {
         base.EnterState();
         Time.timeScale = 0.0f;
-        playerID.text = "Player: " + AuthenticationService.Instance.PlayerName;                
+        playerID.text = "Player: " + AuthenticationService.Instance.PlayerName;
+        AdManager.Instance.ShowBannerAD();
     }
 
     public override void ExitState()

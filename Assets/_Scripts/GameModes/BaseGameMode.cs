@@ -4,7 +4,7 @@ public class BaseGameMode : MonoBehaviour
 {
     public GameModeManager.GameModes gameMode;
     protected GameModeManager gameModeManager;
-    protected GameManager gameManager;
+    protected GameManager gameManager;   
 
     public virtual void InitState(GameModeManager ctx)
     {

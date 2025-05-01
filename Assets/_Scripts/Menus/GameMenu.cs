@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameMenu : BaseMenu
 {
     [Header("Score")]
@@ -9,6 +10,9 @@ public class GameMenu : BaseMenu
     [SerializeField] Slider timerSlider;
 
     [SerializeField] Gradient colorGradient;
+    [SerializeField] Slider bottomStrip;
+
+    [SerializeField] EndLess lightTime;
 
     private float startTime;
     public override void InitState(MenuManager ctx)
@@ -38,6 +42,8 @@ public class GameMenu : BaseMenu
             timerSlider.maxValue = startTime;
             timerSlider.gameObject.SetActive(true);
         }
+
+        AdManager.Instance.HideBannerAD();
     }
 
     public override void ExitState()
@@ -49,10 +55,21 @@ public class GameMenu : BaseMenu
 
     private void FixedUpdate()
     {
-        if (!timerSlider.IsActive())
-            return;
+        //if (!timerSlider.IsActive())
+        //    return;
 
-        UpdateTimerBar(GameManager.Instance.GetCurrentTime());
+        //UpdateTimerBar(GameManager.Instance.GetCurrentTime());
+
+        if (timerSlider.IsActive())
+        {
+            UpdateTimerBar(GameManager.Instance.GetCurrentTime());
+            return;
+        }
+        else
+        {
+            UpdateLightTimer(lightTime.currentTime);
+        }
+
     }
 
     void UpdateScoreText(int value)
@@ -65,5 +82,14 @@ public class GameMenu : BaseMenu
         Color newColor = colorGradient.Evaluate(value/startTime);
         timerSlider.image.color = newColor;
         timerSlider.value = value;        
+    }
+
+    //makes more sense to move this logic into the game modes themselves 
+    void UpdateLightTimer(float value)
+    {       
+        //float normalizedValue  = (value - lightTime.endLength) / (lightTime.startLength - lightTime.endLength);
+        bottomStrip.value = value;
+
+        Debug.Log(value.ToString());  
     }
 }
