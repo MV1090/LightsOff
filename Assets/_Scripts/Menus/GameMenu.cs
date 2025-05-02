@@ -35,12 +35,17 @@ public class GameMenu : BaseMenu
         Time.timeScale = 1.0f;    
 
         if (GameModeManager.Instance.GetCurrentGameMode() != GameModeManager.GameModes.BeatTheClock)
+        {
             timerSlider.gameObject.SetActive(false);
+            bottomStrip.gameObject.SetActive(true);
+        }
+            
         else
         {
             startTime = GameManager.Instance.GetCurrentTime();
             timerSlider.maxValue = startTime;
             timerSlider.gameObject.SetActive(true);
+            bottomStrip.gameObject.SetActive(false);
         }
 
         AdManager.Instance.HideBannerAD();
@@ -55,9 +60,9 @@ public class GameMenu : BaseMenu
 
     private void FixedUpdate()
     {
-        if (!timerSlider.IsActive())
+        if (!timerSlider.IsActive())       
             return;
-
+        
         UpdateTimerBar(GameManager.Instance.GetCurrentTime());
     }
 
