@@ -7,12 +7,14 @@ public class GameMenu : BaseMenu
 {
     [Header("Score")]
     [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text gameText;
     [SerializeField] Slider timerSlider;
 
     [SerializeField] Gradient colorGradient;
     [SerializeField] Slider bottomStrip;
 
-    [SerializeField] EndLess lightTime;
+    [SerializeField] EndLess EndlessTime;
+    [SerializeField] Delay DelayTime;
 
     private float startTime;
     public override void InitState(MenuManager ctx)
@@ -34,20 +36,27 @@ public class GameMenu : BaseMenu
 
         Time.timeScale = 1.0f;    
 
-        if (GameModeManager.Instance.GetCurrentGameMode() != GameModeManager.GameModes.BeatTheClock)
+        if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.Endless)
         {
-            timerSlider.gameObject.SetActive(false);
-            bottomStrip.gameObject.SetActive(true);
+            gameText.text = "ENDLESS";
+            startTime = 1;
+            timerSlider.maxValue = startTime;
         }
-            
+
+        else if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.Delay)
+        {
+            gameText.text = "Delay";
+            startTime = 1;
+            timerSlider.maxValue = startTime;
+        }
+
         else
         {
             startTime = GameManager.Instance.GetCurrentTime();
             timerSlider.maxValue = startTime;
-            timerSlider.gameObject.SetActive(true);
-            bottomStrip.gameObject.SetActive(false);
+            gameText.text = "COUNTDOWN";
         }
-
+        UpdateTimerBar(startTime);
         AdManager.Instance.HideBannerAD();
     }
 
@@ -60,10 +69,26 @@ public class GameMenu : BaseMenu
 
     private void FixedUpdate()
     {
-        if (!timerSlider.IsActive())       
+        if (!GameManager.Instance.GetStartGame())
             return;
-        
-        UpdateTimerBar(GameManager.Instance.GetCurrentTime());
+
+        if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.BeatTheClock)
+        {
+            UpdateTimerBar(GameManager.Instance.GetCurrentTime());
+            return;
+        }
+
+        if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.Endless)
+        {
+            UpdateTimerBar(EndlessTime.currentTime);
+            return;
+        }
+
+        if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.Delay)
+        {
+            UpdateTimerBar(DelayTime.currentTime);
+            return;
+        }
     }
 
     void UpdateScoreText(int value)
