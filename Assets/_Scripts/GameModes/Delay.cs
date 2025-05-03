@@ -12,8 +12,6 @@ public class Delay : BaseGameMode
     [SerializeField] float shortDelay;
     [SerializeField] float longDelay;
 
-    [SerializeField] Slider bottomStrip;
-
     private Coroutine lifeSpanCoroutine;
 
     public override void InitState(GameModeManager ctx)
@@ -86,6 +84,7 @@ public class Delay : BaseGameMode
     {
         StopAllCoroutines();
         lightOnTime = startLength;
+        currentTime = 0;
     }
 
     /// <summary>
@@ -128,8 +127,7 @@ public class Delay : BaseGameMode
 
             elapsedTime += Time.deltaTime;  // Increment elapsed time
             yield return null;  // Wait until the next frame
-        }
-
+        }        
         //If coroutine ends set GameOver. 
         GameManager.Instance.InvokeGameOver();
     }
@@ -149,16 +147,6 @@ public class Delay : BaseGameMode
 
         lifeSpanCoroutine = StartCoroutine(LightLifeSpan(1, 0, lightOnTime));
     }
-    void UpdateLightTimer(float value)
-    {
-        bottomStrip.value = value;
-
-        Debug.Log(value.ToString());
-    }
-
-    private void FixedUpdate()
-    {
-        UpdateLightTimer(currentTime);
-    }
+   
 
 }

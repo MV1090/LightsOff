@@ -10,9 +10,7 @@ public class EndLess : BaseGameMode
     [SerializeField] float endLength;
     [SerializeField] float duration;
     [SerializeField]public float currentTime;
-
-    [SerializeField] Slider bottomStrip;
-
+        
     private Coroutine currentCoroutine;
 
     public override void InitState(GameModeManager ctx)
@@ -77,7 +75,7 @@ public class EndLess : BaseGameMode
     {
         StopAllCoroutines();
         lightOnTime = startLength;
-
+        currentTime = 0;
         Debug.Log("Game mode reset");
     }
 
@@ -127,15 +125,5 @@ public class EndLess : BaseGameMode
         GameManager.Instance.InvokeGameOver();       
     }
 
-    void UpdateLightTimer(float value)
-    {
-        bottomStrip.value = value;
-
-        Debug.Log(value.ToString());
-    }
-
-    private void FixedUpdate()
-    {
-        UpdateLightTimer(currentTime);
-    }
+    
 }
