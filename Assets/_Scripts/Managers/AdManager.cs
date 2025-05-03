@@ -38,7 +38,6 @@ public class AdManager : Singleton<AdManager>, IUnityAdsInitializationListener, 
         }
     }
 
-
     public void OnInitializationComplete()
     {
         Debug.Log("Unity Ads initialization complete.");

@@ -7,12 +7,14 @@ public class GameMenu : BaseMenu
 {
     [Header("Score")]
     [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text gameText;
     [SerializeField] Slider timerSlider;
 
     [SerializeField] Gradient colorGradient;
     [SerializeField] Slider bottomStrip;
 
-    [SerializeField] EndLess lightTime;
+    [SerializeField] EndLess EndlessTime;
+    [SerializeField] Delay DelayTime;
 
     private float startTime;
     public override void InitState(MenuManager ctx)
@@ -34,15 +36,27 @@ public class GameMenu : BaseMenu
 
         Time.timeScale = 1.0f;    
 
-        if (GameModeManager.Instance.GetCurrentGameMode() != GameModeManager.GameModes.BeatTheClock)
-            timerSlider.gameObject.SetActive(false);
+        if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.Endless)
+        {
+            gameText.text = "ENDLESS";
+            startTime = 1;
+            timerSlider.maxValue = startTime;
+        }
+
+        else if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.Delay)
+        {
+            gameText.text = "Delay";
+            startTime = 1;
+            timerSlider.maxValue = startTime;
+        }
+
         else
         {
             startTime = GameManager.Instance.GetCurrentTime();
             timerSlider.maxValue = startTime;
-            timerSlider.gameObject.SetActive(true);
+            gameText.text = "COUNTDOWN";
         }
-
+        UpdateTimerBar(startTime);
         AdManager.Instance.HideBannerAD();
     }
 
@@ -55,21 +69,26 @@ public class GameMenu : BaseMenu
 
     private void FixedUpdate()
     {
-        //if (!timerSlider.IsActive())
-        //    return;
+        if (!GameManager.Instance.GetStartGame())
+            return;
 
-        //UpdateTimerBar(GameManager.Instance.GetCurrentTime());
-
-        if (timerSlider.IsActive())
+        if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.BeatTheClock)
         {
             UpdateTimerBar(GameManager.Instance.GetCurrentTime());
             return;
         }
-        else
+
+        if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.Endless)
         {
-            UpdateLightTimer(lightTime.currentTime);
+            UpdateTimerBar(EndlessTime.currentTime);
+            return;
         }
 
+        if (GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.Delay)
+        {
+            UpdateTimerBar(DelayTime.currentTime);
+            return;
+        }
     }
 
     void UpdateScoreText(int value)
@@ -82,14 +101,5 @@ public class GameMenu : BaseMenu
         Color newColor = colorGradient.Evaluate(value/startTime);
         timerSlider.image.color = newColor;
         timerSlider.value = value;        
-    }
-
-    //makes more sense to move this logic into the game modes themselves 
-    void UpdateLightTimer(float value)
-    {       
-        //float normalizedValue  = (value - lightTime.endLength) / (lightTime.startLength - lightTime.endLength);
-        bottomStrip.value = value;
-
-        Debug.Log(value.ToString());  
     }
 }
