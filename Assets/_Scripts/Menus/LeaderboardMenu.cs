@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.Services.Authentication;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -190,7 +191,20 @@ public class LeaderboardMenu : BaseMenu
             topRank[i].text = rank.ToString();
         }
 
-        for (int i = 0; i < topName.Count; i++)
+        //for (int i = 0; i < topName.Count; i++)
+        //{
+        //    if (i > LeaderboardManager.Instance.topFiveScores.Results.Count - 1)
+        //    {
+        //        topName[i].text = " ";
+        //        continue;
+        //    }
+
+        //    topName[i].text = LeaderboardManager.Instance.topFiveScores.Results[i].PlayerName.ToString();
+        //}
+
+        string localPlayerId = AuthenticationService.Instance.PlayerId;
+
+        for (int i = 0; i < playerName.Count; i++)
         {
             if (i > LeaderboardManager.Instance.topFiveScores.Results.Count - 1)
             {
@@ -198,8 +212,20 @@ public class LeaderboardMenu : BaseMenu
                 continue;
             }
 
+            var entry = LeaderboardManager.Instance.topFiveScores.Results[i];
+            bool isLocalPlayer = entry.PlayerId == localPlayerId;
 
-            topName[i].text = LeaderboardManager.Instance.topFiveScores.Results[i].PlayerName.ToString();
+            string playerId = entry.PlayerId;
+
+            // Highlight or mark the local player visually
+            if (isLocalPlayer)
+            {
+                topName[i].text = $"<b><color=green>{entry.PlayerName}</color></b>";
+            }
+            else
+            {
+                topName[i].text = entry.PlayerName;
+            }
         }
 
         for (int i = 0; i < topScore.Count; i++)
@@ -230,6 +256,20 @@ public class LeaderboardMenu : BaseMenu
             playerRank[i].text = rank.ToString();
         }
 
+        //for (int i = 0; i < playerName.Count; i++)
+        //{
+        //    if (i > LeaderboardManager.Instance.scoresAroundPlayer.Results.Count - 1)
+        //    {
+        //        playerName[i].text = " ";
+        //        continue;
+        //    }
+
+
+        //    playerName[i].text = LeaderboardManager.Instance.scoresAroundPlayer.Results[i].PlayerName.ToString();
+        //}
+
+        string localPlayerId = AuthenticationService.Instance.PlayerId;
+
         for (int i = 0; i < playerName.Count; i++)
         {
             if (i > LeaderboardManager.Instance.scoresAroundPlayer.Results.Count - 1)
@@ -238,8 +278,20 @@ public class LeaderboardMenu : BaseMenu
                 continue;
             }
 
+            var entry = LeaderboardManager.Instance.scoresAroundPlayer.Results[i];
+            bool isLocalPlayer = entry.PlayerId == localPlayerId;
 
-            playerName[i].text = LeaderboardManager.Instance.scoresAroundPlayer.Results[i].PlayerName.ToString();
+            string playerId = entry.PlayerId;
+
+            // Highlight or mark the local player visually
+            if (isLocalPlayer)
+            {
+                playerName[i].text = $"<b><color=green>{entry.PlayerName}</color></b>";
+            }
+            else
+            {                
+                playerName[i].text = entry.PlayerName;
+            }
         }
 
         for (int i = 0; i < playerScore.Count; i++)
