@@ -11,6 +11,8 @@ public class GameModeSelect : BaseMenu
     [SerializeField] Button beatTheClock;
     [SerializeField] Button back;
 
+    [SerializeField] Toggle distraction;
+
     Button activeButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,6 +25,7 @@ public class GameModeSelect : BaseMenu
         delay.onClick.AddListener(() => DisableButtons());
         beatTheClock.onClick.AddListener(() => DisableButtons());
 
+        distraction.onValueChanged.AddListener(LightManager.Instance.ToggleDistraction);
     }
 
     public override void EnterState()
@@ -30,6 +33,10 @@ public class GameModeSelect : BaseMenu
         base.EnterState();
         EnableButtons();
         Time.timeScale = 0.0f;
+       
+        LightManager.Instance.ToggleDistraction(distraction.isOn);
+      
+           
     }
 
     public override void ExitState()

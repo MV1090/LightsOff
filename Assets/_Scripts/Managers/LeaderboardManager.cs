@@ -29,7 +29,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
     {
         playerScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(leaderboardId);
         
-        Debug.Log(JsonConvert.SerializeObject(scoresAroundPlayer));
+        //Debug.Log(JsonConvert.SerializeObject(scoresAroundPlayer));
     }
 
     public async void GetPlayerRange(string leaderboardId)

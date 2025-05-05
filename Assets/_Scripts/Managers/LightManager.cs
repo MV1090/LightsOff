@@ -2,28 +2,32 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using Unity.Services.Leaderboards;
 
 
 public class LightManager : Singleton<LightManager>
 {
     [SerializeField] public List<LightObject> allLightObjects = new List<LightObject>();
     [SerializeField] public List<LightObject> playableLightObjects = new List<LightObject>();
-
+    [SerializeField] public List<LightObject> falseLightObjects = new List<LightObject>();
     //used to store a reference to the active light index
     public int currentLight = 0;
+
+    List<int> falseLightsIndex = new List<int>();    
+    int falseLightTracker = 2;
 
     public event Action gameEnded;
 
     private void OnEnable()
-    {
+    {        
         //Bind event listener to listen for each time OnLightTouched is called
         //Each time OnLightTouched is called, call activate new light
         foreach (LightObject obj in allLightObjects)
         {
-            obj.OnLightTouched += ActivateNewLight;          
-            
+            obj.OnLightTouched += ActivateNewLight;           
             obj.gameObject.SetActive(false);
-        }        
+        }      
     }
 
     private void OnDisable()
@@ -38,7 +42,7 @@ public class LightManager : Singleton<LightManager>
     {
         OnEnable();                     
         Debug.Log(allLightObjects.Count);
-        GameManager.Instance.OnGameOver += gameOver;
+        GameManager.Instance.OnGameOver += gameOver;        
     }   
 
     /// <summary>
@@ -114,6 +118,59 @@ public class LightManager : Singleton<LightManager>
         playableLightObjects[currentLight].SetLightActive(true);        
     }
   
+    void ActivateFalseLights()
+    {
+        falseLightObjects.Clear();
+
+        if (falseLightsIndex != null)
+        {
+            for (int i = 0; i < falseLightsIndex.Count; i++)
+            {
+                int index = falseLightsIndex[i];
+
+                if (index == currentLight)
+                    continue;
+
+                playableLightObjects[index].SetLightFalse(false);               
+            }
+            falseLightsIndex.Clear();            
+        }
+               
+        //turn on new false lights
+        for(int i = 0; i < falseLightTracker; i++)
+        {
+            // Generate a random number 
+            int randomNum = UnityEngine.Random.Range(0, playableLightObjects.Count);
+
+            //Check random number is different to active light index
+            //Not sure on this functionality, should it always be a different light with no repeats? 
+            while(randomNum == currentLight || falseLightsIndex.Contains(randomNum))
+            {
+                randomNum = UnityEngine.Random.Range(0, playableLightObjects.Count);
+            }
+
+
+            Debug.Log(randomNum);
+            playableLightObjects[randomNum].SetLightFalse(true);            
+            falseLightsIndex.Add(randomNum);
+            falseLightObjects.Add(playableLightObjects[randomNum]);
+        }
+        Debug.Log("Distraction Mode on");
+    }
+
+    public void ToggleDistraction(bool isOn)
+    {
+        foreach (LightObject obj in allLightObjects)
+        {
+            obj.OnLightTouched -= ActivateFalseLights; // always remove first
+            if (isOn)
+            {
+                obj.OnLightTouched += ActivateFalseLights;
+            }
+        }
+
+        Debug.Log("Distraction Mode " + (isOn ? "On" : "Off"));
+    }
     /// <summary>
     /// Turn off current Light
     /// </summary>
@@ -135,6 +192,8 @@ public class LightManager : Singleton<LightManager>
 
     private void gameOver()
     {
+        falseLightObjects.Clear();
+
         if (playableLightObjects == null)
             return;
 
