@@ -99,6 +99,20 @@ public class LightObject : MonoBehaviour
         }
     }
 
+    public void SetLightFalse(bool _isFalse)
+    {
+        if (_isFalse)
+        {
+            Image.sprite = onLight;
+            ImageColour(warningColour);
+        }
+        else
+        {
+            Image.sprite = offLight;
+            ImageColour(offColour);
+        }
+
+    }
     /// <summary>
     /// Getter for the light state
     /// </summary>

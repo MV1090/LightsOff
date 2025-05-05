@@ -100,7 +100,6 @@ public class Delay : BaseGameMode
 
         while (elapsedTime < time)
         {
-
             lightOnTime = Mathf.Lerp(start, end, elapsedTime / time);
 
             elapsedTime += Time.deltaTime;
@@ -140,13 +139,16 @@ public class Delay : BaseGameMode
         }
 
         LightManager.Instance.playableLightObjects[LightManager.Instance.currentLight].SetLightActive(false);
+        foreach (var light in LightManager.Instance.falseLightObjects) 
+            light.SetLightFalse(false);
          
         yield return new WaitForSeconds(time);
 
         LightManager.Instance.playableLightObjects[LightManager.Instance.currentLight].SetLightActive(true);
+        foreach (var light in LightManager.Instance.falseLightObjects)
+            light.SetLightFalse(true);
 
         lifeSpanCoroutine = StartCoroutine(LightLifeSpan(1, 0, lightOnTime));
-    }
-   
+    }   
 
 }
