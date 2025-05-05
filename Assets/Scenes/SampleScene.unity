@@ -1307,7 +1307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7463641587720528105, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7463641587720528105, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1315,7 +1315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7463641587720528105, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 111.1625
       objectReference: {fileID: 0}
     - target: {fileID: 7463641587720528105, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2974,6 +2974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e32fcb95cbfc74b99716c22295369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridSize: 0
   gs: {fileID: 2058428786}
   threeXGrid: {fileID: 1407350860}
   fourXGrid: {fileID: 502979330}
@@ -4733,6 +4734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allLightObjects: []
   playableLightObjects: []
+  falseLightObjects: []
   currentLight: 0
 --- !u!4 &390515880
 Transform:

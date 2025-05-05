@@ -100,7 +100,6 @@ public class Delay : BaseGameMode
 
         while (elapsedTime < time)
         {
-
             lightOnTime = Mathf.Lerp(start, end, elapsedTime / time);
 
             elapsedTime += Time.deltaTime;

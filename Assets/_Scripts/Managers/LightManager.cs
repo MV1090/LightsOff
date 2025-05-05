@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
-using Unity.Services.Leaderboards;
-
 
 public class LightManager : Singleton<LightManager>
 {
@@ -14,8 +11,12 @@ public class LightManager : Singleton<LightManager>
     //used to store a reference to the active light index
     public int currentLight = 0;
 
-    List<int> falseLightsIndex = new List<int>();    
-    int falseLightTracker = 2;
+    
+    List<int> falseLightsIndex = new List<int>();
+    int maxFalseLights;
+    int falseLightTracker = 0;
+    int incrementTime; 
+    Coroutine incrementFalseLight;
 
     public event Action gameEnded;
 
@@ -131,8 +132,12 @@ public class LightManager : Singleton<LightManager>
                 if (index == currentLight)
                     continue;
 
+                if (index > playableLightObjects.Count -1)
+                    continue;
+
                 playableLightObjects[index].SetLightFalse(false);               
             }
+
             falseLightsIndex.Clear();            
         }
                
@@ -162,10 +167,12 @@ public class LightManager : Singleton<LightManager>
     {
         foreach (LightObject obj in allLightObjects)
         {
-            obj.OnLightTouched -= ActivateFalseLights; // always remove first
+            obj.OnLightTouched -= ActivateFalseLights;
+            obj.OnGameStart -= StartFalseTimer;
             if (isOn)
             {
                 obj.OnLightTouched += ActivateFalseLights;
+                obj.OnGameStart += StartFalseTimer;
             }
         }
 
@@ -191,8 +198,10 @@ public class LightManager : Singleton<LightManager>
     }
 
     private void gameOver()
-    {
+    {        
+        StopIncrementing();
         falseLightObjects.Clear();
+        falseLightTracker = 0;
 
         if (playableLightObjects == null)
             return;
@@ -238,7 +247,32 @@ public class LightManager : Singleton<LightManager>
         }
         yield return new WaitForSeconds(0.5f);
 
-        playableLightObjects[currentLight].SetLightActive(true);       
-         
-    }    
+        playableLightObjects[currentLight].SetLightActive(true);             
+    }
+
+    void StartFalseTimer()
+    {
+        incrementFalseLight = StartCoroutine(FalseLightScaler());
+    }
+    public void StopIncrementing()
+    {
+        if (incrementFalseLight != null)
+        {
+            StopCoroutine(incrementFalseLight);
+        }
+    }
+    private IEnumerator FalseLightScaler()
+    {
+        maxFalseLights = (GameTypeManager.Instance.gridSize/ 3 * 2);
+        incrementTime = 8 - (int)Math.Sqrt(GameTypeManager.Instance.gridSize);
+
+        Debug.Log("increment time: " + incrementTime);
+        while (falseLightTracker < maxFalseLights)
+        {
+            yield return new WaitForSeconds(incrementTime);
+
+            falseLightTracker++;
+        }    
+    }
+
 }
