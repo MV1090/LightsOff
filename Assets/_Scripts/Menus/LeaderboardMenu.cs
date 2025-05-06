@@ -85,7 +85,7 @@ public class LeaderboardMenu : BaseMenu
     {
         base.EnterState();
         Time.timeScale = 0.0f;
-
+        backButton.gameObject.SetActive(true);
         endless.onClick.Invoke();
         threeXThree.onClick.Invoke();
     }

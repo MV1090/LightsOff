@@ -31,6 +31,7 @@ public class RootMainMenu : BaseMenu
     public override void EnterState()
     {
         base.EnterState();
+        backButton.gameObject.SetActive(false);
         Time.timeScale = 0.0f;        
         AdManager.Instance.ShowBannerAD();     
     }

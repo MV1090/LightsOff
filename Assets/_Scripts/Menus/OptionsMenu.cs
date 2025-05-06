@@ -38,6 +38,7 @@ public class OptionsMenu : BaseMenu
     public override void EnterState()
     {
         base.EnterState();
+        backButton.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
     }
 

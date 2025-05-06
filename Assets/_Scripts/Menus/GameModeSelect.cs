@@ -9,7 +9,7 @@ public class GameModeSelect : BaseMenu
     [SerializeField] Button endless;
     [SerializeField] Button delay;
     [SerializeField] Button beatTheClock;
-    [SerializeField] Button back;
+    //[SerializeField] Button back;
 
     [SerializeField] Toggle distraction;
 
@@ -32,18 +32,16 @@ public class GameModeSelect : BaseMenu
     {
         base.EnterState();
         EnableButtons();
+        backButton.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
        
-        LightManager.Instance.ToggleDistraction(distraction.isOn);
-      
-           
+        LightManager.Instance.ToggleDistraction(distraction.isOn);                
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        Time.timeScale = 1.0f;        
-        //ResetColour(activeButton);    
+        Time.timeScale = 1.0f;             
     }
 
 
@@ -51,16 +49,14 @@ public class GameModeSelect : BaseMenu
     {
         endless.interactable = false;
         delay.interactable = false;
-        beatTheClock.interactable = false;
-        back.interactable = false;
+        beatTheClock.interactable = false;        
     }
 
     void EnableButtons()
     {     
         endless.interactable = true;
         delay.interactable = true;
-        beatTheClock.interactable = true;
-        back.interactable = true;
+        beatTheClock.interactable = true;        
     }
 
     void ChangeColour(Button button)

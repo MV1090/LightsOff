@@ -71,6 +71,9 @@ public class MenuManager : Singleton<MenuManager>
 
     public void JumpBack()
     {
+        if (menuLoaded)
+            SetMenuActive(false);
+
         if (menuStack.Count <= 1)
         {
             SetActiveMenu(MenuStates.RootMainMenu);

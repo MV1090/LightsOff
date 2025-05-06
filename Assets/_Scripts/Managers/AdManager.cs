@@ -15,7 +15,7 @@ public class AdManager : Singleton<AdManager>, IUnityAdsInitializationListener, 
     private string VIDEO_PLACEMENT = "Interstitial_Android";
     private const string VIDEO_PLACEMENT_IOS = "Interstitial_iOS";
 
-    [SerializeField] private BannerPosition bannerPosition = BannerPosition.TOP_CENTER;
+    [SerializeField] private BannerPosition bannerPosition = BannerPosition.BOTTOM_CENTER;
 
     protected override void Awake()
     {
