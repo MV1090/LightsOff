@@ -44,6 +44,14 @@ public class Shutter : MonoBehaviour
             Debug.Log("ShowAds");
         }       
     }
+    public void MenuLoaded()
+    {
+        if (MenuManager.Instance.menuToActivate != MenuManager.MenuStates.EndGameMenu)
+        {
+            MenuManager.Instance.menuLoaded = true;
+        }
+        
+    }
 
     public void ActivateButtons()
     {
