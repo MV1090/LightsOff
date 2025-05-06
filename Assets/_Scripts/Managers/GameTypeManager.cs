@@ -7,6 +7,7 @@ public class GameTypeManager : Singleton<GameTypeManager>
 
     private int gridWidth;
     private int gridHeight;
+    public int gridSize;
 
     [SerializeField] GridScaler gs;
 
@@ -86,6 +87,7 @@ public class GameTypeManager : Singleton<GameTypeManager>
     {         
         LightManager.Instance.SetLightGrid(columns * rows);        
         gs.SetGrid(columns, rows);
+        gridSize = columns * rows;
     }
 
     /// <summary>

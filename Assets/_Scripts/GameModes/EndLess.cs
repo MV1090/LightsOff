@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class EndLess : BaseGameMode
 {
@@ -8,7 +10,7 @@ public class EndLess : BaseGameMode
     [SerializeField] float endLength;
     [SerializeField] float duration;
     [SerializeField]public float currentTime;
-
+        
     private Coroutine currentCoroutine;
 
     public override void InitState(GameModeManager ctx)
@@ -27,8 +29,7 @@ public class EndLess : BaseGameMode
         {
             lightObject.OnGameStart += TurnOffLight;
             lightObject.OnLightTouched += StartLifeSpanTimer;            
-        }
-        //GameManager.Instance.OnGameOver += ResetMode;
+        }        
     }
 
     // runs when game mode has ended
@@ -42,8 +43,7 @@ public class EndLess : BaseGameMode
         {
             lightObject.OnGameStart -= TurnOffLight;
             lightObject.OnLightTouched -= StartLifeSpanTimer;            
-        }
-        GameManager.Instance.OnGameOver -= ResetMode;
+        }        
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public class EndLess : BaseGameMode
     {
         StopAllCoroutines();
         lightOnTime = startLength;
-
+        currentTime = 0;
         Debug.Log("Game mode reset");
     }
 
@@ -125,4 +125,5 @@ public class EndLess : BaseGameMode
         GameManager.Instance.InvokeGameOver();       
     }
 
+    
 }

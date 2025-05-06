@@ -30,6 +30,7 @@ public class EndGameMenu : BaseMenu
         DisplayScore();
         DisplayBestScore();
         GameManager.Instance.ResetGame();
+        DisableButtons();
     }
 
     public override void ExitState()
@@ -69,15 +70,11 @@ public class EndGameMenu : BaseMenu
     {
         mainMenu.interactable = false;
         replay.interactable = false;
-
-
     }
-    void EnableButtons()
+    public void EnableButtons()
     {
         mainMenu.interactable = true;
         replay.interactable = true;
-
-
     }
 
 

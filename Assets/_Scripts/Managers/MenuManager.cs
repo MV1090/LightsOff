@@ -3,6 +3,8 @@ using System.Collections.Generic;
 public class MenuManager : Singleton<MenuManager>
 {
     public BaseMenu[] allMenus;
+
+    public bool menuLoaded;
     public enum MenuStates
     {
         RootMainMenu, GameModeSelect, EndGameMenu, GameMenu, LeaderboardMenu, OptionsMenu
@@ -18,6 +20,10 @@ public class MenuManager : Singleton<MenuManager>
     {
         if (allMenus == null)
             return;
+
+        menuLoaded = false;
+
+        GameManager.Instance.OnGameOver += ()=> SetMenuActive(false);
 
         foreach (BaseMenu menu in allMenus)
         {
@@ -74,6 +80,11 @@ public class MenuManager : Singleton<MenuManager>
             menuStack.Pop();
             SetActiveMenu(menuStack.Peek(), true);            
         }
+    }
+
+    public void SetMenuActive(bool isActive)
+    {
+        menuLoaded = isActive;
     }
 
     public void ResetStack()

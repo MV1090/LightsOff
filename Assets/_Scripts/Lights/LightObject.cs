@@ -48,11 +48,11 @@ public class LightObject : MonoBehaviour
     public void OnTouched()
     {       
         if (GameManager.Instance.gameOver == true)
-            return;
+            return;      
 
         //Start game after first light is pressed
-        if(GameManager.Instance.GetStartGame() == false)
-        {
+        if (GameManager.Instance.GetStartGame() == false)
+        {          
             GameManager.Instance.SetStartGame(true);
             GameStarted(false);
             OnGameStart?.Invoke();
@@ -99,6 +99,20 @@ public class LightObject : MonoBehaviour
         }
     }
 
+    public void SetLightFalse(bool _isFalse)
+    {
+        if (_isFalse)
+        {
+            Image.sprite = onLight;
+            ImageColour(warningColour);
+        }
+        else
+        {
+            Image.sprite = offLight;
+            ImageColour(offColour);
+        }
+
+    }
     /// <summary>
     /// Getter for the light state
     /// </summary>

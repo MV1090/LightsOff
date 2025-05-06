@@ -5,7 +5,7 @@ using Unity.Services.Authentication;
 public class RootMainMenu : BaseMenu
 {
     [SerializeField] TMP_Text playerID;
-
+    PlayerInfo playerInfo;
     [SerializeField] Button newGame;
     [SerializeField] Button leaderBoard;
     [SerializeField] Button options;
@@ -15,24 +15,28 @@ public class RootMainMenu : BaseMenu
     {
         base.InitState(ctx);
         state = MenuManager.MenuStates.RootMainMenu;
+        Authentication.OnPlayerNameReady += HandlePlayerNameReady;
 
-       //newGame.onClick.AddListener(() => newGame.GetComponentInChildren<TMP_Text>().color = Color.green);
-        //leaderBoard.onClick.AddListener(() => leaderBoard.GetComponentInChildren<TMP_Text>().color = Color.green);
+        // Optional: if name is already ready (e.g. player returned to menu)
+        if (Authentication.Instance != null && !string.IsNullOrEmpty(Authentication.Instance.PlayerDisplayName))
+        {
+            HandlePlayerNameReady(Authentication.Instance.PlayerDisplayName);
+        }
     }
-
+    void HandlePlayerNameReady(string playerName)
+    {
+        Debug.Log("Got player name: " + playerName);
+        playerID.text = "Player: " + playerName;
+    }
     public override void EnterState()
     {
         base.EnterState();
-        Time.timeScale = 0.0f;
-        playerID.text = "Player: " + AuthenticationService.Instance.PlayerName;
-        AdManager.Instance.ShowBannerAD();
+        Time.timeScale = 0.0f;        
+        AdManager.Instance.ShowBannerAD();     
     }
 
     public override void ExitState()
     {
-        //newGame.GetComponentInChildren<TMP_Text>().color = new Color(50, 50, 50);
-        // leaderBoard.GetComponentInChildren<TMP_Text>().color = new Color(50, 50, 50);
-
         base.ExitState();
         Time.timeScale = 1.0f;       
     }
@@ -59,4 +63,6 @@ public class RootMainMenu : BaseMenu
 #endif
         Application.Quit();
     }
+
+    
 }

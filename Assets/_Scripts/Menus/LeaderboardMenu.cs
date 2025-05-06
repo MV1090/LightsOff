@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.Services.Authentication;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,27 +58,27 @@ public class LeaderboardMenu : BaseMenu
 
         endless.onClick.AddListener(() => SetMode(Modes.Endless));
         endless.onClick.AddListener(() => AdjustListener(endless, beatTheClock, delay));
-        endless.onClick.AddListener(() => DisplayLeaderboard());
+        //endless.onClick.AddListener(() => DisplayLeaderboard());
 
         beatTheClock.onClick.AddListener(() => SetMode(Modes.BeatTheClock));
         beatTheClock.onClick.AddListener(() => AdjustListener(beatTheClock, endless, delay));
-        beatTheClock.onClick.AddListener(() => DisplayLeaderboard());
+        //beatTheClock.onClick.AddListener(() => DisplayLeaderboard());
 
         delay.onClick.AddListener(() => SetMode(Modes.Delay));
         delay.onClick.AddListener(() => AdjustListener(delay, beatTheClock, endless));
-        delay.onClick.AddListener(() => DisplayLeaderboard());
+        //delay.onClick.AddListener(() => DisplayLeaderboard());
 
         threeXThree.onClick.AddListener(() => SetType(Types.ThreeXThree));
         threeXThree.onClick.AddListener(() => AdjustListener(threeXThree, fourXFour, fiveXFive));
-        threeXThree.onClick.AddListener(() => DisplayLeaderboard());
+        //threeXThree.onClick.AddListener(() => DisplayLeaderboard());
 
         fourXFour.onClick.AddListener(() => SetType(Types.FourXFour));
         fourXFour.onClick.AddListener(() => AdjustListener(fourXFour, threeXThree, fiveXFive));
-        fourXFour.onClick.AddListener(() => DisplayLeaderboard());
+        //fourXFour.onClick.AddListener(() => DisplayLeaderboard());
 
         fiveXFive.onClick.AddListener(() => SetType(Types.FiveXFive));
         fiveXFive.onClick.AddListener(() => AdjustListener(fiveXFive, fourXFour, threeXThree));
-        fiveXFive.onClick.AddListener(() => DisplayLeaderboard());               
+        //fiveXFive.onClick.AddListener(() => DisplayLeaderboard());               
     }      
 
     public override void EnterState()
@@ -190,7 +191,9 @@ public class LeaderboardMenu : BaseMenu
             topRank[i].text = rank.ToString();
         }
 
-        for (int i = 0; i < topName.Count; i++)
+        string localPlayerId = AuthenticationService.Instance.PlayerId;
+
+        for (int i = 0; i < playerName.Count; i++)
         {
             if (i > LeaderboardManager.Instance.topFiveScores.Results.Count - 1)
             {
@@ -198,8 +201,20 @@ public class LeaderboardMenu : BaseMenu
                 continue;
             }
 
+            var entry = LeaderboardManager.Instance.topFiveScores.Results[i];
+            bool isLocalPlayer = entry.PlayerId == localPlayerId;
 
-            topName[i].text = LeaderboardManager.Instance.topFiveScores.Results[i].PlayerName.ToString();
+            string playerId = entry.PlayerId;
+
+            // Highlight or mark the local player visually
+            if (isLocalPlayer)
+            {
+                topName[i].text = $"<b><color=green>{entry.PlayerName}</color></b>";
+            }
+            else
+            {
+                topName[i].text = entry.PlayerName;
+            }
         }
 
         for (int i = 0; i < topScore.Count; i++)
@@ -230,6 +245,8 @@ public class LeaderboardMenu : BaseMenu
             playerRank[i].text = rank.ToString();
         }
 
+        string localPlayerId = AuthenticationService.Instance.PlayerId;
+
         for (int i = 0; i < playerName.Count; i++)
         {
             if (i > LeaderboardManager.Instance.scoresAroundPlayer.Results.Count - 1)
@@ -238,8 +255,20 @@ public class LeaderboardMenu : BaseMenu
                 continue;
             }
 
+            var entry = LeaderboardManager.Instance.scoresAroundPlayer.Results[i];
+            bool isLocalPlayer = entry.PlayerId == localPlayerId;
 
-            playerName[i].text = LeaderboardManager.Instance.scoresAroundPlayer.Results[i].PlayerName.ToString();
+            string playerId = entry.PlayerId;
+
+            // Highlight or mark the local player visually
+            if (isLocalPlayer)
+            {
+                playerName[i].text = $"<b><color=green>{entry.PlayerName}</color></b>";
+            }
+            else
+            {                
+                playerName[i].text = entry.PlayerName;
+            }
         }
 
         for (int i = 0; i < playerScore.Count; i++)
@@ -256,12 +285,14 @@ public class LeaderboardMenu : BaseMenu
 
     private void SetMode(Modes mode)
     {
-        currentMode = mode;       
+        currentMode = mode;
+        DisplayLeaderboard();
     }
 
     void SetType(Types type)
     {
         currentType = type;
+        DisplayLeaderboard();
     }
 
     void AdjustListener(Button a, Button b, Button c)

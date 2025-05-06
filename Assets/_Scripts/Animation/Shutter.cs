@@ -4,6 +4,8 @@ public class Shutter : MonoBehaviour
 {
 
     private Animator anim;
+
+    [SerializeField] EndGameMenu endGameMenu;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,7 +42,19 @@ public class Shutter : MonoBehaviour
             AdManager.Instance.LoadNonRewardedAd();
             AdManager.Instance.ShowNonRewardedAd();
             Debug.Log("ShowAds");
+        }       
+    }
+    public void MenuLoaded()
+    {
+        if (MenuManager.Instance.menuToActivate != MenuManager.MenuStates.EndGameMenu)
+        {
+            MenuManager.Instance.menuLoaded = true;
         }
-       
+        
+    }
+
+    public void ActivateButtons()
+    {
+        endGameMenu.EnableButtons();
     }
 }

@@ -1,100 +1,67 @@
 using System;
 using System.Threading.Tasks;
-using TMPro;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
 
 public class Authentication : MonoBehaviour
 {
+    public static Authentication Instance { get; private set; }
+    public string PlayerDisplayName { get; private set; }
+
+    public static event Action<string> OnPlayerNameReady;
+
+    private const string CachedNameKey = "CachedPlayerName";
+
     async void Awake()
     {
+        Instance = this;
+
         try
         {
             await UnityServices.InitializeAsync();
+            await SignUpAnonymouslyAsync();
         }
         catch (Exception ex)
         {
             Debug.LogException(ex);
         }
-
-        //SetupEvents();
-
-        await SignUpAnonymouslyAsync();
     }
-     
-
-    /// <summary>
-    /// To be used if we want to run events on sign in and sign out.
-    /// </summary>
-    /// <returns></returns>
-    //void SetupEvents()
-    //{
-    //    AuthenticationService.Instance.SignedIn += () =>
-    //    {
-           
-    //        // Shows how to get a playerID
-    //        Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
-
-    //        // Shows how to get an access token
-    //        Debug.Log($"Access Token: {AuthenticationService.Instance.AccessToken}");
-    //    };
-
-    //    AuthenticationService.Instance.SignInFailed += (err) =>
-    //    {
-    //        Debug.LogError(err);
-    //    };
-
-    //    AuthenticationService.Instance.SignedOut += () =>
-    //    {
-            
-    //        Debug.Log("Player signed out.");
-    //    };
-
-    //    AuthenticationService.Instance.Expired += () =>
-    //    {
-    //        Debug.Log("Player session could not be refreshed and expired.");
-    //    };
-    //}
 
     async Task SignUpAnonymouslyAsync()
     {
-        if (!AuthenticationService.Instance.IsSignedIn)
+        try
         {
-            try
-            {
+            if (!AuthenticationService.Instance.IsSignedIn)
                 await AuthenticationService.Instance.SignInAnonymouslyAsync();
-                Debug.Log("Sign in anonymously succeeded!");
 
-                string currentName = AuthenticationService.Instance.PlayerName;
+            var playerInfo = await AuthenticationService.Instance.GetPlayerInfoAsync();
+            string serverName = playerInfo?.Username;
+            string localName = PlayerPrefs.GetString(CachedNameKey, null);
 
-                while(currentName.Length>15)
-                {
-                    string newName = NameGenerator.Instance.RandomName();
-                    
-                    await AuthenticationService.Instance.UpdatePlayerNameAsync(newName);
-                    Debug.Log($"Assigned new player name: {newName}");
-                   
-                    currentName = newName;
-                }
-
-                Debug.Log($"Player name: {AuthenticationService.Instance.PlayerName}");
-                Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
-            }
-
-            catch (AuthenticationException ex)
+            if (string.IsNullOrEmpty(serverName) && string.IsNullOrEmpty(localName))
             {
-                // Compare error code to AuthenticationErrorCodes
-                // Notify the player with the proper error message
-                Debug.LogException(ex);
+                string newName = NameGenerator.Instance.RandomName();
+                await AuthenticationService.Instance.UpdatePlayerNameAsync(newName);
+                PlayerPrefs.SetString(CachedNameKey, newName);
+                PlayerPrefs.Save();
+                PlayerDisplayName = newName;
+                //PlayerDisplayName = AuthenticationService.Instance.PlayerName;
+
             }
-            catch (RequestFailedException ex)
+            else
             {
-                // Compare error code to CommonErrorCodes
-                // Notify the player with the proper error message
-                Debug.LogException(ex);
+                PlayerDisplayName = !string.IsNullOrEmpty(serverName) ? serverName : localName;
+                //PlayerDisplayName = AuthenticationService.Instance.PlayerName;
+                if (string.IsNullOrEmpty(serverName) && !string.IsNullOrEmpty(localName))
+                    await AuthenticationService.Instance.UpdatePlayerNameAsync(localName);
             }
+
+            OnPlayerNameReady?.Invoke(PlayerDisplayName);
         }
-        
+        catch (Exception ex)
+        {
+            Debug.LogException(ex);
+        }
     }
 }
