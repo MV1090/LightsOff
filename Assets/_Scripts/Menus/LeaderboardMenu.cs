@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Services.Authentication;
@@ -86,88 +87,45 @@ public class LeaderboardMenu : BaseMenu
         base.EnterState();
         Time.timeScale = 0.0f;
         backButton.gameObject.SetActive(true);
-        endless.onClick.Invoke();
-        threeXThree.onClick.Invoke();
+        StartCoroutine(DelayedLeaderboardInit());
     }
 
     public override void ExitState()
     {
         base.ExitState();
         Time.timeScale = 1.0f;
-    }        
+    }
 
     private void DisplayLeaderboard()
     {
-        switch(currentMode)
+        string leaderboardId = GetLeaderboardId(currentMode, currentType);
+
+        if (!string.IsNullOrEmpty(leaderboardId))
         {
-            case Modes.Endless:
-                Debug.Log(currentMode);
-                switch(currentType)
-                {
-                    case Types.ThreeXThree:
-                        Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerRange("E_3X3");
-                        LeaderboardManager.Instance.GetScores("E_3X3");                        
-                        break;
-                    case Types.FourXFour:
-                        Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerRange("E_4X4");
-                        LeaderboardManager.Instance.GetScores("E_4X4");                        
-                        break;
-                    case Types.FiveXFive:
-                        Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerRange("E_5X5");
-                        LeaderboardManager.Instance.GetScores("E_5X5");                        
-                        break;
-                }                    
-             break;
-
-            case Modes.BeatTheClock:
-                Debug.Log(currentMode);
-                switch (currentType)
-                {
-                    case Types.ThreeXThree:
-                        Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerRange("B_T_C_3X3");
-                        LeaderboardManager.Instance.GetScores("B_T_C_3X3");                        
-                        break;
-                    case Types.FourXFour:
-                        Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerRange("B_T_C_4X4");
-                        LeaderboardManager.Instance.GetScores("B_T_C_4X4");                        
-                        break;
-                    case Types.FiveXFive:
-                        Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerRange("B_T_C_5X5");
-                        LeaderboardManager.Instance.GetScores("B_T_C_5X5");                        
-                        break;
-                }
-                break;
-
-            case Modes.Delay:
-                Debug.Log(currentMode);
-                switch (currentType)
-                {
-                    case Types.ThreeXThree:
-                        Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerRange("D_3X3");
-                        LeaderboardManager.Instance.GetScores("D_3X3");                        
-                        break;
-                    case Types.FourXFour:
-                        Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerRange("D_4X4");
-                        LeaderboardManager.Instance.GetScores("D_4X4");                        
-                        break;
-                    case Types.FiveXFive:
-                        Debug.Log(currentType);
-                        LeaderboardManager.Instance.GetPlayerRange("D_5X5");
-                        LeaderboardManager.Instance.GetScores("D_5X5");                        
-                        break;
-                }
-                break;
-        }            
+           _= LeaderboardManager.Instance.SubmitAndFetchLeaderboardData(leaderboardId);
+        }
+        else
+        {
+            Debug.LogWarning("Invalid leaderboard ID for selected mode/type");
+        }
     }
 
+    private string GetLeaderboardId(Modes mode, Types type)
+    {
+        return (mode, type) switch
+        {
+            (Modes.Endless, Types.ThreeXThree) => "E_3X3",
+            (Modes.Endless, Types.FourXFour) => "E_4X4",
+            (Modes.Endless, Types.FiveXFive) => "E_5X5",
+            (Modes.BeatTheClock, Types.ThreeXThree) => "B_T_C_3X3",
+            (Modes.BeatTheClock, Types.FourXFour) => "B_T_C_4X4",
+            (Modes.BeatTheClock, Types.FiveXFive) => "B_T_C_5X5",
+            (Modes.Delay, Types.ThreeXThree) => "D_3X3",
+            (Modes.Delay, Types.FourXFour) => "D_4X4",
+            (Modes.Delay, Types.FiveXFive) => "D_5X5",
+            _ => null
+        };
+    }
     private void UpdateText()
     {
         TopScores();
@@ -305,5 +263,17 @@ public class LeaderboardMenu : BaseMenu
 
         c.interactable = true;
         c.GetComponentInChildren<TMP_Text>().color = Color.white;
+    }
+
+    private IEnumerator DelayedLeaderboardInit()
+    {
+        yield return new WaitForEndOfFrame();
+
+        currentMode = Modes.Endless;
+        currentType = Types.ThreeXThree;
+
+        endless.onClick.Invoke();
+        threeXThree.onClick.Invoke();
+        DisplayLeaderboard();
     }
 }
