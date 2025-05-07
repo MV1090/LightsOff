@@ -59,27 +59,21 @@ public class LeaderboardMenu : BaseMenu
 
         endless.onClick.AddListener(() => SetMode(Modes.Endless));
         endless.onClick.AddListener(() => AdjustListener(endless, beatTheClock, delay));
-        //endless.onClick.AddListener(() => DisplayLeaderboard());
-
+        
         beatTheClock.onClick.AddListener(() => SetMode(Modes.BeatTheClock));
         beatTheClock.onClick.AddListener(() => AdjustListener(beatTheClock, endless, delay));
-        //beatTheClock.onClick.AddListener(() => DisplayLeaderboard());
-
+        
         delay.onClick.AddListener(() => SetMode(Modes.Delay));
         delay.onClick.AddListener(() => AdjustListener(delay, beatTheClock, endless));
-        //delay.onClick.AddListener(() => DisplayLeaderboard());
-
+        
         threeXThree.onClick.AddListener(() => SetType(Types.ThreeXThree));
         threeXThree.onClick.AddListener(() => AdjustListener(threeXThree, fourXFour, fiveXFive));
-        //threeXThree.onClick.AddListener(() => DisplayLeaderboard());
-
+        
         fourXFour.onClick.AddListener(() => SetType(Types.FourXFour));
         fourXFour.onClick.AddListener(() => AdjustListener(fourXFour, threeXThree, fiveXFive));
-        //fourXFour.onClick.AddListener(() => DisplayLeaderboard());
-
+        
         fiveXFive.onClick.AddListener(() => SetType(Types.FiveXFive));
-        fiveXFive.onClick.AddListener(() => AdjustListener(fiveXFive, fourXFour, threeXThree));
-        //fiveXFive.onClick.AddListener(() => DisplayLeaderboard());               
+        fiveXFive.onClick.AddListener(() => AdjustListener(fiveXFive, fourXFour, threeXThree));                    
     }      
 
     public override void EnterState()
