@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: b0d6e94a0415b89479bc1c83652d3d35
+guid: 966bf0c929e85014783b2ef849cf32c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1294293204309959248
-    second: tekamutt-logo-vector_0
+      213: 7136181076618851580
+    second: title-animation0003_0
+  - first:
+      213: 202309929915400392
+    second: title-animation0003_1
+  - first:
+      213: -8823969464506068094
+    second: title-animation0003_2
+  - first:
+      213: -7649995012173917605
+    second: title-animation0003_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tekamutt-logo-vector_0
+      name: title-animation0003_0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 52
-        width: 975
-        height: 975
+        x: 14
+        y: 227
+        width: 57
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +150,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 052e816dfc046f110800000000000000
-      internalID: 1294293204309959248
+      spriteID: cf43bbc41eec80360800000000000000
+      internalID: 7136181076618851580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-animation0003_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 279
+        width: 58
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c044233fcfbec200800000000000000
+      internalID: 202309929915400392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-animation0003_2
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 226
+        width: 58
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 283d83ff586fa8580800000000000000
+      internalID: -8823969464506068094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-animation0003_3
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 226
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b521ddd5112c5d590800000000000000
+      internalID: -7649995012173917605
       vertices: []
       indices: 
       edges: []
@@ -160,8 +235,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      tekamutt-logo-vector_0: 1294293204309959248
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: b0d6e94a0415b89479bc1c83652d3d35
+guid: 360550e5d8dfa1e439a7f628f7f1938e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1294293204309959248
-    second: tekamutt-logo-vector_0
+      213: 7524894726395599137
+    second: title-animation0002_0
+  - first:
+      213: 8300817562479886354
+    second: title-animation0002_1
+  - first:
+      213: -1535811743899366035
+    second: title-animation0002_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tekamutt-logo-vector_0
+      name: title-animation0002_0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 52
-        width: 975
-        height: 975
+        x: 14
+        y: 227
+        width: 57
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +147,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 052e816dfc046f110800000000000000
-      internalID: 1294293204309959248
+      spriteID: 129150392ebcd6860800000000000000
+      internalID: 7524894726395599137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-animation0002_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 279
+        width: 58
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21000fce79d623370800000000000000
+      internalID: 8300817562479886354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-animation0002_2
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 226
+        width: 58
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6d41032b53bfaae0800000000000000
+      internalID: -1535811743899366035
       vertices: []
       indices: 
       edges: []
@@ -160,8 +210,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      tekamutt-logo-vector_0: 1294293204309959248
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
