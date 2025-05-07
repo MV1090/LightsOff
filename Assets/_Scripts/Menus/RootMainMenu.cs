@@ -33,7 +33,7 @@ public class RootMainMenu : BaseMenu
         base.EnterState();
         backButton.gameObject.SetActive(false);
         Time.timeScale = 0.0f;        
-        AdManager.Instance.ShowBannerAD();     
+        //AdManager.Instance.ShowBannerAD();     
     }
 
     public override void ExitState()
