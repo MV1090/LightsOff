@@ -156,213 +156,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: animated-logo0006_0
+      name: Logo6
       rect:
         serializedVersion: 2
-        x: 70
-        y: 570
-        width: 583
-        height: 440
+        x: 50
+        y: 50
+        width: 1000
+        height: 1000
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0173a7b8735a39e20800000000000000
-      internalID: 3356207805302978320
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_1
-      rect:
-        serializedVersion: 2
-        x: 713
-        y: 713
-        width: 226
-        height: 225
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 265fd6e000361a820800000000000000
-      internalID: 2927730084660770146
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_2
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 570
-        width: 78
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad7e742f68d4c6c50800000000000000
-      internalID: 6659783190959876058
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_3
-      rect:
-        serializedVersion: 2
-        x: 689
-        y: 570
-        width: 78
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dd49fbb5dd5407f90800000000000000
-      internalID: -6957984607258045219
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_4
-      rect:
-        serializedVersion: 2
-        x: 810
-        y: 590
-        width: 17
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e40f4fd8269444380800000000000000
-      internalID: -8987978268687404978
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_5
-      rect:
-        serializedVersion: 2
-        x: 852
-        y: 571
-        width: 54
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a781d36c44f5e3310800000000000000
-      internalID: 1386650484264999034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_6
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 529
-        width: 626
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c481a7654ad7ba010800000000000000
-      internalID: 1201191870403319884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_7
-      rect:
-        serializedVersion: 2
-        x: 769
-        y: 488
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f229735d7f9456770800000000000000
-      internalID: 8603363991944139311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_8
-      rect:
-        serializedVersion: 2
-        x: 868
-        y: 529
-        width: 70
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0e2fc260653cb3cf0800000000000000
-      internalID: -271408578287570208
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_9
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 51
-        width: 950
-        height: 449
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -375,33 +177,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: animated-logo0006_10
-      rect:
-        serializedVersion: 2
-        x: 852
-        y: 450
-        width: 54
-        height: 53
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fb810598e2b354990800000000000000
-      internalID: -7402445341455279937
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 270895aa1ae11254bb1d30d78c6b7ce9
     internalID: 0
     vertices: []
     indices: 
@@ -410,7 +190,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Logo6: 7572855395495601965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

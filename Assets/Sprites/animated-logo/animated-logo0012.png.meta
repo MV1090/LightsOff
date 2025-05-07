@@ -144,103 +144,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: animated-logo0012_0
+      name: Logo12
       rect:
         serializedVersion: 2
-        x: 141
-        y: 570
-        width: 869
-        height: 440
+        x: 50
+        y: 50
+        width: 1000
+        height: 1000
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eaa1d721eb3c3bf20800000000000000
-      internalID: 3437306161735211694
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0012_1
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 570
-        width: 78
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 512370d155aee4aa0800000000000000
-      internalID: -6174740387798240747
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0012_2
-      rect:
-        serializedVersion: 2
-        x: 769
-        y: 488
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed9165152d65c5a10800000000000000
-      internalID: 1899488604151224798
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0012_3
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 529
-        width: 626
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2c807d5c2675b34a0800000000000000
-      internalID: -6612595546125825854
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0012_4
-      rect:
-        serializedVersion: 2
-        x: 868
-        y: 529
-        width: 70
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,55 +165,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: animated-logo0012_5
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 51
-        width: 879
-        height: 449
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 26428d52c54c2bfc0800000000000000
-      internalID: -3480503661953014686
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: animated-logo0012_6
-      rect:
-        serializedVersion: 2
-        x: 852
-        y: 450
-        width: 54
-        height: 53
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c3371fe97468b8230800000000000000
-      internalID: 3642152365826601788
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6b0e3efc725971940a02b112b95a021f
     internalID: 0
     vertices: []
     indices: 
@@ -310,7 +178,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Logo12: 6837594271414037868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
