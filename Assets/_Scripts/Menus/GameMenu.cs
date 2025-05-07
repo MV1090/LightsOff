@@ -27,11 +27,18 @@ public class GameMenu : BaseMenu
             GameManager.Instance.OnScoreValueChange.AddListener(UpdateScoreText);
             scoreText.text = GameManager.Instance.Score.ToString();
         }
+
+        foreach (LightObject light in LightManager.Instance.allLightObjects)
+        {
+            light.OnGameStart += () => backButton.gameObject.SetActive(false); 
+        }
+
     }
 
     public override void EnterState()
     {        
         base.EnterState();
+        
         GameTypeManager.Instance.SetGridActive();
 
         Time.timeScale = 1.0f;    

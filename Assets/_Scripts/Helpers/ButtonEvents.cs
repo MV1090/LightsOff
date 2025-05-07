@@ -23,7 +23,7 @@ public class ButtonEvents : MonoBehaviour
 
             if (buttonText != null)
             {
-                SFXManager.Instance.PlayClickedSound();
+                SFXManager.Instance.PlayBackSound();
                 originalFontSize = buttonText.fontSize;
                 buttonText.enableAutoSizing = false;
                 buttonText.fontSize = originalFontSize / 1.5f; // or /10f as you had it

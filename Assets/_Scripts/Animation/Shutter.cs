@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shutter : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class Shutter : MonoBehaviour
     private Animator anim;
 
     [SerializeField] EndGameMenu endGameMenu;
+    public Button backButton;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +22,18 @@ public class Shutter : MonoBehaviour
     {
         
     }
+
+    public void OnAnimStart()
+    {
+        PlayShutterSound();
+        DeactivateButton();
+    }
+
+    public void OnAnimEnd()
+    {        
+        MenuLoaded();
+    }
+
 
     public void PlayShutterSound()
     {
@@ -53,8 +69,20 @@ public class Shutter : MonoBehaviour
         
     }
 
-    public void ActivateButtons()
+    public void DeactivateButton()
     {
+        if(!backButton.IsActive())
+            return;
+
+        backButton.gameObject.SetActive(false);
+    }
+
+    public void ActivateButtons()
+    {        
+        if (endGameMenu.previousMenu == false)
+        {
+            backButton.gameObject.SetActive(true);
+        }
         endGameMenu.EnableButtons();
     }
 }

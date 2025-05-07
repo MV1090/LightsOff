@@ -12,6 +12,8 @@ public class EndGameMenu : BaseMenu
     [SerializeField] Button mainMenu;
     [SerializeField] Button replay;
 
+    public bool previousMenu;
+
     public override void InitState(MenuManager ctx)
     {
         base.InitState(ctx);
@@ -19,7 +21,6 @@ public class EndGameMenu : BaseMenu
 
         mainMenu.onClick.AddListener(() => DisableButtons());
         replay.onClick.AddListener(() => DisableButtons());
-
     }
 
     public override void EnterState()
@@ -31,17 +32,22 @@ public class EndGameMenu : BaseMenu
         DisplayBestScore();
         GameManager.Instance.ResetGame();
         DisableButtons();
+
+        previousMenu = true;
+
+        backButton.gameObject.SetActive(false);
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1.0f;        
     }
        
     public void JumpToMainMenu()
     {
         context.SetActiveMenu(MenuManager.MenuStates.RootMainMenu);
+        previousMenu = false;
         Debug.Log("Jump to main menu");
     }
 
@@ -75,6 +81,8 @@ public class EndGameMenu : BaseMenu
     {
         mainMenu.interactable = true;
         replay.interactable = true;
+
+        //previousMenu = false;
     }
 
 

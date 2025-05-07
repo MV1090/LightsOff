@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseMenu : MonoBehaviour
 {
     public MenuManager.MenuStates state;
     protected MenuManager context;
+
+    public Button backButton;
 
     public virtual void InitState(MenuManager ctx)
     {
@@ -12,7 +15,7 @@ public class BaseMenu : MonoBehaviour
 
     public virtual void EnterState()
     {
-
+        
     }
     public virtual void ExitState() 
     {
