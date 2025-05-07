@@ -144,23 +144,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Logo1
+      name: animated-logo0001_0
       rect:
         serializedVersion: 2
-        x: 50
-        y: 50
-        width: 1000
-        height: 1000
+        x: 90
+        y: 90
+        width: 900
+        height: 900
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c66c30e32862e1720800000000000000
-      internalID: 2818732757608547948
+      spriteID: 175ab63cb2c7f4b4f9da783cd3dd8dca
+      internalID: 802390576
       vertices: []
       indices: 
       edges: []
@@ -179,13 +179,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Logo1: 2818732757608547948
-      animated-logo0001_1: 2925889502235242941
-      animated-logo0001_2: 5915991363550974727
-      animated-logo0001_3: -5360010406366797831
-      animated-logo0001_4: -7132692151526838345
-      animated-logo0001_5: 5445279754544337803
-      animated-logo0001_6: -7649057583110755037
+      animated-logo0001_0: 802390576
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

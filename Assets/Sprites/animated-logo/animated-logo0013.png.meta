@@ -1,28 +1,115 @@
 fileFormatVersion: 2
-guid: 57b43bdb82440be449812ec5b51a1777
+guid: fe9a77f417fecdf4ea5fb05494eecaf1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7643249444113277485
-    second: animated-logo0005_0
+      213: 6643516551933795013
+    second: animated-logo0013_0
   - first:
-      213: -469014226274442155
-    second: animated-logo0005_1
+      213: -4913172422111177934
+    second: animated-logo0013_1
   - first:
-      213: -2673036416115208145
-    second: animated-logo0005_2
+      213: -4569991711471729744
+    second: animated-logo0013_2
   - first:
-      213: -3439427105765535327
-    second: animated-logo0005_3
+      213: 4685721447678523998
+    second: animated-logo0013_3
   - first:
-      213: -6266965903919866984
-    second: animated-logo0005_4
+      213: -9071297435102229378
+    second: animated-logo0013_4
   - first:
-      213: 1221088020181514427
-    second: animated-logo0005_5
+      213: -8934311133596859076
+    second: animated-logo0013_5
   - first:
-      213: 3505122428698437102
-    second: animated-logo0005_6
+      213: -4381530357992380606
+    second: animated-logo0013_6
+  - first:
+      213: 1853101525168004062
+    second: animated-logo0013_7
+  - first:
+      213: 352618804828248285
+    second: animated-logo0013_8
+  - first:
+      213: -1207298724814837790
+    second: animated-logo0013_9
+  - first:
+      213: 90544535668929853
+    second: animated-logo0013_10
+  - first:
+      213: -2158374988657041471
+    second: animated-logo0013_11
+  - first:
+      213: 7336018157461570992
+    second: animated-logo0013_12
+  - first:
+      213: 1121312044213671918
+    second: animated-logo0013_13
+  - first:
+      213: -8704420666673754599
+    second: animated-logo0013_14
+  - first:
+      213: -8192175441072443236
+    second: animated-logo0013_15
+  - first:
+      213: -7778431586664088679
+    second: animated-logo0013_16
+  - first:
+      213: 7294810771226139124
+    second: animated-logo0013_17
+  - first:
+      213: 7059324204323150200
+    second: animated-logo0013_18
+  - first:
+      213: -3620039971745769520
+    second: animated-logo0013_19
+  - first:
+      213: 3935143798172645030
+    second: animated-logo0013_20
+  - first:
+      213: 489309667790831918
+    second: animated-logo0013_21
+  - first:
+      213: 2202440804442499892
+    second: animated-logo0013_22
+  - first:
+      213: -7618716598978950737
+    second: animated-logo0013_23
+  - first:
+      213: 3380310224211850662
+    second: animated-logo0013_24
+  - first:
+      213: -6121672055127063578
+    second: animated-logo0013_25
+  - first:
+      213: -7120711410611932904
+    second: animated-logo0013_26
+  - first:
+      213: 5573989694584669116
+    second: animated-logo0013_27
+  - first:
+      213: 159925596559620160
+    second: animated-logo0013_28
+  - first:
+      213: 4234602808465358654
+    second: animated-logo0013_29
+  - first:
+      213: 5809098747455741673
+    second: animated-logo0013_30
+  - first:
+      213: -8504897252027638102
+    second: animated-logo0013_31
+  - first:
+      213: 4173681264776481465
+    second: animated-logo0013_32
+  - first:
+      213: 5809606954877313867
+    second: animated-logo0013_33
+  - first:
+      213: -9042309531060542363
+    second: animated-logo0013_34
+  - first:
+      213: 7900119516427510240
+    second: animated-logo0013_35
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -144,7 +231,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Logo5
+      name: Logo13
       rect:
         serializedVersion: 2
         x: 90
@@ -157,10 +244,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3dd1de15029bde590800000000000000
-      internalID: -7643249444113277485
+      spriteID: 55564224a1021ba48bd346821bbdee20
+      internalID: -257510342
       vertices: []
       indices: 
       edges: []
@@ -169,7 +256,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 28f2326a0ee2670459ea97854c701312
+    spriteID: 3d71899c123fc4e4bbee2cdb57a90bcd
     internalID: 0
     vertices: []
     indices: 
@@ -179,7 +266,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Logo5: -7643249444113277485
+      Logo13: -257510342
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
