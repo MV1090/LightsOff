@@ -885,7 +885,37 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      title-animation0040_0: 9088328136180678052
+      title-animation0040_1: 3391361654666789244
+      title-animation0040_10: 3657757980795514455
+      title-animation0040_11: 4626823611344185308
+      title-animation0040_12: 6335144429905590908
+      title-animation0040_13: -8913665232589047133
+      title-animation0040_14: -8819519947484364936
+      title-animation0040_15: 2911596496450605524
+      title-animation0040_16: -8108842646690543076
+      title-animation0040_17: -5767651365008519825
+      title-animation0040_18: -5939317090754719414
+      title-animation0040_19: 4633934300049667223
+      title-animation0040_2: 7737828429196432978
+      title-animation0040_20: -2873938736634407633
+      title-animation0040_21: -1011207000465621838
+      title-animation0040_22: -9033985475336669133
+      title-animation0040_23: -4675805826261903478
+      title-animation0040_24: -1538926245231479205
+      title-animation0040_25: -197428160284985078
+      title-animation0040_26: -7209378463705603580
+      title-animation0040_27: 27286946243229405
+      title-animation0040_28: 5639350003169905845
+      title-animation0040_29: -3014050354454297049
+      title-animation0040_3: -2715689392136951130
+      title-animation0040_4: 4092305425481925270
+      title-animation0040_5: 2644745044370512907
+      title-animation0040_6: -3428622676936246138
+      title-animation0040_7: 6152259064124410894
+      title-animation0040_8: 1279717911408860354
+      title-animation0040_9: 5839722715737416232
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

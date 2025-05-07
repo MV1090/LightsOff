@@ -18,7 +18,7 @@ public class EndGameMenu : BaseMenu
     {
         base.InitState(ctx);
         state = MenuManager.MenuStates.EndGameMenu;
-
+        LeaderboardManager.Instance.ScoreToDisplay += DisplayScore;
         mainMenu.onClick.AddListener(() => DisableButtons());
         replay.onClick.AddListener(() => DisableButtons());
     }
@@ -28,8 +28,8 @@ public class EndGameMenu : BaseMenu
         base.EnterState();
         Time.timeScale = 0.0f;
         EnableButtons();
-        DisplayScore();
-        DisplayBestScore();
+        //DisplayScore();
+        //DisplayBestScore();
         GameManager.Instance.ResetGame();
         DisableButtons();
 
@@ -59,6 +59,7 @@ public class EndGameMenu : BaseMenu
     private void DisplayScore()
     {
         score.text = $"Score: {GameManager.Instance.Score.ToString()}";
+        DisplayBestScore();
     }
 
     private void DisplayBestScore()
@@ -68,7 +69,7 @@ public class EndGameMenu : BaseMenu
             bestScore.text = "NEW BEST SCORE!";
             return;
         }
-
+        Debug.Log("Score: " + LeaderboardManager.Instance.playerScore.Score.ToString() + "Game Score: " + GameManager.Instance.Score);
         bestScore.text = $"Best score: {LeaderboardManager.Instance.playerScore.Score.ToString()}";
     }
 

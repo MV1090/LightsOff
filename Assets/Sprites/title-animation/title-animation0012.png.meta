@@ -510,7 +510,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      title-animation0012_0: 1810495970766512331
+      title-animation0012_1: 4072320923071421548
+      title-animation0012_10: 2219791400277894973
+      title-animation0012_11: 4806159910848573026
+      title-animation0012_12: -6007286591989608522
+      title-animation0012_13: -2859269141378203571
+      title-animation0012_14: -5353602660392305065
+      title-animation0012_2: 3893370507040938446
+      title-animation0012_3: -5752315189613924534
+      title-animation0012_4: -1804501967976806301
+      title-animation0012_5: -327089108281833489
+      title-animation0012_6: -7118790446146807781
+      title-animation0012_7: -2684130684380553522
+      title-animation0012_8: 7956594679327453270
+      title-animation0012_9: -7807135874272349700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
