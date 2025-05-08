@@ -14,7 +14,9 @@ public class LeaderboardMenu : BaseMenu
     [SerializeField] Button threeXThree;
     [SerializeField] Button fourXFour;
     [SerializeField] Button fiveXFive;
-        
+
+    [SerializeField] Toggle distraction;
+
     [Header("TopRank")]
     [SerializeField] List <TMP_Text> topRank = new List<TMP_Text>();  
 
@@ -56,6 +58,8 @@ public class LeaderboardMenu : BaseMenu
         state = MenuManager.MenuStates.LeaderboardMenu;
 
         LeaderboardManager.Instance.ScoreToDisplay += UpdateText;
+        LeaderboardManager.Instance.noEntryAround += EmptyScoreAround;
+        LeaderboardManager.Instance.noEntryTop += EmptyScoreTop;
 
         endless.onClick.AddListener(() => SetMode(Modes.Endless));
         endless.onClick.AddListener(() => AdjustListener(endless, beatTheClock, delay));
@@ -73,7 +77,9 @@ public class LeaderboardMenu : BaseMenu
         fourXFour.onClick.AddListener(() => AdjustListener(fourXFour, threeXThree, fiveXFive));
         
         fiveXFive.onClick.AddListener(() => SetType(Types.FiveXFive));
-        fiveXFive.onClick.AddListener(() => AdjustListener(fiveXFive, fourXFour, threeXThree));                    
+        fiveXFive.onClick.AddListener(() => AdjustListener(fiveXFive, fourXFour, threeXThree));
+
+        distraction.onValueChanged.AddListener((bool value) => DisplayLeaderboard());
     }      
 
     public override void EnterState()
@@ -96,7 +102,8 @@ public class LeaderboardMenu : BaseMenu
 
         if (!string.IsNullOrEmpty(leaderboardId))
         {
-           _= LeaderboardManager.Instance.SubmitAndFetchLeaderboardData(leaderboardId);
+           _= LeaderboardManager.Instance.FetchTopLeaderboardData(leaderboardId);
+           _= LeaderboardManager.Instance.FetchAroundLeaderboardData(leaderboardId);
         }
         else
         {
@@ -106,24 +113,69 @@ public class LeaderboardMenu : BaseMenu
 
     private string GetLeaderboardId(Modes mode, Types type)
     {
-        return (mode, type) switch
+        if(distraction.isOn)
         {
-            (Modes.Endless, Types.ThreeXThree) => "E_3X3",
-            (Modes.Endless, Types.FourXFour) => "E_4X4",
-            (Modes.Endless, Types.FiveXFive) => "E_5X5",
-            (Modes.BeatTheClock, Types.ThreeXThree) => "B_T_C_3X3",
-            (Modes.BeatTheClock, Types.FourXFour) => "B_T_C_4X4",
-            (Modes.BeatTheClock, Types.FiveXFive) => "B_T_C_5X5",
-            (Modes.Delay, Types.ThreeXThree) => "D_3X3",
-            (Modes.Delay, Types.FourXFour) => "D_4X4",
-            (Modes.Delay, Types.FiveXFive) => "D_5X5",
-            _ => null
-        };
+            return (mode, type) switch
+            { 
+             (Modes.Delay, Types.ThreeXThree) => "D_D_3X3",
+             (Modes.Delay, Types.FourXFour) => "D_D_4X4",
+             (Modes.Delay, Types.FiveXFive) => "D_D_5X5",
+             (Modes.BeatTheClock, Types.ThreeXThree) => "C_D_3X3",
+             (Modes.BeatTheClock, Types.FourXFour) => "C_D_4X4",
+             (Modes.BeatTheClock, Types.FiveXFive) => "C_D_5X5",
+             (Modes.Endless, Types.ThreeXThree) => "E_D_3X3",
+             (Modes.Endless, Types.FourXFour) => "E_D_4X4",
+             (Modes.Endless, Types.FiveXFive) => "E_D_5X5",
+                _ => null
+            };
+        }
+        else
+        {
+            return (mode, type) switch
+            {
+                (Modes.Endless, Types.ThreeXThree) => "E_3X3",
+                (Modes.Endless, Types.FourXFour) => "E_4X4",
+                (Modes.Endless, Types.FiveXFive) => "E_5X5",
+                (Modes.BeatTheClock, Types.ThreeXThree) => "B_T_C_3X3",
+                (Modes.BeatTheClock, Types.FourXFour) => "B_T_C_4X4",
+                (Modes.BeatTheClock, Types.FiveXFive) => "B_T_C_5X5",
+                (Modes.Delay, Types.ThreeXThree) => "D_3X3",
+                (Modes.Delay, Types.FourXFour) => "D_4X4",
+                (Modes.Delay, Types.FiveXFive) => "D_5X5",
+                _ => null
+            };
+        }       
     }
     private void UpdateText()
     {
         TopScores();
         PlayerScores();
+    }
+
+    void EmptyScoreAround() 
+    {
+        for (int i = 0; i < topRank.Count; i++)
+        {
+            playerRank[i].text = " ";
+            playerName[i].text = " ";
+            playerScore[i].text = " ";
+
+            if (i == 0)
+                playerName[i].text = "No score to display";
+        }
+    }
+
+    void EmptyScoreTop()
+    {
+        for (int i = 0; i < topRank.Count; i++)
+        {
+            topRank[i].text = " ";
+            topName[i].text = " ";
+            topScore[i].text = " ";
+
+            if (i == 0)
+                topName[i].text = "No score to display";
+        }
     }
 
     private void TopScores()
