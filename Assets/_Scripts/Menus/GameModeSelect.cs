@@ -26,6 +26,7 @@ public class GameModeSelect : BaseMenu
         beatTheClock.onClick.AddListener(() => DisableButtons());
 
         distraction.onValueChanged.AddListener(LightManager.Instance.ToggleDistraction);
+        distraction.onValueChanged.AddListener(LeaderboardManager.Instance.SetDistractionActive);
     }
 
     public override void EnterState()
@@ -35,7 +36,8 @@ public class GameModeSelect : BaseMenu
         backButton.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
        
-        LightManager.Instance.ToggleDistraction(distraction.isOn);                
+        LightManager.Instance.ToggleDistraction(distraction.isOn);
+        LeaderboardManager.Instance.SetDistractionActive(distraction.isOn);
     }
 
     public override void ExitState()

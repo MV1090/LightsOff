@@ -69,7 +69,7 @@ public class EndGameMenu : BaseMenu
             bestScore.text = "NEW BEST SCORE!";
             return;
         }
-        Debug.Log("Score: " + LeaderboardManager.Instance.playerScore.Score.ToString() + "Game Score: " + GameManager.Instance.Score);
+        //Debug.Log("Score: " + LeaderboardManager.Instance.playerScore.Score.ToString() + "Game Score: " + GameManager.Instance.Score);
         bestScore.text = $"Best score: {LeaderboardManager.Instance.playerScore.Score.ToString()}";
     }
 
