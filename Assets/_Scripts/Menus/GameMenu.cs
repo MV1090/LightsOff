@@ -33,6 +33,7 @@ public class GameMenu : BaseMenu
             light.OnGameStart += () => backButton.gameObject.SetActive(false); 
         }
 
+        GameManager.Instance.OnGameOver += () => UpdateTimerBar(-1.0f);
     }
 
     public override void EnterState()

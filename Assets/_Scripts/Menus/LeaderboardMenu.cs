@@ -125,8 +125,10 @@ public class LeaderboardMenu : BaseMenu
                 topScore[i].text = " ";
 
                 if (i == 0)
+                {
                     playerName[i].text = "No internet connection";
                     topName[i].text = "No internet connection";
+                }
             }
             Debug.Log("No internet connection.");
             

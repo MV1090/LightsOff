@@ -34,8 +34,7 @@ public class GameModeSelect : BaseMenu
         base.EnterState();
         EnableButtons();
         backButton.gameObject.SetActive(true);
-        Time.timeScale = 0.0f;
-       
+        Time.timeScale = 0.0f;       
         LightManager.Instance.ToggleDistraction(distraction.isOn);
         LeaderboardManager.Instance.SetDistractionActive(distraction.isOn);
     }

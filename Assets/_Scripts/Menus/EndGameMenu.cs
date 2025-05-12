@@ -26,6 +26,7 @@ public class EndGameMenu : BaseMenu
     public override void EnterState()
     {        
         base.EnterState();
+        
         Time.timeScale = 0.0f;
         EnableButtons();       
         GameManager.Instance.ResetGame();
@@ -34,6 +35,7 @@ public class EndGameMenu : BaseMenu
         previousMenu = true;
 
         backButton.gameObject.SetActive(false);
+        
     }
 
     public override void ExitState()

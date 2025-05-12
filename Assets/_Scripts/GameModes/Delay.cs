@@ -82,7 +82,7 @@ public class Delay : BaseGameMode
     /// </summary>
     private void ResetMode()
     {
-        //currentTime = -1;
+        currentTime = -1;
         StopAllCoroutines();
         lightOnTime = startLength;        
     }
