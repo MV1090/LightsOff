@@ -122,6 +122,7 @@ public class EndLess : BaseGameMode
         }
 
         //If coroutine ends set GameOver. 
+        currentTime = 0;
         GameManager.Instance.InvokeGameOver();       
     }
 

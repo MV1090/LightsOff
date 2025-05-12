@@ -82,9 +82,9 @@ public class Delay : BaseGameMode
     /// </summary>
     private void ResetMode()
     {
-        StopAllCoroutines();
-        lightOnTime = startLength;
         currentTime = 0;
+        StopAllCoroutines();
+        lightOnTime = startLength;        
     }
 
     /// <summary>
@@ -126,8 +126,9 @@ public class Delay : BaseGameMode
 
             elapsedTime += Time.deltaTime;  // Increment elapsed time
             yield return null;  // Wait until the next frame
-        }        
+        }
         //If coroutine ends set GameOver. 
+        currentTime = 0;
         GameManager.Instance.InvokeGameOver();
     }
 
