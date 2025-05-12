@@ -108,8 +108,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
     }
 
     void UpdateLeaderboard()
-    {
-        
+    {        
         string leaderboardId = GetLeaderboardId();
 
         if (!string.IsNullOrEmpty(leaderboardId))

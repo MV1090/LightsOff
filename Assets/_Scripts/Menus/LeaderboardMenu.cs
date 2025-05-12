@@ -98,16 +98,38 @@ public class LeaderboardMenu : BaseMenu
 
     private void DisplayLeaderboard()
     {
-        string leaderboardId = GetLeaderboardId(currentMode, currentType);
-
-        if (!string.IsNullOrEmpty(leaderboardId))
+        if (IsConnectedToInternet())
         {
-           _= LeaderboardManager.Instance.FetchTopLeaderboardData(leaderboardId);
-           _= LeaderboardManager.Instance.FetchAroundLeaderboardData(leaderboardId);
+            string leaderboardId = GetLeaderboardId(currentMode, currentType);
+
+            if (!string.IsNullOrEmpty(leaderboardId))
+            {
+               _= LeaderboardManager.Instance.FetchTopLeaderboardData(leaderboardId);
+               _= LeaderboardManager.Instance.FetchAroundLeaderboardData(leaderboardId);
+            }
+            else
+            {
+                Debug.LogWarning("Invalid leaderboard ID for selected mode/type");
+            }        
         }
+
         else
         {
-            Debug.LogWarning("Invalid leaderboard ID for selected mode/type");
+            for (int i = 0; i < topRank.Count; i++)
+            {
+                playerRank[i].text = " ";
+                playerName[i].text = " ";
+                playerScore[i].text = " ";
+                topRank[i].text = " ";
+                topName[i].text = " ";
+                topScore[i].text = " ";
+
+                if (i == 0)
+                    playerName[i].text = "No internet connection";
+                    topName[i].text = "No internet connection";
+            }
+            Debug.Log("No internet connection.");
+            
         }
     }
 
@@ -297,6 +319,10 @@ public class LeaderboardMenu : BaseMenu
     {
         currentType = type;
         DisplayLeaderboard();
+    }
+    public bool IsConnectedToInternet()
+    {
+        return Application.internetReachability != NetworkReachability.NotReachable;
     }
 
     void AdjustListener(Button a, Button b, Button c)

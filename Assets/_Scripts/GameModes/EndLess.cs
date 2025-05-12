@@ -75,7 +75,7 @@ public class EndLess : BaseGameMode
     {
         StopAllCoroutines();
         lightOnTime = startLength;
-        currentTime = 0;
+        //currentTime = -1;
         Debug.Log("Game mode reset");
     }
 
@@ -122,7 +122,7 @@ public class EndLess : BaseGameMode
         }
 
         //If coroutine ends set GameOver. 
-        currentTime = 0;
+        currentTime = -1;
         GameManager.Instance.InvokeGameOver();       
     }
 

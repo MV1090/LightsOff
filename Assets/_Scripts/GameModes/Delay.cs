@@ -82,7 +82,7 @@ public class Delay : BaseGameMode
     /// </summary>
     private void ResetMode()
     {
-        currentTime = 0;
+        //currentTime = -1;
         StopAllCoroutines();
         lightOnTime = startLength;        
     }
@@ -128,7 +128,7 @@ public class Delay : BaseGameMode
             yield return null;  // Wait until the next frame
         }
         //If coroutine ends set GameOver. 
-        currentTime = 0;
+        currentTime = - 1;
         GameManager.Instance.InvokeGameOver();
     }
 

@@ -27,9 +27,7 @@ public class EndGameMenu : BaseMenu
     {        
         base.EnterState();
         Time.timeScale = 0.0f;
-        EnableButtons();
-        //DisplayScore();
-        //DisplayBestScore();
+        EnableButtons();       
         GameManager.Instance.ResetGame();
         DisableButtons();
 
