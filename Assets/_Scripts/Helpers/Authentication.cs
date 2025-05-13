@@ -26,6 +26,8 @@ public class Authentication : MonoBehaviour
         {
             Debug.LogException(ex);
         }
+
+        ScoreCacheManager.Instance.SyncScoresAfterLogin();
     }
 
     async Task SignUpAnonymouslyAsync()

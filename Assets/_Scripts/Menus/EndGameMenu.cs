@@ -10,7 +10,7 @@ public class EndGameMenu : BaseMenu
 
     [Header ("Buttons")]
     [SerializeField] Button mainMenu;
-    [SerializeField] Button replay;
+    [SerializeField] Button replay;    
 
     public bool previousMenu;
 
@@ -18,7 +18,7 @@ public class EndGameMenu : BaseMenu
     {
         base.InitState(ctx);
         state = MenuManager.MenuStates.EndGameMenu;
-        LeaderboardManager.Instance.scoreEntered += DisplayScore;
+        //LeaderboardManager.Instance.scoreEntered += DisplayScore;
         mainMenu.onClick.AddListener(() => DisableButtons());
         replay.onClick.AddListener(() => DisableButtons());
     }
@@ -26,9 +26,10 @@ public class EndGameMenu : BaseMenu
     public override void EnterState()
     {        
         base.EnterState();
-        
+
+        DisplayScore();
         Time.timeScale = 0.0f;
-        EnableButtons();       
+        EnableButtons();        
         GameManager.Instance.ResetGame();
         DisableButtons();
 
@@ -64,14 +65,27 @@ public class EndGameMenu : BaseMenu
 
     private void DisplayBestScore()
     {
-        if (LeaderboardManager.Instance.playerScore == null || GameManager.Instance.Score > LeaderboardManager.Instance.playerScore.Score)
+        var mode = GameModeManager.Instance.GetPrevMode();
+        var type = GameTypeManager.Instance.GetGameType();
+        Debug.Log($"Mode: {mode} + Type: {type}");
+        string leaderboardId = GetLeaderboardId();
+        Debug.Log($"Leaderboard: " + leaderboardId);
+
+        if (ScoreCacheManager.Instance.scoreCache.TryGetValue(leaderboardId, out int highScore))
         {
-            bestScore.text = "NEW BEST SCORE!";
-            return;
+            if (GameManager.Instance.Score > highScore)
+                bestScore.text = "NEW HIGH SCORE!";
+            else
+                bestScore.text = $"High score: {highScore}";
         }
-        //Debug.Log("Score: " + LeaderboardManager.Instance.playerScore.Score.ToString() + "Game Score: " + GameManager.Instance.Score);
-        bestScore.text = $"High score: {LeaderboardManager.Instance.playerScore.Score.ToString()}";
-    }
+        else
+        {
+            Debug.LogWarning("Leaderboard ID not found in scoreCache!");
+            bestScore.text = "No high score yet.";
+        }
+
+        ScoreCacheManager.Instance.UpDateScoreCache(leaderboardId);
+    }    
 
     void DisableButtons()
     {
@@ -85,6 +99,43 @@ public class EndGameMenu : BaseMenu
 
         //previousMenu = false;
     }
+    private string GetLeaderboardId()
+    {
+        var mode = GameModeManager.Instance.GetPrevMode();
+        var type = GameTypeManager.Instance.GetGameType();
 
+        if (LeaderboardManager.Instance.distractionActive)
+        {
+            return (mode, type) switch
+            {
+                (GameModeManager.GameModes.Delay, GameTypeManager.GameType.ThreeXThree) => "D_D_3X3",
+                (GameModeManager.GameModes.Delay, GameTypeManager.GameType.FourXFour) => "D_D_4X4",
+                (GameModeManager.GameModes.Delay, GameTypeManager.GameType.FiveXFive) => "D_D_5X5",
+                (GameModeManager.GameModes.BeatTheClock, GameTypeManager.GameType.ThreeXThree) => "C_D_3X3",
+                (GameModeManager.GameModes.BeatTheClock, GameTypeManager.GameType.FourXFour) => "C_D_4X4",
+                (GameModeManager.GameModes.BeatTheClock, GameTypeManager.GameType.FiveXFive) => "C_D_5X5",
+                (GameModeManager.GameModes.Endless, GameTypeManager.GameType.ThreeXThree) => "E_D_3X3",
+                (GameModeManager.GameModes.Endless, GameTypeManager.GameType.FourXFour) => "E_D_4X4",
+                (GameModeManager.GameModes.Endless, GameTypeManager.GameType.FiveXFive) => "E_D_5X5",
+                _ => null
+            };
+        }
+        else
+        {
+            return (mode, type) switch
+            {
+                (GameModeManager.GameModes.Delay, GameTypeManager.GameType.ThreeXThree) => "D_3X3",
+                (GameModeManager.GameModes.Delay, GameTypeManager.GameType.FourXFour) => "D_4X4",
+                (GameModeManager.GameModes.Delay, GameTypeManager.GameType.FiveXFive) => "D_5X5",
+                (GameModeManager.GameModes.BeatTheClock, GameTypeManager.GameType.ThreeXThree) => "B_T_C_3X3",
+                (GameModeManager.GameModes.BeatTheClock, GameTypeManager.GameType.FourXFour) => "B_T_C_4X4",
+                (GameModeManager.GameModes.BeatTheClock, GameTypeManager.GameType.FiveXFive) => "B_T_C_5X5",
+                (GameModeManager.GameModes.Endless, GameTypeManager.GameType.ThreeXThree) => "E_3X3",
+                (GameModeManager.GameModes.Endless, GameTypeManager.GameType.FourXFour) => "E_4X4",
+                (GameModeManager.GameModes.Endless, GameTypeManager.GameType.FiveXFive) => "E_5X5",
+                _ => null
+            };
+        }
+    }
 
 }
