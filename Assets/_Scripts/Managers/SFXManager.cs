@@ -8,8 +8,8 @@ public class SFXManager : Singleton<SFXManager>
     [SerializeField] AudioClip clickSound;
     [SerializeField] AudioClip shutterSound; 
     [SerializeField] AudioClip backSound;
-    [SerializeField] AudioClip light1;
-    [SerializeField] AudioClip light2;
+    [SerializeField] AudioClip[] light1;
+    //[SerializeField] AudioClip light2;
     [SerializeField] AudioClip gameOver;
 
     void Start()
@@ -39,12 +39,14 @@ public class SFXManager : Singleton<SFXManager>
 
     public void PlayClickedSound()
     {
-        int randNum = Random.Range(0, 10);
+        int randNum = Random.Range(0, light1.Length);
 
-        if (randNum % 2 == 0)
-            audioSource.PlayOneShot(light1);
-        else
-            audioSource.PlayOneShot(light2);
+        audioSource.PlayOneShot(light1[randNum]);
+
+        //if (randNum % 2 == 0)
+        //    audioSource.PlayOneShot(light1);
+        //else
+        //    audioSource.PlayOneShot(light2);
     }
 
     public void PlayShutterSound()
