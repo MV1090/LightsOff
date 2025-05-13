@@ -18,7 +18,7 @@ public class EndGameMenu : BaseMenu
     {
         base.InitState(ctx);
         state = MenuManager.MenuStates.EndGameMenu;
-        LeaderboardManager.Instance.ScoreToDisplay += DisplayScore;
+        LeaderboardManager.Instance.scoreEntered += DisplayScore;
         mainMenu.onClick.AddListener(() => DisableButtons());
         replay.onClick.AddListener(() => DisableButtons());
     }
@@ -70,7 +70,7 @@ public class EndGameMenu : BaseMenu
             return;
         }
         //Debug.Log("Score: " + LeaderboardManager.Instance.playerScore.Score.ToString() + "Game Score: " + GameManager.Instance.Score);
-        bestScore.text = $"Best score: {LeaderboardManager.Instance.playerScore.Score.ToString()}";
+        bestScore.text = $"High score: {LeaderboardManager.Instance.playerScore.Score.ToString()}";
     }
 
     void DisableButtons()

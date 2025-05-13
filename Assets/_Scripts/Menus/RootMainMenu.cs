@@ -25,7 +25,7 @@ public class RootMainMenu : BaseMenu
     }
     void HandlePlayerNameReady(string playerName)
     {
-        Debug.Log("Got player name: " + playerName);
+        //Debug.Log("Got player name: " + playerName);
         playerID.text = "Player:\n " + playerName;
     }
     public override void EnterState()

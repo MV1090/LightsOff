@@ -48,7 +48,7 @@ public class Shutter : MonoBehaviour
     public void loadNextMenu()
     {
         MenuManager.Instance.SetActiveMenu(MenuManager.Instance.menuToActivate);
-        Debug.Log("Menu Loaded");
+        //Debug.Log("Menu Loaded");
     }
 
     public void ShowAD()

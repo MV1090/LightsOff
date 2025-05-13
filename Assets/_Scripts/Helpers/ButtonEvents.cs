@@ -27,11 +27,11 @@ public class ButtonEvents : MonoBehaviour
                 originalFontSize = buttonText.fontSize;
                 buttonText.enableAutoSizing = false;
                 buttonText.fontSize = originalFontSize / 1.5f; // or /10f as you had it
-                Debug.Log("Resized font on button: " + buttonPressed.name);
+                //Debug.Log("Resized font on button: " + buttonPressed.name);
             }
             else
             {
-                Debug.LogWarning("No TMP_Text found on or under: " + buttonPressed.name);
+                //Debug.LogWarning("No TMP_Text found on or under: " + buttonPressed.name);
             }
         }
     }

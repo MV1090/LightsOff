@@ -21,7 +21,7 @@ public class InputManager: Singleton<InputManager>
         playerInput = GetComponent<PlayerInput>();
         touchPosition = playerInput.actions.FindAction("TouchPosition");
         touchPress = playerInput.actions.FindAction("TouchPress");
-        Debug.Log("InputManager Loaded");
+        //Debug.Log("InputManager Loaded");
     }
 
     private void OnEnable()
@@ -57,7 +57,7 @@ public class InputManager: Singleton<InputManager>
 
         List<RaycastResult> results = new List<RaycastResult>();
         raycaster.Raycast(pointerData, results);
-        Debug.Log(results.Count);
+        //Debug.Log(results.Count);
 
         bool hitTarget = false;
 

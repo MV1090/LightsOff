@@ -59,8 +59,7 @@ public class Delay : BaseGameMode
             StopCoroutine(lifeSpanCoroutine);
         }
 
-        lifeSpanCoroutine = StartCoroutine(LightLifeSpan(1, 0, lightOnTime));
-        Debug.Log(lightOnTime + " " + currentTime);
+        lifeSpanCoroutine = StartCoroutine(LightLifeSpan(1, 0, lightOnTime));        
     }
 
     /// <summary>

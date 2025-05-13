@@ -58,8 +58,7 @@ public class EndLess : BaseGameMode
             StopCoroutine(currentCoroutine);
         }
         
-        currentCoroutine = StartCoroutine(LightLifeSpan(1, 0, lightOnTime));
-        Debug.Log(lightOnTime + " " + currentTime);
+        currentCoroutine = StartCoroutine(LightLifeSpan(1, 0, lightOnTime));        
     }
 
     /// <summary>
@@ -77,8 +76,7 @@ public class EndLess : BaseGameMode
     {
         StopAllCoroutines();
         lightOnTime = startLength;
-        currentTime = -1;
-        Debug.Log("Game mode reset");
+        currentTime = -1;        
     }
 
     /// <summary>

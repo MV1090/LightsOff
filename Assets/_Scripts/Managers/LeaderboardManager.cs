@@ -16,6 +16,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
     public event Action ScoreToDisplay;
     public event Action noEntryAround;
     public event Action noEntryTop;
+    public event Action scoreEntered;
 
     void Start()
     {
@@ -54,7 +55,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
     {
         try
         {
-            scoresAroundPlayer = null;
+           scoresAroundPlayer = null;
 
            scoresAroundPlayer = await LeaderboardsService.Instance.GetPlayerRangeAsync(
                leaderboardId,
@@ -107,13 +108,21 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
         }
     }
 
+    public async Task CompareScore(string leaderboardId)
+    {
+        //if(playerScore!= null)     
+        playerScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(leaderboardId);
+        scoreEntered.Invoke();
+    }
+
     void UpdateLeaderboard()
     {        
         string leaderboardId = GetLeaderboardId();
 
         if (!string.IsNullOrEmpty(leaderboardId))
         {
-            // Fire and forget — no need to await here            
+            _ = CompareScore(leaderboardId);
+            
             _ = SubmitLeaderboardData(leaderboardId);
         }
         else

@@ -42,7 +42,7 @@ public class LightManager : Singleton<LightManager>
     void Start()
     {
         OnEnable();                     
-        Debug.Log(allLightObjects.Count);
+        //Debug.Log(allLightObjects.Count);
         GameManager.Instance.OnGameOver += gameOver;        
     }   
 
@@ -71,7 +71,7 @@ public class LightManager : Singleton<LightManager>
             playableLightObjects[i].gameObject.SetActive(true);
             playableLightObjects[i].SetLightActive(false);
 
-            Debug.Log(playableLightObjects[i] + " " + allLightObjects[i]);
+            //Debug.Log(playableLightObjects[i] + " " + allLightObjects[i]);
         }
 
         ActivateNewLight();
@@ -153,14 +153,11 @@ public class LightManager : Singleton<LightManager>
             {
                 randomNum = UnityEngine.Random.Range(0, playableLightObjects.Count);
             }
-
-
-            Debug.Log(randomNum);
+            
             playableLightObjects[randomNum].SetLightFalse(true);            
             falseLightsIndex.Add(randomNum);
             falseLightObjects.Add(playableLightObjects[randomNum]);
-        }
-        Debug.Log("Distraction Mode on");
+        }        
     }
 
     public void ToggleDistraction(bool isOn)
@@ -174,9 +171,7 @@ public class LightManager : Singleton<LightManager>
                 obj.OnLightTouched += ActivateFalseLights;
                 obj.OnGameStart += StartFalseTimer;
             }
-        }
-
-        Debug.Log("Distraction Mode " + (isOn ? "On" : "Off"));
+        }        
     }
     /// <summary>
     /// Turn off current Light
@@ -214,9 +209,7 @@ public class LightManager : Singleton<LightManager>
     }
 
     private IEnumerator FlashLight(Color lightColour)
-    {
-        //playableLightObjects[currentLight].SetLightActive(true);
-
+    {       
         foreach (LightObject obj in playableLightObjects)
         {
             obj.Image.color = obj.warningColour;
@@ -265,8 +258,7 @@ public class LightManager : Singleton<LightManager>
     {
         maxFalseLights = (GameTypeManager.Instance.gridSize/ 3 * 2);
         incrementTime = 8 - (int)Math.Sqrt(GameTypeManager.Instance.gridSize);
-
-        Debug.Log("increment time: " + incrementTime);
+                
         while (falseLightTracker < maxFalseLights)
         {
             yield return new WaitForSeconds(incrementTime);

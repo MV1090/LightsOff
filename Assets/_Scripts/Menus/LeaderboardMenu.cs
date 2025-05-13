@@ -109,7 +109,7 @@ public class LeaderboardMenu : BaseMenu
             }
             else
             {
-                Debug.LogWarning("Invalid leaderboard ID for selected mode/type");
+                //Debug.LogWarning("Invalid leaderboard ID for selected mode/type");
             }        
         }
 
@@ -130,7 +130,7 @@ public class LeaderboardMenu : BaseMenu
                     topName[i].text = "No internet connection";
                 }
             }
-            Debug.Log("No internet connection.");
+            //Debug.Log("No internet connection.");
             
         }
     }
