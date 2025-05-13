@@ -29,21 +29,23 @@ public class EndLess : BaseGameMode
         {
             lightObject.OnGameStart += TurnOffLight;
             lightObject.OnLightTouched += StartLifeSpanTimer;            
-        }        
+        }
+        GameManager.Instance.OnGameOver += ResetMode;
     }
 
     // runs when game mode has ended
     public override void ExitState()
     {
         base.ExitState();
-        ResetMode();
+        //ResetMode();
 
         //removes all listeners from light objects
         foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
         {
             lightObject.OnGameStart -= TurnOffLight;
             lightObject.OnLightTouched -= StartLifeSpanTimer;            
-        }        
+        }
+        GameManager.Instance.OnGameOver -= ResetMode;
     }
 
     /// <summary>
@@ -75,7 +77,7 @@ public class EndLess : BaseGameMode
     {
         StopAllCoroutines();
         lightOnTime = startLength;
-        //currentTime = -1;
+        currentTime = -1;
         Debug.Log("Game mode reset");
     }
 

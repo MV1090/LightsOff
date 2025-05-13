@@ -1304,11 +1304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4681579225919811630, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4681579225919811630, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 111.16248
       objectReference: {fileID: 0}
     - target: {fileID: 4681579225919811630, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1536,7 +1536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7463641587720528105, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7463641587720528105, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1544,7 +1544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7463641587720528105, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 111.16248
       objectReference: {fileID: 0}
     - target: {fileID: 7463641587720528105, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -11608,8 +11608,10 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 198db62a30bac3d47b17d0d3d12db905, type: 3}
   shutterSound: {fileID: 8300000, guid: 9b94269fe53c96f4a8f9a01b61679bd1, type: 3}
   backSound: {fileID: 8300000, guid: f49d6f4814124ab4d9d5853c7b62df11, type: 3}
-  light1: {fileID: 8300000, guid: 034816833c12a9e499d16ebd7262323e, type: 3}
-  light2: {fileID: 8300000, guid: 023fbf5038fa4244fb584a35524a8db9, type: 3}
+  light1:
+  - {fileID: 8300000, guid: a7054fa75916026428535d15de3f7bad, type: 3}
+  - {fileID: 8300000, guid: c89b8414cfb956a4296b3907572b11c9, type: 3}
+  - {fileID: 8300000, guid: 38b8e8116aff03f47a328008ddce45a5, type: 3}
   gameOver: {fileID: 8300000, guid: a747381ea75f3ac418dedf435aa1f48d, type: 3}
 --- !u!1 &1114538199
 GameObject:
