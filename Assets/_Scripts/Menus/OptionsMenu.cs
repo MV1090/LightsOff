@@ -79,7 +79,7 @@ public class OptionsMenu : BaseMenu
             audioMixer.SetFloat("musicVolume", -80.0f);
         else
             audioMixer.SetFloat("musicVolume", 0.0f);
-        Debug.Log("Music Toggle On/Off");
+        //Debug.Log("Music Toggle On/Off");
     }
 
     void SoundFxToggle(bool isOn)
@@ -89,12 +89,12 @@ public class OptionsMenu : BaseMenu
         else
             audioMixer.SetFloat("SFXVolume", 0.0f);
 
-        Debug.Log("Sound FX Toggle On/Off");
+        //Debug.Log("Sound FX Toggle On/Off");
     }
 
     public void SelectLightColours()
     {
-        Debug.Log("Choose light colours here");
+        //Debug.Log("Choose light colours here");
     }
 
 }

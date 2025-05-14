@@ -1304,11 +1304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4681579225919811630, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4681579225919811630, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 111.16248
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4681579225919811630, guid: deb6f4c2eae3d7949a670c7f31e296b0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3357,6 +3357,7 @@ MonoBehaviour:
   threeXGrid: {fileID: 1407350860}
   fourXGrid: {fileID: 502979330}
   fiveXGrid: {fileID: 171556126}
+  currentGameType: 0
 --- !u!4 &252191069
 Transform:
   m_ObjectHideFlags: 0
@@ -18271,6 +18272,7 @@ GameObject:
   - component: {fileID: 1969797047}
   - component: {fileID: 1969797049}
   - component: {fileID: 1969797050}
+  - component: {fileID: 1969797051}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -18334,6 +18336,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f27b8718ccab51a42abd00a7ff1d0ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1969797051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969797046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf453c3b5c36374d90ebf5683c3bb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2006102885

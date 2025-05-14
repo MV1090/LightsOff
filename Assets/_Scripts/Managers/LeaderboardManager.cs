@@ -11,11 +11,12 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
     public LeaderboardScores scoresAroundPlayer;
     public LeaderboardEntry playerScore;
 
-    [SerializeField] private bool distractionActive;
+    [SerializeField] public bool distractionActive;
 
     public event Action ScoreToDisplay;
     public event Action noEntryAround;
     public event Action noEntryTop;
+    public event Action scoreEntered;
 
     void Start()
     {
@@ -26,15 +27,15 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
     {
         distractionActive = isActive;
     }
-
-    public async Task SubmitLeaderboardData(string leaderboardId)
+     
+    public async Task SubmitLeaderboardData(string leaderboardId, int score)
     {
         try
         {
             // Submit the score
             var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(
                 leaderboardId,
-                GameManager.Instance.Score
+                score
             );
             Debug.Log($"Score submitted: {JsonConvert.SerializeObject(scoreResponse)}");
 
@@ -54,7 +55,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
     {
         try
         {
-            scoresAroundPlayer = null;
+           scoresAroundPlayer = null;
 
            scoresAroundPlayer = await LeaderboardsService.Instance.GetPlayerRangeAsync(
                leaderboardId,
@@ -107,14 +108,26 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
         }
     }
 
+    public async Task CompareScore(string leaderboardId)
+    {
+        //if(playerScore!= null)     
+        playerScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(leaderboardId);
+        scoreEntered.Invoke();
+    }
+
+    public void OnlineLeaderboardUpdate(string leaderboardId, int score)
+    {
+        _ = SubmitLeaderboardData(leaderboardId, score);
+    }
+
     void UpdateLeaderboard()
     {        
         string leaderboardId = GetLeaderboardId();
 
         if (!string.IsNullOrEmpty(leaderboardId))
         {
-            // Fire and forget — no need to await here            
-            _ = SubmitLeaderboardData(leaderboardId);
+            _ = CompareScore(leaderboardId);            
+            _ = SubmitLeaderboardData(leaderboardId, GameManager.Instance.Score);            
         }
         else
         {
@@ -122,7 +135,7 @@ public class LeaderboardManager : Singleton<LeaderboardManager>
         }
     }
 
-    string GetLeaderboardId()
+    public string GetLeaderboardId()
     {
         var mode = GameModeManager.Instance.GetCurrentGameMode();
         var type = GameTypeManager.Instance.GetGameType();

@@ -82,8 +82,7 @@ public class LightObject : MonoBehaviour
         {
             if (GameManager.Instance.GetStartGame() == false)
             {
-                GameStarted(true);
-                Debug.Log("Object Active");
+                GameStarted(true);                
             }               
            Image.sprite = onLight;
            ImageColour(activeColour);

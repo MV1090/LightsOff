@@ -13,6 +13,8 @@ public class Authentication : MonoBehaviour
 
     private const string CachedNameKey = "CachedPlayerName";
 
+    private bool wasOffline;
+
     async void Awake()
     {
         Instance = this;
@@ -26,6 +28,8 @@ public class Authentication : MonoBehaviour
         {
             Debug.LogException(ex);
         }
+
+        
     }
 
     async Task SignUpAnonymouslyAsync()
@@ -58,10 +62,25 @@ public class Authentication : MonoBehaviour
             }
 
             OnPlayerNameReady?.Invoke(PlayerDisplayName);
+
+            ScoreCacheManager.Instance.SyncScoresAfterLogin();
         }
         catch (Exception ex)
         {
             Debug.LogException(ex);
         }
     }
+
+    private void Update()
+    {
+        bool isConnected = Application.internetReachability != NetworkReachability.NotReachable;
+
+        if (isConnected && wasOffline)
+        {            
+            _= SignUpAnonymouslyAsync();            
+        }
+
+        wasOffline = !isConnected;
+    }
+    
 }

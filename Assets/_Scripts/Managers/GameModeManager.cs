@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class GameModeManager: Singleton<GameModeManager>
-{     
+public class GameModeManager : Singleton<GameModeManager>
+{
     public BaseGameMode[] gameModesRef;
     public enum GameModes
     {
@@ -11,13 +11,14 @@ public class GameModeManager: Singleton<GameModeManager>
     }
 
     public Dictionary<GameModes, BaseGameMode> modeDictionary = new Dictionary<GameModes, BaseGameMode>();
-    [SerializeField]private BaseGameMode currentBaseMode;
-    [SerializeField]private GameModes currentGameMode;
-    private BaseGameMode prevMode;    
+    [SerializeField] private BaseGameMode currentBaseMode;
+    [SerializeField] private GameModes currentGameMode;
+    [SerializeField] private GameModes prevGameMode;
+    private BaseGameMode prevBaseMode;
 
     private void Start()
     {
-        foreach(BaseGameMode gameMode in gameModesRef)
+        foreach (BaseGameMode gameMode in gameModesRef)
         {
             gameMode.InitState(this);
 
@@ -27,7 +28,7 @@ public class GameModeManager: Singleton<GameModeManager>
             modeDictionary.Add(gameMode.gameMode, gameMode);
         }
 
-        foreach(GameModes gameMode in modeDictionary.Keys)
+        foreach (GameModes gameMode in modeDictionary.Keys)
         {
             modeDictionary[gameMode].gameObject.SetActive(false);
         }
@@ -46,10 +47,10 @@ public class GameModeManager: Singleton<GameModeManager>
     {
         if (!modeDictionary.ContainsKey(newGameMode))
             return;
-       
-        if(currentBaseMode != null)
+
+        if (currentBaseMode != null)
         {
-            prevMode = currentBaseMode;
+            prevBaseMode = currentBaseMode;
             currentBaseMode.ExitState();
             currentBaseMode.gameObject.SetActive(false);
         }
@@ -58,7 +59,14 @@ public class GameModeManager: Singleton<GameModeManager>
         currentBaseMode.gameObject.SetActive(true);
         currentBaseMode.EnterState();
 
+
+        prevGameMode = currentGameMode;
         currentGameMode = newGameMode;
+    }
+
+    public GameModes GetPrevMode()
+    {
+        return prevGameMode;
     }
 
     public BaseGameMode GetBaseGameMode()
@@ -95,7 +103,7 @@ public class GameModeManager: Singleton<GameModeManager>
     /// </summary>
     public void ResetGame()
     {
-        ActivateGameMode(prevMode.gameMode);
+        ActivateGameMode(prevBaseMode.gameMode);
     }
 
     public GameModes GetCurrentGameMode()

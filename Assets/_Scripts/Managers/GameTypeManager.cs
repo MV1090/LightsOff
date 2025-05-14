@@ -14,11 +14,11 @@ public class GameTypeManager : Singleton<GameTypeManager>
     [SerializeField] Button threeXGrid;
     [SerializeField] Button fourXGrid;
     [SerializeField] Button fiveXGrid;
-    
-    
+
+
     //private int gridIndex = 0;
 
-    private GameType currentGameType;
+    [SerializeField] private GameType currentGameType;
 
     public enum GameType
     {
