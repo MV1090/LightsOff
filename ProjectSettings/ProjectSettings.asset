@@ -16,15 +16,15 @@ PlayerSettings:
   productName: Reaction Distraction
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.12971699, g: 0.3283341, b: 0.5, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 2
   m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 0
-  m_SplashScreenBackgroundAnimationZoom: 1
-  m_SplashScreenLogoAnimationZoom: 1
+  m_SplashScreenBackgroundAnimationZoom: 0.6
+  m_SplashScreenLogoAnimationZoom: 0.6
   m_SplashScreenBackgroundLandscapeAspect: 1
   m_SplashScreenBackgroundPortraitAspect: 1
   m_SplashScreenBackgroundLandscapeUvs:
@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 1294293204309959248, guid: b0d6e94a0415b89479bc1c83652d3d35, type: 3}
     duration: 2
-  - logo: {fileID: 2818732757608547948, guid: 1a857348ff8852a46a0b13d80fc779a8, type: 3}
+  - logo: {fileID: -4073682856825610780, guid: ac6fe50f911df2441af8afb9774a8e17, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: b0d6e94a0415b89479bc1c83652d3d35, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
