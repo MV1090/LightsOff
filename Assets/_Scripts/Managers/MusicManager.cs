@@ -40,11 +40,13 @@ public class MusicManager : MonoBehaviour
 
     void GameOver()
     {
-        if(gameMusic.isPlaying)  
-            gameMusic.Stop();
+        StopAllCoroutines();
 
-        if(loopMusic.isPlaying)
-            loopMusic.Stop();
+        //if(gameMusic.isPlaying)  
+        gameMusic.Stop();
+
+        //if(loopMusic.isPlaying)
+        loopMusic.Stop();             
 
         gameOverMusic.Play();
         StartCoroutine(PlayMenuMusicDelay(gameOverMusic.clip.length));
