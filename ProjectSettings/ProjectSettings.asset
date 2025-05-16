@@ -40,9 +40,9 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
+  - logo: {fileID: -379346430829380162, guid: 374956193ba676348ae33560491a3b8d, type: 3}
+    duration: 3
   - logo: {fileID: 1294293204309959248, guid: b0d6e94a0415b89479bc1c83652d3d35, type: 3}
-    duration: 2
-  - logo: {fileID: -4073682856825610780, guid: ac6fe50f911df2441af8afb9774a8e17, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: b0d6e94a0415b89479bc1c83652d3d35, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -176,7 +176,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 14
+  AndroidBundleVersionCode: 15
   AndroidMinSdkVersion: 23
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -269,7 +269,7 @@ PlayerSettings:
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
-  androidSplashScreen: {fileID: 0}
+  androidSplashScreen: {fileID: 2800000, guid: 374956193ba676348ae33560491a3b8d, type: 3}
   AndroidKeystoreName: D:/Lights Off/KeyStore/user.keystore
   AndroidKeyaliasName: reaction_distraction_release_key
   AndroidEnableArmv9SecurityFeatures: 0
@@ -743,7 +743,7 @@ PlayerSettings:
   monoEnv: 
   splashScreenBackgroundSourceLandscape: {fileID: 3522625195909571564, guid: fa9af33815f8382498338e7b524c4c3d, type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
-  blurSplashScreenBackground: 1
+  blurSplashScreenBackground: 0
   spritePackerPolicy: 
   webGLMemorySize: 32
   webGLExceptionSupport: 1

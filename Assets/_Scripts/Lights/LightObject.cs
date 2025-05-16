@@ -65,6 +65,18 @@ public class LightObject : MonoBehaviour
         OnLightTouched?.Invoke();                
     }
 
+    public void MissedTouch()
+    {
+        if(GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.BeatTheClock)
+        {
+            //GameManager.Instance.Score--;
+            GameManager.Instance.currentTime -= 3;
+            return;
+        }
+
+        GameManager.Instance.InvokeGameOver();
+    }
+
     private void GameStarted(bool isActive)
     {
         startText.gameObject.SetActive(isActive);

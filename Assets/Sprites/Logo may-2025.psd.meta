@@ -1,0 +1,250 @@
+fileFormatVersion: 2
+guid: 374956193ba676348ae33560491a3b8d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8225417728386069619
+    second: Logo may-2025_0
+  - first:
+      213: -379346430829380162
+    second: Logo may-2025_1
+  - first:
+      213: 624852632629940207
+    second: Logo may-2025_2
+  - first:
+      213: 6727611562326130906
+    second: Logo may-2025_3
+  - first:
+      213: -4386732389577416844
+    second: Logo may-2025_4
+  - first:
+      213: 1045731327776789101
+    second: Logo may-2025_5
+  - first:
+      213: 5281450897544700967
+    second: Logo may-2025_6
+  - first:
+      213: 2686048150485789742
+    second: Logo may-2025_7
+  - first:
+      213: -8149584202456797707
+    second: Logo may-2025_8
+  - first:
+      213: -8299358027938449300
+    second: Logo may-2025_9
+  - first:
+      213: 2986675335054570818
+    second: Logo may-2025_10
+  - first:
+      213: 7935882684599826992
+    second: Logo may-2025_11
+  - first:
+      213: 292941686306885333
+    second: Logo may-2025_12
+  - first:
+      213: -2680882625768975418
+    second: Logo may-2025_13
+  - first:
+      213: -982219564827003406
+    second: Logo may-2025_14
+  - first:
+      213: -4656929356003800822
+    second: Logo may-2025_15
+  - first:
+      213: -5640537336096611322
+    second: Logo may-2025_16
+  - first:
+      213: 6618236297802951373
+    second: Logo may-2025_17
+  - first:
+      213: 7827299017398743649
+    second: Logo may-2025_18
+  - first:
+      213: 6184579825808379690
+    second: Logo may-2025_19
+  - first:
+      213: 1799022407892147127
+    second: Logo may-2025_20
+  - first:
+      213: -6964139527952479939
+    second: Logo may-2025_21
+  - first:
+      213: 2109614604916267875
+    second: Logo may-2025_22
+  - first:
+      213: -6444131746055942878
+    second: Logo may-2025_23
+  - first:
+      213: 6040007504158283036
+    second: Logo may-2025_24
+  - first:
+      213: 1412703761897980961
+    second: Logo may-2025_25
+  - first:
+      213: 1590787433578049109
+    second: Logo may-2025_26
+  - first:
+      213: -1839278505452713890
+    second: Logo may-2025_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 1
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Logo may-2025_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 599
+        height: 596
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebd3a975e6a4cbaf0800000000000000
+      internalID: -379346430829380162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 81acc81ea4b9cde44923f10b398ce1cf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Mark Logo: 549493054
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

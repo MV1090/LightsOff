@@ -76,7 +76,8 @@ public class InputManager: Singleton<InputManager>
                         if (GameManager.Instance.GetStartGame() == false)
                             return;
 
-                        GameManager.Instance.InvokeGameOver();
+                        //GameManager.Instance.InvokeGameOver();
+                        lightObject.MissedTouch();
                         return;
                     }
 
@@ -93,7 +94,8 @@ public class InputManager: Singleton<InputManager>
         {
             if (GameManager.Instance.GetStartGame() != false)
             {
-                GameManager.Instance.InvokeGameOver();
+                lightObject.MissedTouch();
+                //GameManager.Instance.InvokeGameOver();
                 return;
             }                      
         }

@@ -8983,9 +8983,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724316900}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d760638cc4f881b48802f2793bdac71b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -14516,7 +14516,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483871018}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a11797b9297545747bf4858a92deb227, type: 3}
   m_Name: 
@@ -18796,7 +18796,7 @@ MonoBehaviour:
   OnScoreValueChange:
     m_PersistentCalls:
       m_Calls: []
-  StartTime: 90
+  StartTime: 30
   currentTime: 0
   gameOver: 0
 --- !u!4 &1969797048
