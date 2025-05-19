@@ -107,6 +107,7 @@ public class Delay : BaseGameMode
         lightOnTime = end;
     }
 
+
     /// <summary>
     /// When a light turns on this Coroutine starts, setting the amount of time the player has to press the light before they lose. 
     /// </summary>

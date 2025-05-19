@@ -9,7 +9,7 @@ public class SFXManager : Singleton<SFXManager>
     [SerializeField] AudioClip shutterSound; 
     [SerializeField] AudioClip buttonSound;
     [SerializeField] AudioClip[] light1;    
-    //[SerializeField] AudioClip gameOver;
+    [SerializeField] AudioClip[] errorSound;
 
     void Start()
     {
@@ -40,6 +40,16 @@ public class SFXManager : Singleton<SFXManager>
         //    audioSource.PlayOneShot(light1);
         //else
         //    audioSource.PlayOneShot(light2);
+    }
+
+    public void PlayErrorSound()
+    {
+        int randNum = Random.Range(0, errorSound.Length);
+
+        if (randNum % 2 == 0)
+            audioSource.PlayOneShot(errorSound[randNum]);
+        else
+            audioSource.PlayOneShot(errorSound[randNum]);
     }
 
     public void PlayShutterSound()

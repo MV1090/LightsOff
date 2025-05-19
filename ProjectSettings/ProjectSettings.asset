@@ -176,7 +176,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 15
+  AndroidBundleVersionCode: 16
   AndroidMinSdkVersion: 23
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -269,7 +269,7 @@ PlayerSettings:
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
-  androidSplashScreen: {fileID: 2800000, guid: 374956193ba676348ae33560491a3b8d, type: 3}
+  androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: D:/Lights Off/KeyStore/user.keystore
   AndroidKeyaliasName: reaction_distraction_release_key
   AndroidEnableArmv9SecurityFeatures: 0
