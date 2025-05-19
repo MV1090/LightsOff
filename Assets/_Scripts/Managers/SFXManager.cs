@@ -7,34 +7,27 @@ public class SFXManager : Singleton<SFXManager>
 
     [SerializeField] AudioClip clickSound;
     [SerializeField] AudioClip shutterSound; 
-    [SerializeField] AudioClip backSound;
-    [SerializeField] AudioClip[] light1;
-    //[SerializeField] AudioClip light2;
-    [SerializeField] AudioClip gameOver;
+    [SerializeField] AudioClip buttonSound;
+    [SerializeField] AudioClip[] light1;    
+    [SerializeField] AudioClip[] errorSound;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        GameManager.Instance.OnGameOver += PlayGameOverSound;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        //GameManager.Instance.OnGameOver += PlayGameOverSound;
     }
 
     public void StopSound()
     {
         audioSource.Stop();
     }
-    public void PlayGameOverSound()
-    {
-        audioSource.PlayOneShot(gameOver);
-    }
+    //public void PlayGameOverSound()
+    //{
+    //    audioSource.PlayOneShot(gameOver);
+    //}
     public void PlayBackSound()
     {
-        audioSource.PlayOneShot(backSound);
+        audioSource.PlayOneShot(buttonSound);
     }
 
     public void PlayClickedSound()
@@ -47,6 +40,16 @@ public class SFXManager : Singleton<SFXManager>
         //    audioSource.PlayOneShot(light1);
         //else
         //    audioSource.PlayOneShot(light2);
+    }
+
+    public void PlayErrorSound()
+    {
+        int randNum = Random.Range(0, errorSound.Length);
+
+        if (randNum % 2 == 0)
+            audioSource.PlayOneShot(errorSound[randNum]);
+        else
+            audioSource.PlayOneShot(errorSound[randNum]);
     }
 
     public void PlayShutterSound()

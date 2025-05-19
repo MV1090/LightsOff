@@ -21,8 +21,6 @@ public class LightObject : MonoBehaviour
     public Color warningColour = new Color32(219,26,14,255);
     public readonly Color offColour = new Color32(255, 255, 255, 255);
 
-
-
     private void Awake()
     {
         LightManager.Instance.AddToLightObjects(this);        
@@ -63,6 +61,19 @@ public class LightObject : MonoBehaviour
         //Call OnLightTouched event
         GameManager.Instance.Score++;        
         OnLightTouched?.Invoke();                
+    }
+
+    public void MissedTouch()
+    {
+        if(GameModeManager.Instance.GetCurrentGameMode() == GameModeManager.GameModes.BeatTheClock)
+        {
+            //GameManager.Instance.Score--;
+            SFXManager.Instance.PlayErrorSound();
+            GameManager.Instance.currentTime -= 3;
+            return;
+        }
+
+        GameManager.Instance.InvokeGameOver();
     }
 
     private void GameStarted(bool isActive)

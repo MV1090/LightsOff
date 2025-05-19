@@ -85,7 +85,7 @@ public class OptionsMenu : BaseMenu
     void SoundFxToggle(bool isOn)
     {
         if(!isOn)
-            audioMixer.SetFloat("SFXVolume", -80.0f);
+            audioMixer.SetFloat("SFXVolume", -88.0f);
         else
             audioMixer.SetFloat("SFXVolume", 0.0f);
 
