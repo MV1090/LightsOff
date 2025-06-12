@@ -41,11 +41,17 @@ public class InputManager: Singleton<InputManager>
     /// <param name="context"></param>
     private void TouchPressed(InputAction.CallbackContext context)
     {
+
+        //if (MenuManager.Instance.currentMenu is TutorialMenu)
+        //{
+        //    RunTutorial();
+        //}
+
         if (MenuManager.Instance.menuLoaded == false)
             return;
 
         if (GameManager.Instance.gameOver == true)
-            return;
+            return;        
 
         //Gets the position on the screen where the player touched
         Vector2 touchPos = touchPosition.ReadValue<Vector2>();              
@@ -101,5 +107,10 @@ public class InputManager: Singleton<InputManager>
         }
 
     }   
+
+    void RunTutorial()
+    {
+        TutorialMenu.instance.PlayTutorial();
+    }
 }
 

@@ -7,7 +7,7 @@ public class MenuManager : Singleton<MenuManager>
     public bool menuLoaded;
     public enum MenuStates
     {
-        RootMainMenu, GameModeSelect, EndGameMenu, GameMenu, LeaderboardMenu, OptionsMenu
+        RootMainMenu, GameModeSelect, EndGameMenu, GameMenu, LeaderboardMenu, OptionsMenu, TutorialMenu
     }
 
     public MenuStates menuToActivate;
@@ -65,8 +65,7 @@ public class MenuManager : Singleton<MenuManager>
         if(!isJumpingBack)
         {
             menuStack.Push(newMenu);
-        }
-        
+        }        
     }
 
     public void JumpBack()

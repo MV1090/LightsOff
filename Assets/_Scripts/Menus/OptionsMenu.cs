@@ -12,7 +12,7 @@ public class OptionsMenu : BaseMenu
     [SerializeField] Slider activeLight;
     [SerializeField] Slider warningLight;
     [SerializeField] Image light1;
-    [SerializeField] Image light2;
+    [SerializeField] Image light2;    
 
     public AudioMixer audioMixer;
     public Gradient colorGradient;
@@ -97,4 +97,8 @@ public class OptionsMenu : BaseMenu
         //Debug.Log("Choose light colours here");
     }
 
+    public void JumpTutorialMenu()
+    {
+        context.SetActiveMenu(MenuManager.MenuStates.TutorialMenu);
+    }
 }
