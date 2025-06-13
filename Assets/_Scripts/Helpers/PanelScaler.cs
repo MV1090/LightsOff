@@ -1,6 +1,5 @@
 //using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PanelScaler : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class PanelScaler : MonoBehaviour
 
     private void Update()
     {
-        //ApplySafeArea();
+       
     }
 
     void ApplySafeArea()

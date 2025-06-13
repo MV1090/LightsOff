@@ -50,11 +50,11 @@ public class LightObject : MonoBehaviour
 
         //Start game after first light is pressed
         if (GameManager.Instance.GetStartGame() == false)
-        {          
+        {
             GameManager.Instance.SetStartGame(true);
             GameStarted(false);
             OnGameStart?.Invoke();
-            OnLightTouched?.Invoke();
+            OnLightTouched?.Invoke();           
             return;
         }         
 

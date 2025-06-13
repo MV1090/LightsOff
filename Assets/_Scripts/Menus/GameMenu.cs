@@ -38,8 +38,8 @@ public class GameMenu : BaseMenu
 
     public override void EnterState()
     {        
-        base.EnterState();
-        
+        base.EnterState();       
+
         GameTypeManager.Instance.SetGridActive();
 
         Time.timeScale = 1.0f;    

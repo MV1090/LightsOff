@@ -14,6 +14,8 @@ public class GameManager : Singleton<GameManager>
     private bool startGame = false;
     public bool gameOver = false;
 
+    private bool firstPlay = true;
+
     private int _score = 0;
     public int Score
     {
@@ -33,6 +35,7 @@ public class GameManager : Singleton<GameManager>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        firstPlay = PlayerPrefs.GetInt("FirstPlay", firstPlay ? 1 : 0) == 1;
         currentTime = StartTime;
         Score = 0;
     }
@@ -43,7 +46,10 @@ public class GameManager : Singleton<GameManager>
     }
     public void SetStartGame(bool hasGameStarted)
     {
-        startGame = hasGameStarted; 
+        startGame = hasGameStarted;
+
+        if (GetFirstPlay() == true)
+            SetFirstPlay();
     }
     public bool GetStartGame()
     {
@@ -66,4 +72,17 @@ public class GameManager : Singleton<GameManager>
         currentTime = StartTime;
         Score = 0;
     }
+
+    public void SetFirstPlay()
+    {
+        firstPlay = false;
+        PlayerPrefs.SetInt("FirstPlay", firstPlay ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    public bool GetFirstPlay() 
+    {
+        return firstPlay;
+    }
+
 }

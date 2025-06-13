@@ -44,7 +44,10 @@ public class RootMainMenu : BaseMenu
 
     public void JumpToGameModeSelect()
     {
-        context.SetActiveMenu(MenuManager.MenuStates.GameModeSelect);
+        if (GameManager.Instance.GetFirstPlay() == true)
+            context.SetActiveMenu(MenuManager.MenuStates.TutorialMenu);
+        else
+            context.SetActiveMenu(MenuManager.MenuStates.GameModeSelect);
     }
 
     public void JumpToOptionsMenu()

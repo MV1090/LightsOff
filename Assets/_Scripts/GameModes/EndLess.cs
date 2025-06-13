@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 
 public class EndLess : BaseGameMode
@@ -36,8 +36,7 @@ public class EndLess : BaseGameMode
     // runs when game mode has ended
     public override void ExitState()
     {
-        base.ExitState();
-        //ResetMode();
+        base.ExitState();        
 
         //removes all listeners from light objects
         foreach (LightObject lightObject in LightManager.Instance.allLightObjects)
