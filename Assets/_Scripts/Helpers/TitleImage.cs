@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TitleImage : MonoBehaviour
 {
-    public Image displayImage;         // UI Image component
-    public Sprite[] lightFrames;       // Your 16-frame light animation
-    public float bpm = 140f;           // Beats per minute
+    public Image displayImage;         
+    public Sprite[] lightFrames;       
+    public float bpm = 140f;           
 
-    private float beatInterval;        // Seconds per beat
+    private float beatInterval;        
     private float timer;
     [SerializeField] private int currentFrame;
 

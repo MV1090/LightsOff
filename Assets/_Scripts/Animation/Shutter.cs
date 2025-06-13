@@ -9,15 +9,13 @@ public class Shutter : MonoBehaviour
     [SerializeField] EndGameMenu endGameMenu;
     public Button backButton;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         anim = GetComponent<Animator>();
         LightManager.Instance.gameEnded += () => PlayAnimation();
     }
-
-    // Update is called once per frame
+        
     void Update()
     {
         
@@ -48,7 +46,6 @@ public class Shutter : MonoBehaviour
     public void loadNextMenu()
     {
         MenuManager.Instance.SetActiveMenu(MenuManager.Instance.menuToActivate);
-        //Debug.Log("Menu Loaded");
     }
 
     public void ShowAD()

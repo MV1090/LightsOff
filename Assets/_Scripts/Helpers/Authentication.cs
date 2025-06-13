@@ -27,9 +27,7 @@ public class Authentication : MonoBehaviour
         catch (Exception ex)
         {
             Debug.LogException(ex);
-        }
-
-        
+        }        
     }
 
     async Task SignUpAnonymouslyAsync()
@@ -49,14 +47,11 @@ public class Authentication : MonoBehaviour
                 await AuthenticationService.Instance.UpdatePlayerNameAsync(newName);
                 PlayerPrefs.SetString(CachedNameKey, newName);
                 PlayerPrefs.Save();
-                PlayerDisplayName = newName;
-                //PlayerDisplayName = AuthenticationService.Instance.PlayerName;
-
+                PlayerDisplayName = newName;                
             }
             else
             {
-                PlayerDisplayName = !string.IsNullOrEmpty(serverName) ? serverName : localName;
-                //PlayerDisplayName = AuthenticationService.Instance.PlayerName;
+                PlayerDisplayName = !string.IsNullOrEmpty(serverName) ? serverName : localName;                
                 if (string.IsNullOrEmpty(serverName) && !string.IsNullOrEmpty(localName))
                     await AuthenticationService.Instance.UpdatePlayerNameAsync(localName);
             }

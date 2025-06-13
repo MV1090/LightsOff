@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class FloatingUI : MonoBehaviour
 {
-    public float amplitude = 10f;     // How far it moves up and down
-    public float frequency = 1f;      // How fast it moves
+    public float amplitude = 10f;     
+    public float frequency = 1f;     
     private RectTransform rectTransform;
     private Vector2 originalPosition;
 

@@ -26,8 +26,7 @@ public class ButtonEvents : MonoBehaviour
                 SFXManager.Instance.PlayBackSound();
                 originalFontSize = buttonText.fontSize;
                 buttonText.enableAutoSizing = false;
-                buttonText.fontSize = originalFontSize / 1.5f; // or /10f as you had it
-                //Debug.Log("Resized font on button: " + buttonPressed.name);
+                buttonText.fontSize = originalFontSize / 1.5f; // or /10f as you had it                
             }
             else
             {

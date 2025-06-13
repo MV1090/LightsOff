@@ -12,6 +12,7 @@ public class TutorialMenu : BaseMenu
     [SerializeField] Image barPointer;
     [SerializeField] Slider timer;
     [SerializeField] Gradient colorGradient;
+    [SerializeField] Image playPointer;
     [SerializeField] TMP_Text playGameText;
  
 
@@ -26,6 +27,7 @@ public class TutorialMenu : BaseMenu
         base.InitState(ctx);
         state = MenuManager.MenuStates.TutorialMenu;
         playGameText.gameObject.SetActive(false);
+        playPointer.gameObject.SetActive(false);
         instance = this;
         
     }
@@ -90,19 +92,22 @@ public class TutorialMenu : BaseMenu
         descriptionText.rectTransform.anchorMax = new Vector2(0.87f, 0.5f);        
     }
     private void PhaseThree() 
-    {
+    {        
         barPointer.gameObject.SetActive(false);
         timer.gameObject.SetActive(false);
         descriptionText.text = tutorialDescription[tutorialTracker];
-        descriptionText.rectTransform.anchorMin = new Vector2(0.13f, 0.3f);
-        descriptionText.rectTransform.anchorMax = new Vector2(0.87f, 0.75f);
+        descriptionText.rectTransform.anchorMin = new Vector2(0.13f, 0.2f);
+        descriptionText.rectTransform.anchorMax = new Vector2(0.87f, 0.8f);
         
         if (GameManager.Instance.GetFirstPlay() == true)
         {
             playGameText.gameObject.SetActive(true);
+            playPointer.gameObject.SetActive(true);
+            descriptionText.rectTransform.anchorMin = new Vector2(0.13f, 0.35f);
+            descriptionText.rectTransform.anchorMax = new Vector2(0.87f, 0.8f);
         }
-
     }
+
     private void PhaseFour() 
     {
         if (GameManager.Instance.GetFirstPlay() == false)
@@ -116,9 +121,8 @@ public class TutorialMenu : BaseMenu
         {
             context.SetActiveMenu(MenuManager.MenuStates.GameModeSelect);
             playGameText.gameObject.SetActive(false);
-        }
-        
-        
+            playPointer.gameObject.SetActive(false);
+        }                
     }
 
     private void Update()
