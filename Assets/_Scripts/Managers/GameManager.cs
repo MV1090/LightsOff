@@ -46,7 +46,10 @@ public class GameManager : Singleton<GameManager>
     }
     public void SetStartGame(bool hasGameStarted)
     {
-        startGame = hasGameStarted; 
+        startGame = hasGameStarted;
+
+        if (GetFirstPlay() == true)
+            SetFirstPlay();
     }
     public bool GetStartGame()
     {

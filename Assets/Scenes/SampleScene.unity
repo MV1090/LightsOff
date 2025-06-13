@@ -2814,6 +2814,7 @@ MonoBehaviour:
   endless: {fileID: 729886171}
   delay: {fileID: 275053902}
   beatTheClock: {fileID: 552161568}
+  back: {fileID: 127674665}
   distraction: {fileID: 240424374}
 --- !u!114 &221603696
 MonoBehaviour:
@@ -8705,9 +8706,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1483871023}
-        m_TargetAssemblyTypeName: RootMainMenu, Assembly-CSharp
-        m_MethodName: JumpToGameModeSelect
+      - m_Target: {fileID: 125697256}
+        m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
+        m_MethodName: JumpToTutorialMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19432,50 +19433,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904158239}
   m_CullTransparentMesh: 1
---- !u!1 &1923250390
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1923250392}
-  - component: {fileID: 1923250391}
-  m_Layer: 0
-  m_Name: ScoreCacheManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1923250391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923250390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebf453c3b5c36374d90ebf5683c3bb7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1923250392
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923250390}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1924901027
 GameObject:
   m_ObjectHideFlags: 0
@@ -22515,4 +22472,3 @@ SceneRoots:
   - {fileID: 2058495793}
   - {fileID: 339503752}
   - {fileID: 1204368902}
-  - {fileID: 1923250392}

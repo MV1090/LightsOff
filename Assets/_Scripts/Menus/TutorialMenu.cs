@@ -102,13 +102,12 @@ public class TutorialMenu : BaseMenu
         {
             tutorialTracker = 0;
             timerBar = 15;
-            PlayTutorial();
+            PhaseOne();
             return;
-        }
-            
+        }           
 
         context.SetActiveMenu(MenuManager.MenuStates.GameModeSelect);
-        GameManager.Instance.SetFirstPlay();
+        
     }
 
     private void Update()

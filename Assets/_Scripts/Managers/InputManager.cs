@@ -42,10 +42,10 @@ public class InputManager: Singleton<InputManager>
     private void TouchPressed(InputAction.CallbackContext context)
     {
 
-        //if (MenuManager.Instance.currentMenu is TutorialMenu)
-        //{
-        //    RunTutorial();
-        //}
+        if (MenuManager.Instance.currentMenu is TutorialMenu)
+        {
+            RunTutorial();
+        }
 
         if (MenuManager.Instance.menuLoaded == false)
             return;

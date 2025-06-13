@@ -97,7 +97,7 @@ public class OptionsMenu : BaseMenu
         //Debug.Log("Choose light colours here");
     }
 
-    public void JumpTutorialMenu()
+    public void JumpToTutorialMenu()
     {
         context.SetActiveMenu(MenuManager.MenuStates.TutorialMenu);
     }

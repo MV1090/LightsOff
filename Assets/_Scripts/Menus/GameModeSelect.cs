@@ -9,7 +9,7 @@ public class GameModeSelect : BaseMenu
     [SerializeField] Button endless;
     [SerializeField] Button delay;
     [SerializeField] Button beatTheClock;
-    //[SerializeField] Button back;
+    [SerializeField] Button back;
 
     [SerializeField] Toggle distraction;
 
@@ -37,6 +37,11 @@ public class GameModeSelect : BaseMenu
         Time.timeScale = 0.0f;       
         LightManager.Instance.ToggleDistraction(distraction.isOn);
         LeaderboardManager.Instance.SetDistractionActive(distraction.isOn);
+       
+        if (GameManager.Instance.GetFirstPlay() == true)
+            back.gameObject.SetActive(false);
+        else
+            back.gameObject.SetActive(true);
     }
 
     public override void ExitState()
