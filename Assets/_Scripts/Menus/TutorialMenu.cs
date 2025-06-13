@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class TutorialMenu : BaseMenu
 {
@@ -13,6 +12,8 @@ public class TutorialMenu : BaseMenu
     [SerializeField] Image barPointer;
     [SerializeField] Slider timer;
     [SerializeField] Gradient colorGradient;
+    [SerializeField] TMP_Text playGameText;
+ 
 
     [Multiline][SerializeField] TMP_Text descriptionText;    
 
@@ -24,7 +25,7 @@ public class TutorialMenu : BaseMenu
     {
         base.InitState(ctx);
         state = MenuManager.MenuStates.TutorialMenu;
-
+        playGameText.gameObject.SetActive(false);
         instance = this;
         
     }
@@ -94,7 +95,13 @@ public class TutorialMenu : BaseMenu
         timer.gameObject.SetActive(false);
         descriptionText.text = tutorialDescription[tutorialTracker];
         descriptionText.rectTransform.anchorMin = new Vector2(0.13f, 0.3f);
-        descriptionText.rectTransform.anchorMax = new Vector2(0.87f, 0.75f);        
+        descriptionText.rectTransform.anchorMax = new Vector2(0.87f, 0.75f);
+        
+        if (GameManager.Instance.GetFirstPlay() == true)
+        {
+            playGameText.gameObject.SetActive(true);
+        }
+
     }
     private void PhaseFour() 
     {
@@ -104,9 +111,13 @@ public class TutorialMenu : BaseMenu
             timerBar = 15;
             PhaseOne();
             return;
-        }           
-
-        context.SetActiveMenu(MenuManager.MenuStates.GameModeSelect);
+        }
+        else
+        {
+            context.SetActiveMenu(MenuManager.MenuStates.GameModeSelect);
+            playGameText.gameObject.SetActive(false);
+        }
+        
         
     }
 

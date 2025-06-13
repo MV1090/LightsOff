@@ -54,10 +54,7 @@ public class LightObject : MonoBehaviour
             GameManager.Instance.SetStartGame(true);
             GameStarted(false);
             OnGameStart?.Invoke();
-            OnLightTouched?.Invoke();
-
-            if (GameManager.Instance.GetFirstPlay() == true)
-                GameManager.Instance.SetFirstPlay();
+            OnLightTouched?.Invoke();           
             return;
         }         
 
